@@ -121,11 +121,6 @@ main {
 	width: 100%;
 	top: 50%;
 	left: 50%;
-	-webkit-transform: translateX(-50%) translateY(-50%);
-		 -moz-transform: translateX(-50%) translateY(-50%);
-			-ms-transform: translateX(-50%) translateY(-50%);
-			 -o-transform: translateX(-50%) translateY(-50%);
-					transform: translateX(-50%) translateY(-50%);
 	background-color: #fff;
 	border-top: 2px solid #ff3264;
 	border-bottom: 2px solid #ff3264;
@@ -140,6 +135,11 @@ main {
 			-ms-transform: translateZ(0); /* Force hardware acceleration to make animation smoother */
 			 -o-transform: translateZ(0); /* Force hardware acceleration to make animation smoother */
 					transform: translateZ(0); /* Force hardware acceleration to make animation smoother */
+	-webkit-transform: translateX(-50%) translateY(-50%);
+		 -moz-transform: translateX(-50%) translateY(-50%);
+			-ms-transform: translateX(-50%) translateY(-50%);
+			 -o-transform: translateX(-50%) translateY(-50%);
+					transform: translateX(-50%) translateY(-50%);
 	-webkit-transition: visibility 0s 0.4s, -webkit-transform 0.4s 0s ease-in; /* Determines how quickly the progress bar disappears after progress is complete (delay on visibility should be same as speed of transform) */
 		 -moz-transition: visibility 0s 0.4s, -moz-transform 0.4s 0s ease-in; /* Determines how quickly the progress bar disappears after progress is complete (delay on visibility should be same as speed of transform) */
 			-ms-transition: visibility 0s 0.4s, -ms-transform 0.4s 0s ease-in; /* Determines how quickly the progress bar disappears after progress is complete (delay on visibility should be same as speed of transform) */
@@ -154,11 +154,11 @@ main {
 			-ms-transform: translateX(-50%) translateY(-50%) scaleX(0.3);
 			 -o-transform: translateX(-50%) translateY(-50%) scaleX(0.3);
 					transform: translateX(-50%) translateY(-50%) scaleX(0.3);
-	-webkit-transition: visibility 0s 0.5s, -webkit-transform 0.6s 0.6s ease-in; /* Determines how quickly the progress bar appears and contracts (visibility should have .1 less delay and be .1 less than body::before contraction) */
-		 -moz-transition: visibility 0s 0.5s, -moz-transform 0.6s 0.6s ease-in; /* Determines how quickly the progress bar appears and contracts (visibility should have .1 less delay and be .1 less than body::before contraction) */
-			-ms-transition: visibility 0s 0.5s, -ms-transform 0.6s 0.6s ease-in; /* Determines how quickly the progress bar appears and contracts (visibility should have .1 less delay and be .1 less than body::before contraction) */
-			 -o-transition: visibility 0s 0.5s, -o-transform 0.6s 0.6s ease-in; /* Determines how quickly the progress bar appears and contracts (visibility should have .1 less delay and be .1 less than body::before contraction) */
-					transition: visibility 0s 0.5s, transform 0.6s 0.6s ease-in; /* Determines how quickly the progress bar appears and contracts (visibility should have .1 less delay and be .1 less than body::before contraction) */
+	-webkit-transition: visibility 0s 0.5s, -webkit-transform 0.6s 0.6s; /* Determines how quickly the progress bar appears and contracts (visibility should have .1 less delay and be .1 less than body::before contraction) */
+		 -moz-transition: visibility 0s 0.5s, -moz-transform 0.6s 0.6s; /* Determines how quickly the progress bar appears and contracts (visibility should have .1 less delay and be .1 less than body::before contraction) */
+			-ms-transition: visibility 0s 0.5s, -ms-transform 0.6s 0.6s; /* Determines how quickly the progress bar appears and contracts (visibility should have .1 less delay and be .1 less than body::before contraction) */
+			 -o-transition: visibility 0s 0.5s, -o-transform 0.6s 0.6s; /* Determines how quickly the progress bar appears and contracts (visibility should have .1 less delay and be .1 less than body::before contraction) */
+					transition: visibility 0s 0.5s, transform 0.6s 0.6s; /* Determines how quickly the progress bar appears and contracts (visibility should have .1 less delay and be .1 less than body::before contraction) */
 }
 
 .pageTransitionLoadingBar::before { /* This is the actual bar showing progress (which isn't actually the real progress, just an animation with preset duration) */
