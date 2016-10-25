@@ -32,8 +32,6 @@ else if (document.attachEvent)
 
 function domContentHasLoaded()
 {
-  pageIsReadyForTransitions();
-
   var documentBodyElmnt = document.body;
   if (!checkThatObjectNotNullOrUndefined(documentBodyElmnt))
     return;
@@ -144,6 +142,8 @@ function domContentHasLoaded()
     // Reload the page
     window.location.reload(true);
   });
+
+  pageIsReadyForTransitions();
 
 
   function openMainNavMenu()
