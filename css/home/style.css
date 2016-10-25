@@ -183,6 +183,13 @@
 
 .homepageBody header,
 .homepageWhiteBGLayer {
+	-webkit-backface-visibility: hidden; /* Force hardware acceleration to make animation smoother */
+					backface-visibility: hidden; /* Force hardware acceleration to make animation smoother */
+	-webkit-transform: translateZ(0); /* Force hardware acceleration to make animation smoother */
+		 -moz-transform: translateZ(0); /* Force hardware acceleration to make animation smoother */
+			-ms-transform: translateZ(0); /* Force hardware acceleration to make animation smoother */
+			 -o-transform: translateZ(0); /* Force hardware acceleration to make animation smoother */
+					transform: translateZ(0); /* Force hardware acceleration to make animation smoother */
 	-webkit-animation-duration: 1s;
 		 -moz-animation-duration: 1s;
 			-ms-animation-duration: 1s;
@@ -269,11 +276,11 @@
 }
 
 .homepageWhiteBGLayer {
-	-webkit-animation-timing-function: linear;
-		 -moz-animation-timing-function: linear;
-		 	-ms-animation-timing-function: linear;
-			 -o-animation-timing-function: linear;
-			 		animation-timing-function: linear;
+	-webkit-animation-timing-function: ease-in;
+		 -moz-animation-timing-function: ease-in;
+		 	-ms-animation-timing-function: ease-in;
+			 -o-animation-timing-function: ease-in;
+			 		animation-timing-function: ease-in;
 	-webkit-animation-name: pdg-opacity-fadeout;
 		 -moz-animation-name: pdg-opacity-fadeout;
 			-ms-animation-name: pdg-opacity-fadeout;
@@ -2245,6 +2252,13 @@ screen and (min-aspect-ratio: 11/5) and (max-width: 128px) and (max-resolution: 
 }
 @keyframes pdg-opacity-fadeout {
 	0% {
+		-webkit-backface-visibility: hidden; /* Force hardware acceleration to make animation smoother */
+						backface-visibility: hidden; /* Force hardware acceleration to make animation smoother */
+		-webkit-transform: translateZ(0); /* Force hardware acceleration to make animation smoother */
+			 -moz-transform: translateZ(0); /* Force hardware acceleration to make animation smoother */
+				-ms-transform: translateZ(0); /* Force hardware acceleration to make animation smoother */
+				 -o-transform: translateZ(0); /* Force hardware acceleration to make animation smoother */
+						transform: translateZ(0); /* Force hardware acceleration to make animation smoother */
 		background-color: #fff;
 	}
 	100% {
