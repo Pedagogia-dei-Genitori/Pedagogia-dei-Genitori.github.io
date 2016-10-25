@@ -8,15 +8,15 @@ var pageLoadIsCompete = setInterval(function()
     document.body.classList.remove("homepageLoading");
 
     // Wait a delay and then start animating the page's rotating text
-    var maskAnimationWait = 5000;
-    animateHomepageRotatingText(maskAnimationWait - 1100);
+    var maskAnimationWait = 3000;
+    animateHomepageRotatingText(maskAnimationWait);
 
     // Wait 5 seconds
     setTimeout(function()
     {
       // Make sure the intro mask animations don't repeat after closing the menu
       document.body.classList.add("homepageAnimated");
-    }, 5000);
+    }, 8000);
   }
 }, 10);
 
