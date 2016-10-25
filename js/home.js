@@ -9,7 +9,7 @@ var pageLoadIsCompete = setInterval(function()
 
     // Wait a delay and then start animating the page's rotating text
     var maskAnimationWait = 5000;
-    animateHomepageRotatingText(maskAnimationWait - 1000);
+    animateHomepageRotatingText(maskAnimationWait - 1100);
 
     // Wait 5 seconds
     setTimeout(function()
