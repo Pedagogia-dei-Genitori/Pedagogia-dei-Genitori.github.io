@@ -1,0 +1,11 @@
+@font-face {
+	font-family: "Pacifico";
+	font-style: normal;
+	font-weight: 400;
+	src: url("pacifico.eot");
+	src: local("☺"),
+			 url("pacifico.woff2") format("woff2"),
+			 url("pacifico.woff") format("woff"),
+			 url("pacifico.ttf")  format("truetype"),
+			 url("pacifico.svg#pacifico") format("svg");
+}

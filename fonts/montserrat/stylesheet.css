@@ -1,0 +1,47 @@
+@font-face {
+	font-family: "Montserrat";
+	font-style: normal;
+	font-weight: 200;
+	src: url("montserrat-extralight.eot");
+	src: local("☺"),
+			 url("montserrat-extralight.woff2") format("woff2"),
+			 url("montserrat-extralight.woff") format("woff"),
+			 url("montserrat-extralight.ttf")  format("truetype"),
+			 url("montserrat-extralight.svg#montserrat-extralight") format("svg");
+}
+
+@font-face {
+	font-family: "Montserrat";
+	font-style: normal;
+	font-weight: 300;
+	src: url("montserrat-light.eot");
+	src: local("☺"),
+			 url("montserrat-light.woff2") format("woff2"),
+			 url("montserrat-light.woff") format("woff"),
+			 url("montserrat-light.ttf")  format("truetype"),
+			 url("montserrat-light.svg#montserrat-light") format("svg");
+}
+
+@font-face {
+	font-family: "Montserrat";
+	font-style: normal;
+	font-weight: 400;
+	src: url("montserrat-regular.eot");
+	src: local("☺"),
+			 url("montserrat-regular.woff2") format("woff2"),
+			 url("montserrat-regular.woff") format("woff"),
+			 url("montserrat-regular.ttf")  format("truetype"),
+			 url("montserrat-regular.svg#montserrat-regular") format("svg");
+}
+
+@font-face {
+	font-family: "Montserrat";
+	font-style: normal;
+	font-weight: 600;
+	src: url("montserrat-semibold.eot");
+	src: local("☺"),
+			 url("montserrat-semibold.woff2") format("woff2"),
+			 url("montserrat-semibold.woff") format("woff"),
+			 url("montserrat-semibold.ttf")  format("truetype"),
+			 url("montserrat-semibold.svg#montserrat-semibold") format("svg");
+}

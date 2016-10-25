@@ -1,0 +1,11 @@
+@font-face {
+	font-family: "Montserrat Alternates";
+	font-style: normal;
+	font-weight: 400;
+	src: url("montserratalternates-regular.eot");
+	src: local("☺"),
+			 url("montserratalternates-regular.woff2") format("woff2"),
+			 url("montserratalternates-regular.woff") format("woff"),
+			 url("montserratalternates-regular.ttf")  format("truetype"),
+			 url("montserratalternates-regular.svg#montserratalternates-regular") format("svg");
+}

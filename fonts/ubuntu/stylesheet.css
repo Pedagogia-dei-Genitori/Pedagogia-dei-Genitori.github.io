@@ -1,0 +1,11 @@
+@font-face {
+	font-family: "Ubuntu";
+	font-style: normal;
+	font-weight: 300;
+	src: url("ubuntu-light.eot");
+	src: local("☺"),
+			 url("ubuntu-light.woff2") format("woff2"),
+			 url("ubuntu-light.woff") format("woff"),
+			 url("ubuntu-light.ttf")  format("truetype"),
+			 url("ubuntu-light.svg#ubuntu-light") format("svg");
+}
