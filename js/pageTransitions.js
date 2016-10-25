@@ -59,6 +59,10 @@ function pageIsReadyForTransitions()
 
   function loadNewPageContent(pageToLoad, addPageToHistory)
   {
-
+    var newMainContentWrapper = $("<div class='mainContentWrapper'></div>");
+    newMainContentWrapper.load(pageToLoad + " .mainContentWrapper > *", function(e)
+    {
+      $("main").html(newMainContentWrapper);
+    });
   }
 }
