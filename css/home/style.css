@@ -1981,7 +1981,7 @@ screen and (min-aspect-ratio: 11/5) and (max-width: 128px) and (max-resolution: 
 		opacity: 1;
 		-webkit-transform: translateY(-100%);
 	}
-	15%
+	15% {
 		opacity: 1;
 		-webkit-transform: translateY(0);
 	}
@@ -2003,7 +2003,7 @@ screen and (min-aspect-ratio: 11/5) and (max-width: 128px) and (max-resolution: 
 		opacity: 1;
 		-moz-transform: translateY(-100%);
 	}
-	15%
+	15% {
 		opacity: 1;
 		-moz-transform: translateY(0);
 	}
@@ -2025,7 +2025,7 @@ screen and (min-aspect-ratio: 11/5) and (max-width: 128px) and (max-resolution: 
 		opacity: 1;
 		-ms-transform: translateY(-100%);
 	}
-	15%
+	15% {
 		opacity: 1;
 		-ms-transform: translateY(0);
 	}
@@ -2047,7 +2047,7 @@ screen and (min-aspect-ratio: 11/5) and (max-width: 128px) and (max-resolution: 
 		opacity: 1;
 		-o-transform: translateY(-100%);
 	}
-	15%
+	15% {
 		opacity: 1;
 		-o-transform: translateY(0);
 	}
@@ -2073,7 +2073,7 @@ screen and (min-aspect-ratio: 11/5) and (max-width: 128px) and (max-resolution: 
 				 -o-transform: translateY(-100%);
 						transform: translateY(-100%);
 	}
-	15%
+	15% {
 		opacity: 1;
 		-webkit-transform: translateY(0);
 			 -moz-transform: translateY(0);
