@@ -269,6 +269,11 @@
 }
 
 .homepageWhiteBGLayer {
+	-webkit-animation-timing-function: linear;
+		 -moz-animation-timing-function: linear;
+		 	-ms-animation-timing-function: linear;
+			 -o-animation-timing-function: linear;
+			 		animation-timing-function: linear;
 	-webkit-animation-name: pdg-opacity-fadeout;
 		 -moz-animation-name: pdg-opacity-fadeout;
 			-ms-animation-name: pdg-opacity-fadeout;
