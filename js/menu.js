@@ -135,6 +135,16 @@ function domContentHasLoaded()
     }
   });
 
+  // Links that take to the current page and not to a specific point on the page
+  $("body").on("click", "[data-type='reloadPage']", function(e)
+  {
+    // Prevent default click action
+    e.preventDefault();
+
+    // Reload the page
+    window.location.reload(true);
+  });
+
 
   function openMainNavMenu()
   {
