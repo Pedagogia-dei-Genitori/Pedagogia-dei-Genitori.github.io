@@ -8,20 +8,20 @@ var pageLoadIsCompete = setInterval(function()
     document.body.classList.remove("homepageLoading");
 
     // Wait a delay and then start animating the page's rotating text
-    var maskAnimationWait = 3000;
+    var maskAnimationWait = 4000;
     animateHomepageRotatingText(maskAnimationWait);
 
-    // Wait 5 seconds
+    // Wait 6 seconds
     setTimeout(function()
     {
       // Make sure the intro mask animations don't repeat after closing the menu
       document.body.classList.add("homepageAnimated");
-    }, 8000);
+    }, 6000);
   }
 }, 10);
 
 
-function animateHomepageRotatingText(animationStartDelay)
+function animateHomepageRotatingText(changeInterval)
 {
   var changingWords = document.querySelectorAll(".homepageChangingText");
 
@@ -32,7 +32,15 @@ function animateHomepageRotatingText(animationStartDelay)
   }
 
   var indexOfCurrentlyDisplayedWord = 0;
-  setInterval(showNextWord, animationStartDelay);
+
+  // Wait 2 seconds and show the first word
+  setTimeout(function()
+  {
+    showNextWord();
+
+    // After that, change words at a set time interval
+    setInterval(showNextWord, changeInterval);
+  }, 2000);
 
 
   function addWordToArray(wordToAdd)
