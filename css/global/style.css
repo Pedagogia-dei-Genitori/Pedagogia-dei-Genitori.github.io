@@ -1,0 +1,2911 @@
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-tap-highlight-color: transparent;
+}
+
+@-ms-viewport{
+	width: device-width;
+}
+
+ul, ol {
+	list-style-type: none;
+}
+
+body {
+	line-height: 1;
+}
+
+body::before,
+body::after { /* These are the two half blocks (top and bottom) that cover the content on page transition */
+	content: "";
+	height: 50vh;
+	width: 100%;
+	position: fixed;
+	left: 0;
+	background-color: #fff;
+	z-index: 101;
+	-webkit-backface-visibility: hidden; /* Force hardware acceleration to make animation smoother */
+					backface-visibility: hidden; /* Force hardware acceleration to make animation smoother */
+	-webkit-transform: translateZ(0); /* Force hardware acceleration to make animation smoother */
+		 -moz-transform: translateZ(0); /* Force hardware acceleration to make animation smoother */
+			-ms-transform: translateZ(0); /* Force hardware acceleration to make animation smoother */
+			 -o-transform: translateZ(0); /* Force hardware acceleration to make animation smoother */
+					transform: translateZ(0); /* Force hardware acceleration to make animation smoother */
+	-webkit-transition: -webkit-transform 0.5s 0.4s; /* First number is the speed at which the page expands back after loading, second number is delay of expansion */
+		 -moz-transition: -moz-transform 0.5s 0.4s; /* First number is the speed at which the page expands back after loading, second number is delay of expansion */
+			-ms-transition: -ms-transform 0.5s 0.4s; /* First number is the speed at which the page expands back after loading, second number is delay of expansion */
+			 -o-transition: -o-transform 0.5s 0.4s; /* First number is the speed at which the page expands back after loading, second number is delay of expansion */
+					transition: transform 0.5s 0.4s; /* First number is the speed at which the page expands back after loading, second number is delay of expansion */
+}
+
+body::before { /* Top half block */
+	top: 0;
+	-webkit-transform: translateY(-100%);
+		 -moz-transform: translateY(-100%);
+			-ms-transform: translateY(-100%);
+			 -o-transform: translateY(-100%);
+					transform: translateY(-100%);
+}
+
+body::after { /* Bottom half block */
+	bottom: 0;
+	-webkit-transform: translateY(100%);
+		 -moz-transform: translateY(100%);
+			-ms-transform: translateY(100%);
+			 -o-transform: translateY(100%);
+					transform: translateY(100%);
+}
+
+body.pageTransitioning::before,
+body.pageTransitioning::after {
+	-webkit-transform: translateY(0);
+		 -moz-transform: translateY(0);
+			-ms-transform: translateY(0);
+			 -o-transform: translateY(0);
+					transform: translateY(0);
+	-webkit-transition: -webkit-transform 0.6s 0s; /* First number is the speed of the page contraction animation, second number is the delay of the animation */
+		 -moz-transition: -moz-transform 0.6s 0s; /* First number is the speed of the page contraction animation, second number is the delay of the animation */
+			-ms-transition: -ms-transform 0.6s 0s; /* First number is the speed of the page contraction animation, second number is the delay of the animation */
+			 -o-transition: -o-transform 0.6s 0s; /* First number is the speed of the page contraction animation, second number is the delay of the animation */
+					transition: transform 0.6s 0s; /* First number is the speed of the page contraction animation, second number is the delay of the animation */
+}
+
+main {
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	position: absolute;
+}
+
+.mainContentWrapper {
+	width: 100%;
+	height: 100%;
+}
+
+.pageTransitionCoverLayer { /* Layer that covers the page content during page transitions (with the two blocks above moving on top of it to create contraction/expansion effect) */
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background-color: #ff3264;
+	z-index: 100;
+	opacity: 0;
+	visibility: hidden;
+	-webkit-transition: opacity 0.6s 0.7s, visibility 0s 1.3s; /* Controls how quickly the layer fades out after the page transition completes */
+		 -moz-transition: opacity 0.6s 0.7s, visibility 0s 1.3s; /* Controls how quickly the layer fades out after the page transition completes */
+			-ms-transition: opacity 0.6s 0.7s, visibility 0s 1.3s; /* Controls how quickly the layer fades out after the page transition completes */
+			 -o-transition: opacity 0.6s 0.7s, visibility 0s 1.3s; /* Controls how quickly the layer fades out after the page transition completes */
+					transition: opacity 0.6s 0.7s, visibility 0s 1.3s; /* Controls how quickly the layer fades out after the page transition completes */
+}
+
+.pageTransitioning .pageTransitionCoverLayer {
+	opacity: 1;
+	visibility: visible;
+	-webkit-transition: opacity 0.3s 0s, visibility 0s 0s; /* Controls how quickly the layer fades in at the start of the page transition animation */
+		 -moz-transition: opacity 0.3s 0s, visibility 0s 0s; /* Controls how quickly the layer fades in at the start of the page transition animation */
+			-ms-transition: opacity 0.3s 0s, visibility 0s 0s; /* Controls how quickly the layer fades in at the start of the page transition animation */
+			 -o-transition: opacity 0.3s 0s, visibility 0s 0s; /* Controls how quickly the layer fades in at the start of the page transition animation */
+					transition: opacity 0.3s 0s, visibility 0s 0s; /* Controls how quickly the layer fades in at the start of the page transition animation */
+}
+
+.pageTransitionLoadingBar { /* This is the progress bar (or rather, the outer border of it) */
+	position: fixed;
+	height: 8px;
+	width: 100%;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translateX(-50%) translateY(-50%);
+		 -moz-transform: translateX(-50%) translateY(-50%);
+			-ms-transform: translateX(-50%) translateY(-50%);
+			 -o-transform: translateX(-50%) translateY(-50%);
+					transform: translateX(-50%) translateY(-50%);
+	background-color: #fff;
+	border-top: 2px solid #ff3264;
+	border-bottom: 2px solid #ff3264;
+	border-left: 6.67px solid #ff3264;
+	border-right: 6.67px solid #ff3264;
+	z-index: 102;
+	visibility: hidden;
+	-webkit-backface-visibility: hidden; /* Force hardware acceleration to make animation smoother */
+					backface-visibility: hidden; /* Force hardware acceleration to make animation smoother */
+	-webkit-transform: translateZ(0); /* Force hardware acceleration to make animation smoother */
+		 -moz-transform: translateZ(0); /* Force hardware acceleration to make animation smoother */
+			-ms-transform: translateZ(0); /* Force hardware acceleration to make animation smoother */
+			 -o-transform: translateZ(0); /* Force hardware acceleration to make animation smoother */
+					transform: translateZ(0); /* Force hardware acceleration to make animation smoother */
+	-webkit-transition: visibility 0s 0.4s, -webkit-transform 0.4s 0s ease-in; /* Determines how quickly the progress bar disappears after progress is complete (delay on visibility should be same as speed of transform) */
+		 -moz-transition: visibility 0s 0.4s, -moz-transform 0.4s 0s ease-in; /* Determines how quickly the progress bar disappears after progress is complete (delay on visibility should be same as speed of transform) */
+			-ms-transition: visibility 0s 0.4s, -ms-transform 0.4s 0s ease-in; /* Determines how quickly the progress bar disappears after progress is complete (delay on visibility should be same as speed of transform) */
+			 -o-transition: visibility 0s 0.4s, -o-transform 0.4s 0s ease-in; /* Determines how quickly the progress bar disappears after progress is complete (delay on visibility should be same as speed of transform) */
+					transition: visibility 0s 0.4s, transform 0.4s 0s ease-in; /* Determines how quickly the progress bar disappears after progress is complete (delay on visibility should be same as speed of transform) */
+}
+
+.pageTransitioning .pageTransitionLoadingBar {
+	visibility: visible;
+	-webkit-transform: translateX(-50%) translateY(-50%) scaleX(0.3);
+		 -moz-transform: translateX(-50%) translateY(-50%) scaleX(0.3);
+			-ms-transform: translateX(-50%) translateY(-50%) scaleX(0.3);
+			 -o-transform: translateX(-50%) translateY(-50%) scaleX(0.3);
+					transform: translateX(-50%) translateY(-50%) scaleX(0.3);
+	-webkit-transition: visibility 0s 0.5s, -webkit-transform 0.6s 0.6s ease-in; /* Determines how quickly the progress bar appears and contracts (visibility should have .1 less delay and be .1 less than body::before contraction) */
+		 -moz-transition: visibility 0s 0.5s, -moz-transform 0.6s 0.6s ease-in; /* Determines how quickly the progress bar appears and contracts (visibility should have .1 less delay and be .1 less than body::before contraction) */
+			-ms-transition: visibility 0s 0.5s, -ms-transform 0.6s 0.6s ease-in; /* Determines how quickly the progress bar appears and contracts (visibility should have .1 less delay and be .1 less than body::before contraction) */
+			 -o-transition: visibility 0s 0.5s, -o-transform 0.6s 0.6s ease-in; /* Determines how quickly the progress bar appears and contracts (visibility should have .1 less delay and be .1 less than body::before contraction) */
+					transition: visibility 0s 0.5s, transform 0.6s 0.6s ease-in; /* Determines how quickly the progress bar appears and contracts (visibility should have .1 less delay and be .1 less than body::before contraction) */
+}
+
+.pageTransitionLoadingBar::before { /* This is the actual bar showing progress (which isn't actually the real progress, just an animation with preset duration) */
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background-color: #ff3264;
+	z-index: 103;
+	-webkit-backface-visibility: hidden; /* Force hardware acceleration to make animation smoother */
+					backface-visibility: hidden; /* Force hardware acceleration to make animation smoother */
+	-webkit-transform: translateZ(0); /* Force hardware acceleration to make animation smoother */
+		 -moz-transform: translateZ(0); /* Force hardware acceleration to make animation smoother */
+			-ms-transform: translateZ(0); /* Force hardware acceleration to make animation smoother */
+			 -o-transform: translateZ(0); /* Force hardware acceleration to make animation smoother */
+					transform: translateZ(0); /* Force hardware acceleration to make animation smoother */
+	-webkit-transform: scaleX(0); /* Make it hidden initially and then expand it */
+		 -moz-transform: scaleX(0); /* Make it hidden initially and then expand it */
+			-ms-transform: scaleX(0); /* Make it hidden initially and then expand it */
+			 -o-transform: scaleX(0); /* Make it hidden initially and then expand it */
+					transform: scaleX(0); /* Make it hidden initially and then expand it */
+	-webkit-transform-origin: left center;
+		 -moz-transform-origin: left center;
+		 	-ms-transform-origin: left center;
+			 -o-transform-origin: left center;
+			 		transform-origin: left center;
+}
+
+.pageTransitioning .pageTransitionLoadingBar::before {
+	-webkit-transform: scaleX(1); /* Expand the progress bar */
+		 -moz-transform: scaleX(1); /* Expand the progress bar */
+			-ms-transform: scaleX(1); /* Expand the progress bar */
+			 -o-transform: scaleX(1); /* Expand the progress bar */
+					transform: scaleX(1); /* Expand the progress bar */
+	-webkit-transition: -webkit-transform 1.2s 1.2s ease-in; /* Determines when and how quickly the progress bar progresses */
+		 -moz-transition: -moz-transform 1.2s 1.2s ease-in; /* Determines when and how quickly the progress bar progresses */
+			-ms-transition: -ms-transform 1.2s 1.2s ease-in; /* Determines when and how quickly the progress bar progresses */
+			 -o-transition: -o-transform 1.2s 1.2s ease-in; /* Determines when and how quickly the progress bar progresses */
+					transition: transform 1.2s 1.2s ease-in; /* Determines when and how quickly the progress bar progresses */
+}
+
+
+/* Fonts */
+
+.mainNavMenu,
+.menuBtn span {
+	font-family: "Montserrat", "Avenir Next", "HelveticaNeue-Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+
+/* Colours */
+
+::-moz-selection {
+	color: #fff;
+	background: #ff3264;
+}
+
+::selection {
+	color: #fff;
+	background: #ff3264;
+}
+
+.mainNavMenu *::-moz-selection{
+	color: #ff3264;
+	background: #fff;
+}
+
+.mainNavMenu *::selection{
+	color: #ff3264;
+	background: #fff;
+}
+
+.menuBtn,
+.mainNavBackground span,
+.menuBtn::before,
+.menuBtn.is-active span::before,
+.menuBtn.is-active span::after {
+	background-color: #ff3264;
+}
+
+.pageContentBackground span,
+.menuBtn span::before,
+.menuBtn span::after {
+  background-color: #fff;
+}
+
+.menuBtn::after {
+	background-color: #fff;
+}
+
+.mainNavSubmenuLink::after {
+	background-color: #faf2e0;
+}
+
+.fadeout {
+	background: -webkit-linear-gradient(
+		rgba(255, 50, 100, 1) 90%,
+		rgba(255, 50, 100, 0) 100%
+	);
+	background-image: -moz-linear-gradient(
+		rgba(255, 50, 100, 1) 90%,
+		rgba(255, 50, 100, 0) 100%
+	);
+	background-image: -o-linear-gradient(
+		rgba(255, 50, 100, 1) 90%,
+		rgba(255, 50, 100, 0) 100%
+	);
+	background-image: linear-gradient(
+		rgba(255, 50, 100, 1) 90%,
+		rgba(255, 50, 100, 0) 100%
+	);
+	background-image: -ms-linear-gradient(
+		rgba(255, 50, 100, 1) 90%,
+		rgba(255, 50, 100, 0) 100%
+	);
+}
+
+.mainNavSubmenuLink,
+.mainNavSubmenuLink:hover,
+.mainNavSubmenuLink:visited,
+.mainNavSubmenuLink:active {
+	color: #faf2e0;
+}
+
+.menuBtn {
+	color: #fff;
+}
+
+.menuBtn.is-active {
+	color: #ff3264;
+}
+
+.mainNavSubmenuTitle span {
+	color: #980026;
+}
+
+
+/* Header */
+
+header,
+.mainNavMenu {
+	font-size: 1.02em;
+}
+
+header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 7em;
+}
+
+header,
+h1 {
+	z-index: 3;
+}
+
+.mainNavMenu {
+	z-index: 4;
+}
+
+.menuBtn {
+	z-index: 10;
+}
+
+h1,
+.menuBtn,
+.mainNavBackground {
+	position: absolute;
+}
+
+.mainNavPDGLogo,
+.pageContentBackground,
+.fadeout {
+	position: fixed;
+}
+
+.mainNavPDGLogo,
+.fadeout {
+	display: none;
+}
+
+h1 {
+	top: 0.9em;
+	left: 2.4%;
+}
+
+.mainNavPDGLogo {
+	top: 1.1em;
+	left: 2.2%;
+	z-index: 8;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.mainNavPDGLogo,
+.mainNavPDGLogo a,
+.mainNavPDGLogo img {
+	z-index: 100;
+}
+
+.menuBtn,
+.mainNavBackground,
+.pageContentBackground {
+	right: 3%;
+	top: 0.95em;
+}
+
+h1,
+.menuBtn {
+	display: block;
+}
+
+h1 {
+	width: 7.5em;
+	height: 5.25em;
+}
+
+.mainNavPDGLogo,
+.fadeout {
+	height: 5em;
+}
+
+.mainNavPDGLogo {
+	width: 7.14em;
+}
+
+.fadeout {
+	width: 100%;
+	z-index: 7;
+	padding-bottom: 2.2em;
+}
+
+.menuBtn {
+	width: 5.35em;
+	height: 5.35em;
+}
+
+h1 a,
+h1 img,
+.mainNavPDGLogo a,
+.mainNavPDGLogo img {
+	width: 100%;
+	height: 100%;
+}
+
+
+/* Menu */
+
+.mainNavMenu {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	-webkit-overflow-scrolling: touch; /* Fixes buggy scrolling on mobile webkit browsers with overflow:auto */
+	visibility: hidden; /* Hidden until the "Menu" button is clicked */
+	opacity: 0; /* Transparent until the "Menu" button is clicked */
+	-webkit-transition: visibility 0s, opacity 0s; /* Fade in the navigation menu once it's background has expanded (controlled via JS) */
+		 -moz-transition: visibility 0s, opacity 0s; /* Fade in the navigation menu once it's background has expanded (controlled via JS) */
+			-ms-transition: visibility 0s, opacity 0s; /* Fade in the navigation menu once it's background has expanded (controlled via JS) */
+			 -o-transition: visibility 0s, opacity 0s; /* Fade in the navigation menu once it's background has expanded (controlled via JS) */
+					transition: visibility 0s, opacity 0s; /* Fade in the navigation menu once it's background has expanded (controlled via JS) */
+}
+
+.mainNavMenu.fade-in { /* Show the navigation menu */
+	visibility: visible;
+	opacity: 1;
+	-webkit-transition: visibility 0s, opacity 0.5s; /* Fade in the navigation menu once it's background has expanded (controlled via JS) */
+		 -moz-transition: visibility 0s, opacity 0.5s; /* Fade in the navigation menu once it's background has expanded (controlled via JS) */
+			-ms-transition: visibility 0s, opacity 0.5s; /* Fade in the navigation menu once it's background has expanded (controlled via JS) */
+			 -o-transition: visibility 0s, opacity 0.5s; /* Fade in the navigation menu once it's background has expanded (controlled via JS) */
+					transition: visibility 0s, opacity 0.5s; /* Fade in the navigation menu once it's background has expanded (controlled via JS) */
+}
+
+.mainNavBackground,
+.pageContentBackground {
+	width: 0.35em;
+	height: 0.35em;
+	-webkit-transform: translateX(-2.5em) translateY(2.5em);
+		 -moz-transform: translateX(-2.5em) translateY(2.5em);
+		 	-ms-transform: translateX(-2.5em) translateY(2.5em);
+			 -o-transform: translateX(-2.5em) translateY(2.5em);
+			 		transform: translateX(-2.5em) translateY(2.5em);
+}
+
+.pageContentBackground {
+	z-index: 5;
+}
+
+.mainNavBackground {
+	z-index: 4;
+}
+
+.mainNavBackground.is-hidden,
+.pageContentBackground.is-hidden { /* Fade-out the background at the end of the animation */
+	opacity: 0;
+	visibility: hidden;
+	-webkit-transition: opacity .3s 0s, visibility 0s .3s;
+		 -moz-transition: opacity .3s 0s, visibility 0s .3s;
+			-ms-transition: opacity .3s 0s, visibility 0s .3s;
+		 	 -o-transition: opacity .3s 0s, visibility 0s .3s;
+					transition: opacity .3s 0s, visibility 0s .3s;
+}
+
+.mainNavBackground span,
+.pageContentBackground span {
+	display: inline-block;
+	position: absolute;
+	border-radius: 50%;
+	-webkit-transform: translateZ(0); /* Force hardware acceleration to make animation smoother */
+		 -moz-transform: translateZ(0); /* Force hardware acceleration to make animation smoother */
+			-ms-transform: translateZ(0); /* Force hardware acceleration to make animation smoother */
+			 -o-transform: translateZ(0); /* Force hardware acceleration to make animation smoother */
+					transform: translateZ(0); /* Force hardware acceleration to make animation smoother */
+	-webkit-backface-visibility: hidden;
+					backface-visibility: hidden;
+	will-change: transform; /* Allows browser optimisation */
+	-webkit-transform-origin: 50% 50%;
+		 -moz-transform-origin: 50% 50%;
+			-ms-transform-origin: 50% 50%;
+			 -o-transform-origin: 50% 50%;
+					transform-origin: 50% 50%;
+	-webkit-transform: scale(0);
+		 -moz-transform: scale(0);
+			-ms-transform: scale(0);
+			 -o-transform: scale(0);
+					transform: scale(0);
+}
+
+
+/* Menu formatting */
+
+.mainNavMenu {
+	font-size: 1em;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+.mainNavMenuItems {
+	width: 88%;
+	margin: 0 auto;
+	margin-top: 10em;
+
+}
+
+.mainNavSubmenu:nth-child(2),
+.mainNavSubmenu:nth-child(4),
+.mainNavSubmenu:nth-child(5) {
+	margin-bottom: 6em;
+}
+
+.mainNavSubmenu:nth-child(2),
+.mainNavSubmenu:nth-child(3) {
+	width: 30em;
+	float: left;
+}
+
+.mainNavSubmenuTitle {
+	margin-bottom: 0.8em;
+}
+
+.mainNavSubmenuTitle span {
+	text-decoration: none;
+	font-weight: 600;
+	font-size: 1.45em;
+	text-transform: uppercase;
+	cursor: default;
+}
+
+.mainNavSubmenuLink,
+.mainNavSubmenuLink:visited,
+.mainNavSubmenuLink:hover,
+.mainNavSubmenuLink:active {
+	display: inline-block;
+	position: relative;
+	text-decoration: none;
+	font-size: 1.4em;
+	font-weight: 300;
+	padding-top: 0.15em;
+	padding-bottom: 0.15em;
+	margin-top: 0.822em;
+	margin-bottom: 0.86em;
+	-webkit-tap-highlight-color: rgba(152, 0, 38, 0.5);
+}
+
+.mainNavSubmenuLink,
+.mainNavSubmenuLink:visited,
+.mainNavSubmenuLink:hover,
+.mainNavSubmenuLink:active,
+.mainNavSubmenuLink::after {
+	-webkit-backface-visibility: hidden;
+					backface-visibility: hidden;
+	-webkit-transition: all 0.4s ease 0s;
+		 -moz-transition: all 0.4s ease 0s;
+			-ms-transition: all 0.4s ease 0s;
+			 -o-transition: all 0.4s ease 0s;
+					transition: all 0.4s ease 0s;
+}
+
+.mainNavSubmenuLink::after {
+	content: "";
+	position: absolute;
+	bottom: -0.22em;
+	height: 2px;
+	left: 0;
+	right: 100%;
+}
+
+.mainNavSubmenuLink:hover::after {
+	right: 0;
+}
+
+
+/* Menu button */
+
+.menuBtn {
+	overflow: hidden;
+	border: none;
+	border-radius: 50%;
+	-webkit-appearance: none;
+		 -moz-appearance: none;
+		 			appearance: none;
+	-webkit-box-shadow: -1px -1px 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
+		 -moz-box-shadow: -1px -1px 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
+					box-shadow: -1px -1px 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
+  cursor: pointer;
+}
+
+.menuBtn.is-animating {
+	cursor: pointer;
+}
+
+.menuBtn:focus {
+	outline: none;
+	cursor: pointer;
+}
+
+.menuBtn:active,
+.menuBtn:visited {
+	cursor: pointer;
+}
+
+.menuBtn::before,
+.menuBtn::after { /* These are used to draw the background of the "Menu" button, coloured (before) and white (after) */
+	position: absolute;
+	z-index: 8;
+	border-radius: 50%; /* Round background */
+	content: ""; /* This is needed for these elements to display */
+	cursor: pointer;
+	-webkit-transform: translateZ(0); /* Force hardware acceleration to make animation smoother */
+		 -moz-transform: translateZ(0); /* Force hardware acceleration to make animation smoother */
+			-ms-transform: translateZ(0); /* Force hardware acceleration to make animation smoother */
+			 -o-transform: translateZ(0); /* Force hardware acceleration to make animation smoother */
+					transform: translateZ(0); /* Force hardware acceleration to make animation smoother */
+	-webkit-backface-visibility: hidden;
+					backface-visibility: hidden;
+	-webkit-transition-property: bottom, -webkit-transform;
+		 -moz-transition-property: -moz-transform;
+	        transition-property: bottom, transform;
+}
+
+.menuBtn::before { /* This is used to draw the background of the "Menu" button when the menu is closed (coloured background) */
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	-webkit-transform: scale(1); /* Make the element visible when the "Menu" button hasn't been clicked (doesn't have "is-active" class) */
+		 -moz-transform: scale(1); /* Make the element visible when the "Menu" button hasn't been clicked (doesn't have "is-active" class) */
+			-ms-transform: scale(1); /* Make the element visible when the "Menu" button hasn't been clicked (doesn't have "is-active" class) */
+			 -o-transform: scale(1); /* Make the element visible when the "Menu" button hasn't been clicked (doesn't have "is-active" class) */
+					transform: scale(1); /* Make the element visible when the "Menu" button hasn't been clicked (doesn't have "is-active" class) */
+	-webkit-transition-duration: 0.3s;
+		 -moz-transition-duration: 0.3s;
+					transition-duration: 0.3s;
+	-webkit-transition-delay: 0.4s;
+		 -moz-transition-delay: 0.4s;
+					transition-delay: 0.4s;
+}
+
+.menuBtn::after { /* This is used to draw the background of the "Menu" button when the menu is open (white background) */
+	width: 90%;
+	height: 90%;
+	margin: 0 auto;
+	top: 6%;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	-webkit-transform: scale(0); /* Make the element hidden when the "Menu" button hasn't been clicked (doesn't have "is-active" class) */
+	 	 -moz-transform: scale(0); /* Make the element hidden when the "Menu" button hasn't been clicked (doesn't have "is-active" class) */
+			-ms-transform: scale(0); /* Make the element hidden when the "Menu" button hasn't been clicked (doesn't have "is-active" class) */
+		 	 -o-transform: scale(0); /* Make the element hidden when the "Menu" button hasn't been clicked (doesn't have "is-active" class) */
+					transform: scale(0); /* Make the element hidden when the "Menu" button hasn't been clicked (doesn't have "is-active" class) */
+	-webkit-transition-duration: 0s;
+		 -moz-transition-duration: 0s;
+					transition-duration: 0s;
+	-webkit-transition-delay: 0s;
+		 -moz-transition-delay: 0s;
+					transition-delay: 0s;
+}
+
+.menuBtn span { /* The background is used to draw the middle hamburger layer, the text is "Menu" */
+  display: block;
+  position: absolute;
+  top: 32%;
+  left: 30%;
+  right: 30%;
+  height: 5px;
+  background: #fff;
+	text-align: center;
+	text-transform: uppercase;
+	font-style: normal;
+	font-weight: 600;
+	letter-spacing: 0.1em;
+	line-height: 4em;
+	text-indent: -0.62em;
+	z-index: 9;
+	cursor: pointer;
+}
+
+.menuBtn span::before,
+.menuBtn span::after { /* Used to draw the top (before) and bottom (after) layers of the hamburger icon */
+	display: block;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  content: "";
+	cursor: pointer;
+	-webkit-transform: translateZ(0); /* Force hardware acceleration to make animation smoother */
+		 -moz-transform: translateZ(0); /* Force hardware acceleration to make animation smoother */
+			-ms-transform: translateZ(0); /* Force hardware acceleration to make animation smoother */
+			 -o-transform: translateZ(0); /* Force hardware acceleration to make animation smoother */
+					transform: translateZ(0); /* Force hardware acceleration to make animation smoother */
+}
+
+.menuBtn span::before {
+  top: -12px; /* Position of the top layer in the hamburger icon */
+}
+
+.menuBtn span::after {
+  bottom: -12px; /* Position of the bottom layer in the hamburger icon */
+}
+
+.menuBtn, .menuBtn:hover {
+	cursor: pointer;
+	-webkit-transition: color 0.3s 0.6s, box-shadow 150ms cubic-bezier(0,0,.2,1) 0.6s;
+		 -moz-transition: color 0.3s 0.6s, box-shadow 150ms cubic-bezier(0,0,.2,1) 0.6s;
+			-ms-transition: color 0.3s 0.6s, box-shadow 150ms cubic-bezier(0,0,.2,1) 0.6s;
+			 -o-transition: color 0.3s 0.6s, box-shadow 150ms cubic-bezier(0,0,.2,1) 0.6s;
+					transition: color 0.3s 0.6s, box-shadow 150ms cubic-bezier(0,0,.2,1) 0.6s;
+}
+
+.menuBtn.is-active, .menuBtn.is-active:hover {
+	-webkit-box-shadow: none;
+		 -moz-box-shadow: none;
+		 			box-shadow: none;
+	-webkit-transition: color 0.3s 0.5s, box-shadow 0s 0s;
+		 -moz-transition: color 0.3s 0.5s, box-shadow 0s 0s;
+		 	-ms-transition: color 0.3s 0.5s, box-shadow 0s 0s;
+			 -o-transition: color 0.3s 0.5s, box-shadow 0s 0s;
+			 		transition: color 0.3s 0.5s, box-shadow 0s 0s;
+}
+
+.menuBtn span {
+  -webkit-transition: background 0s 0.9s; /* Controls how quickly the middle hamburger layer re-appears */
+          transition: background 0s 0.9s; /* Controls how quickly the middle hamburger layer re-appears */
+}
+
+.menuBtn.is-active span {
+  background: none; /* Makes the middle hamburger disappear */
+	-webkit-transition: background 0s 0.3s; /* Controls how quickly the middle hamburger layer disappears */
+					transition: background 0s 0.3s; /* Controls how quickly the middle hamburger layer disappears */
+}
+
+.menuBtn span::before,
+.menuBtn span::after {
+  -webkit-transition-duration: 0.3s, 0.3s, 0.3s; /* First number is speed of collapsing/expanding hamburger, second is speed of rotation, third is speed of colour change */
+          transition-duration: 0.3s, 0.3s, 0.3s; /* First number is speed of collapsing/expanding hamburger, second is speed of rotation, third is speed of colour change */
+  -webkit-transition-delay: 0.9s, 0.6s, 0.4s; /* First number controls delay of expanding hamburger, second number delay of rotating, third number colour back to white */
+          transition-delay: 0.9s, 0.6s, 0.4s; /* First number controls delay of expanding hamburger, second number delay of rotating, third number colour back to white */
+}
+
+.menuBtn.is-active span::before,
+.menuBtn.is-active span::after {
+  -webkit-transition-delay: 0s, 0.3s, 0.5s; /* First number controls delay of collapsing hamburger, second number delay of rotating, third number colour to red */
+          transition-delay: 0s, 0.3s, 0.5s; /* First number controls delay of collapsing hamburger, second number delay of rotating, third number colour to red */
+}
+
+.menuBtn span::before {
+  -webkit-transition-property: top, -webkit-transform, background-color; /* Things to animate in top hamburger layer (shift from top, rotation and colour) */
+          transition-property: top, transform, background-color; /* Things to animate in top hamburger layer (shift from top, rotation and colour) */
+}
+
+.menuBtn span::after {
+  -webkit-transition-property: bottom, -webkit-transform, background-color; /* Things to animate in bottom hamburger layer (shift from bottom, rotation and colour) */
+          transition-property: bottom, transform, background-color; /* Things to animate in bottom hamburger layer (shift from bottom, rotation and colour) */
+}
+
+.menuBtn.is-active span::before { /* When the "Menu" button is clicked, shift down the top hamburger layer and rotate it 45 degrees */
+  top: 0;
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.menuBtn.is-active span::after { /* When the "Menu" button is clicked, shift up the bottom hamburger layer and rotate it 45 degrees */
+  bottom: 0;
+  -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.menuBtn.is-active::before { /* The menu is now open, so animate away the "Menu" button's coloured background */
+	-webkit-transform: scale(0); /* Hide this element, used to draw the "Menu" button's coloured background */
+		 -moz-transform: scale(0); /* Hide this element, used to draw the "Menu" button's coloured background */
+			-ms-transform: scale(0); /* Hide this element, used to draw the "Menu" button's coloured background */
+			 -o-transform: scale(0); /* Hide this element, used to draw the "Menu" button's coloured background */
+					transform: scale(0); /* Hide this element, used to draw the "Menu" button's coloured background */
+}
+
+.menuBtn.is-active::after { /* The menu is now open, so show the "Menu" button's white background */
+	-webkit-transform: scale(1); /* Show this element, used to draw the "Menu" button's white background */
+		 -moz-transform: scale(1); /* Show this element, used to draw the "Menu" button's white background */
+		 	-ms-transform: scale(1); /* Show this element, used to draw the "Menu" button's white background */
+			 -o-transform: scale(1); /* Show this element, used to draw the "Menu" button's white background */
+			 		transform: scale(1); /* Show this element, used to draw the "Menu" button's white background */
+	-webkit-transition-duration: 0.3s; /* Controls how long it takes for the "Menu" button's white background to appear */
+		 -moz-transition-duration: 0.3s; /* Controls how long it takes for the "Menu" button's white background to appear */
+					transition-duration: 0.3s; /* Controls how long it takes for the "Menu" button's white background to appear */
+	-webkit-transition-delay: 0.5s; /* Controls the delay after which the "Menu" button's white background starts appearing */
+		 -moz-transition-delay: 0.5s; /* Controls the delay after which the "Menu" button's white background starts appearing */
+					transition-delay: 0.5s; /* Controls the delay after which the "Menu" button's white background starts appearing */
+}
+
+
+/* Media queries */
+
+@media screen and (min-width: 60em) {
+	.mainNavPDGLogo,
+	.fadeout {
+		display: block;
+	}
+
+	.mainNavMenuItems {
+		margin: 0;
+		position: absolute;
+		left: 3em;
+		right: 1.6em;
+		top: 4.8em;
+		bottom: 0em;
+		width: auto;
+		height: auto;
+		min-height: 21em;
+		max-height: 36em;
+		margin-left: 3%;
+		margin-right: 3%;
+		margin-top: 6%;
+		margin-bottom: 6%;
+	}
+
+	.mainNavSubmenu,
+	.mainNavSubmenu:nth-child(2),
+	.mainNavSubmenu:nth-child(3),
+	.mainNavSubmenu:nth-child(4),
+	.mainNavSubmenu:nth-child(5),
+	.mainNavSubmenu:nth-child(6) {
+		float: none;
+		position: absolute;
+		margin: 0;
+		width: 50%;
+		z-index: 6;
+	}
+
+	.mainNavSubmenu:nth-child(2),
+	.mainNavSubmenu:nth-child(4) {
+		top: 0;
+	}
+
+	.mainNavSubmenu:nth-child(5) {
+		top: 58%;
+	}
+
+	.mainNavSubmenu:nth-child(3),
+	.mainNavSubmenu:nth-child(6) {
+		bottom: 0;
+	}
+
+	.mainNavSubmenu:nth-child(2){
+		height: 21.6%;
+	}
+
+	.mainNavSubmenu:nth-child(3) {
+		height: 54%;
+	}
+
+	.mainNavSubmenu:nth-child(4){
+		height: 32.4%;
+	}
+
+	.mainNavSubmenu:nth-child(5){
+		height: 5.4%;
+	}
+
+	.mainNavSubmenu:nth-child(6){
+		height: 10.8%;
+	}
+
+	.mainNavSubmenu .mainNavSubmenuList,
+	.mainNavSubmenu .mainNavSubmenuList,
+	.mainNavSubmenu .mainNavSubmenuList,
+	.mainNavSubmenu .mainNavSubmenuList {
+		height: 100%;
+	}
+
+	.mainNavSubmenu:nth-child(2),
+	.mainNavSubmenu:nth-child(3) {
+		left: 0;
+	}
+
+	.mainNavSubmenu:nth-child(4),
+	.mainNavSubmenu:nth-child(5),
+	.mainNavSubmenu:nth-child(6) {
+		right: 0;
+	}
+
+	.mainNavSubmenuList {
+		position: absolute;
+		width: 100%;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	.mainNavSubmenuTitle {
+		display: inline-block;
+		margin: 0;
+		width: 36%;
+		height: 100%;
+		position: absolute;
+	}
+
+	.mainNavSubmenu:nth-child(2) .mainNavSubmenuTitle,
+	.mainNavSubmenu:nth-child(3) .mainNavSubmenuTitle {
+		left: 0;
+		border-right: 1px solid #c70026;
+	}
+
+	.mainNavSubmenu:nth-child(4) .mainNavSubmenuTitle,
+	.mainNavSubmenu:nth-child(5) .mainNavSubmenuTitle,
+	.mainNavSubmenu:nth-child(6) .mainNavSubmenuTitle {
+		right: 0;
+		border-left: 1px solid #c70026;
+	}
+
+	.mainNavSubmenuTitle span {
+		display: block;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		font-weight: 600;
+		font-size: 1.25em;
+		text-transform: uppercase;
+		word-spacing: 100em;
+		line-height: 1.2em;
+		cursor: default;
+		overflow: hidden;
+	}
+
+	.mainNavSubmenu:nth-child(2) .mainNavSubmenuTitle span,
+	.mainNavSubmenu:nth-child(3) .mainNavSubmenuTitle span {
+		margin-right: 1em;
+		text-align: right;
+	}
+
+	.mainNavSubmenu:nth-child(4) .mainNavSubmenuTitle span,
+	.mainNavSubmenu:nth-child(5) .mainNavSubmenuTitle span,
+	.mainNavSubmenu:nth-child(6) .mainNavSubmenuTitle span {
+		margin-left: 1em;
+		text-align: left;
+	}
+
+	.mainNavSubmenuTitle span {
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+	}
+
+	.mainNavSubmenuItem {
+		position: absolute;
+	}
+
+	.mainNavSubmenu:nth-child(2) .mainNavSubmenuItem,
+	.mainNavSubmenu:nth-child(3) .mainNavSubmenuItem {
+		left: 36%;
+		text-align: left;
+	}
+
+	.mainNavSubmenu:nth-child(4) .mainNavSubmenuItem,
+	.mainNavSubmenu:nth-child(5) .mainNavSubmenuItem,
+	.mainNavSubmenu:nth-child(6) .mainNavSubmenuItem {
+		right: 36%;
+		text-align: right;
+	}
+
+	.mainNavSubmenu:nth-child(2) .mainNavSubmenuItem:nth-child(2) {
+		top: 0;
+	}
+
+	.mainNavSubmenu:nth-child(2) .mainNavSubmenuItem:nth-child(3) {
+		top: 50%;
+	}
+
+	.mainNavSubmenu:nth-child(2) .mainNavSubmenuItem:nth-child(4) {
+		top: 100%;
+	}
+
+	.mainNavSubmenu:nth-child(3) .mainNavSubmenuItem:nth-child(2) {
+		top: 0;
+	}
+
+	.mainNavSubmenu:nth-child(3) .mainNavSubmenuItem:nth-child(3) {
+		top: 20%;
+	}
+
+	.mainNavSubmenu:nth-child(3) .mainNavSubmenuItem:nth-child(4) {
+		top: 40%;
+	}
+
+	.mainNavSubmenu:nth-child(3) .mainNavSubmenuItem:nth-child(5) {
+		top: 60%;
+	}
+
+	.mainNavSubmenu:nth-child(3) .mainNavSubmenuItem:nth-child(6) {
+		top: 80%;
+	}
+
+	.mainNavSubmenu:nth-child(3) .mainNavSubmenuItem:nth-child(7) {
+		top: 100%;
+	}
+
+	.mainNavSubmenu:nth-child(4) .mainNavSubmenuItem:nth-child(2) {
+		top: 0;
+	}
+
+	.mainNavSubmenu:nth-child(4) .mainNavSubmenuItem:nth-child(3) {
+		top: 33%;
+	}
+
+	.mainNavSubmenu:nth-child(4) .mainNavSubmenuItem:nth-child(4) {
+		top: 67%;
+	}
+
+	.mainNavSubmenu:nth-child(4) .mainNavSubmenuItem:nth-child(5) {
+		top: 100%;
+	}
+
+	.mainNavSubmenu:nth-child(5) .mainNavSubmenuItem:nth-child(2) {
+		top: 50%;
+	}
+
+	.mainNavSubmenu:nth-child(6) .mainNavSubmenuItem:nth-child(2) {
+		top: 0;
+	}
+
+	.mainNavSubmenu:nth-child(6) .mainNavSubmenuItem:nth-child(3) {
+		top: 100%;
+	}
+
+	.mainNavSubmenuItem {
+		transform: translateY(-50%);
+	}
+
+	.mainNavSubmenuLink,
+	.mainNavSubmenuLink:visited,
+	.mainNavSubmenuLink:hover,
+	.mainNavSubmenuLink:active {
+		display: inline;
+		margin: 0;
+		padding: 0;
+		font-size: 1.4em;
+		font-weight: 300;
+	}
+
+	.mainNavSubmenu:nth-child(2) .mainNavSubmenuLink,
+	.mainNavSubmenu:nth-child(3) .mainNavSubmenuLink {
+		margin-left: 1em;
+	}
+
+	.mainNavSubmenu:nth-child(4) .mainNavSubmenuLink,
+	.mainNavSubmenu:nth-child(5) .mainNavSubmenuLink,
+	.mainNavSubmenu:nth-child(6) .mainNavSubmenuLink {
+		margin-right: 1em;
+	}
+
+	.mainNavSubmenuLink::after {
+		height: 2px;
+		bottom: -0.22em;
+	}
+
+	.mainNavSubmenu:nth-child(2) .mainNavSubmenuLink::after,
+	.mainNavSubmenu:nth-child(3) .mainNavSubmenuLink::after {
+		left: 0;
+		right: 100%;
+	}
+
+	.mainNavSubmenu:nth-child(4) .mainNavSubmenuLink::after,
+	.mainNavSubmenu:nth-child(5) .mainNavSubmenuLink::after,
+	.mainNavSubmenu:nth-child(6) .mainNavSubmenuLink::after {
+		right: 0;
+		left: 100%;
+	}
+
+	.mainNavSubmenu:nth-child(2) .mainNavSubmenuLink:hover::after,
+	.mainNavSubmenu:nth-child(3) .mainNavSubmenuLink:hover::after {
+		right: 0;
+	}
+
+	.mainNavSubmenu:nth-child(4) .mainNavSubmenuLink:hover::after,
+	.mainNavSubmenu:nth-child(5) .mainNavSubmenuLink:hover::after,
+	.mainNavSubmenu:nth-child(6) .mainNavSubmenuLink:hover::after {
+		left: 0;
+	}
+
+	.mainNavSubmenuLink:hover::after {
+		left: 0;
+		right: 0;
+	}
+}
+
+@media screen and (max-height: 45em) {
+	.mainNavSubmenuLink::after {
+		bottom: -0.2em;
+	}
+}
+
+@media screen and (max-height: 40em) {
+	.mainNavSubmenuLink::after {
+		bottom: -0.1em;
+	}
+}
+
+@media screen and (max-height: 35em) {
+	.mainNavSubmenuLink::after {
+		bottom: -0.08em;
+	}
+}
+
+@media screen and (min-width: 150em) {
+	header {
+		font-size: 1.42em; /* Original 1.02 */
+	}
+
+	.menuBtn span,
+	.menuBtn span::before,
+	.menuBtn span::after {
+		height: 7px; /* Original 5px */
+	}
+
+	.menuBtn span::before {
+		top: -16px; /* Original 12px */
+	}
+
+	.menuBtn span::after {
+		bottom: -16px; /* Original 12px */
+	}
+
+	h1 {
+		width: 9.26em; /* Original: 7.5em */
+		height: 6.48em; /* Original: 5.25em */
+		top: 0.3em; /* 0.92em */
+		left: 1.6%; /* 2.4% */
+	}
+}
+
+@media screen and (max-width: 150em) {
+	header {
+		font-size: 1.42em; /* Original 1.02 */
+	}
+
+	.menuBtn span,
+	.menuBtn span::before,
+	.menuBtn span::after {
+		height: 7px; /* Original 5px */
+	}
+
+	.menuBtn span::before {
+		top: -16px; /* Original 12px */
+	}
+
+	.menuBtn span::after {
+		bottom: -16px; /* Original 12px */
+	}
+
+	h1 {
+		width: 9.26em; /* Original: 7.5em */
+		height: 6.48em; /* Original: 5.25em */
+		top: 0.4em; /* 0.92em */
+		left: 1.6%; /* 2.4% */
+	}
+}
+
+@media screen and (max-width: 135em) {
+	header {
+		font-size: 1.32em; /* Original 1.02 */
+	}
+
+	.menuBtn span,
+	.menuBtn span::before,
+	.menuBtn span::after {
+		height: 6.5px; /* Original 5px */
+	}
+
+	.menuBtn span::before {
+		top: -15px; /* Original 12px */
+	}
+
+	.menuBtn span::after {
+		bottom: -15px; /* Original 12px */
+	}
+
+	h1 {
+		width: 8.82em; /* Original: 7.5em */
+		height: 6.18em; /* Original: 5.25em */
+		top: 0.5em; /* 0.92em */
+		left: 1.8%; /* 2.4% */
+	}
+}
+
+@media screen and (max-width: 120em) {
+	header {
+		font-size: 1.22em; /* Original 1.02 */
+	}
+
+	.menuBtn span,
+	.menuBtn span::before,
+	.menuBtn span::after {
+		height: 6px; /* Original 5px */
+	}
+
+	.menuBtn span::before {
+		top: -14px; /* Original 12px */
+	}
+
+	.menuBtn span::after {
+		bottom: -14px; /* Original 12px */
+	}
+
+	h1 {
+		width: 8.38em; /* Original: 7.5em */
+		height: 5.86em; /* Original: 5.25em */
+		top: 0.6em; /* 0.92em */
+		left: 2%; /* 2.4% */
+	}
+}
+
+@media screen and (max-width: 105em) {
+	header {
+		font-size: 1.12em; /* Original 1.02 */
+	}
+
+	.menuBtn span,
+	.menuBtn span::before,
+	.menuBtn span::after {
+		height: 5.5px; /* Original 5px */
+	}
+
+	.menuBtn span::before {
+		top: -13px; /* Original 12px */
+	}
+
+	.menuBtn span::after {
+		bottom: -13px; /* Original 12px */
+	}
+
+	h1 {
+		width: 7.94em; /* Original: 7.5em */
+		height: 5.56em; /* Original: 5.25em */
+		top: 0.75em; /* 0.92em */
+		left: 2.2%; /* 2.4% */
+	}
+}
+
+@media screen and (max-width: 90em) {
+	header {
+		font-size: 1.02em; /* Original 1.02 */
+	}
+
+	.menuBtn span,
+	.menuBtn span::before,
+	.menuBtn span::after {
+		height: 5px; /* Original 5px */
+	}
+
+	.menuBtn span::before {
+		top: -12px; /* Original 12px */
+	}
+
+	.menuBtn span::after {
+		bottom: -12px; /* Original 12px */
+	}
+
+	h1 {
+		width: 7.5em; /* Original: 7.5em */
+		height: 5.25em; /* Original: 5.25em */
+		top: 0.9em; /* 0.92em */
+		left: 2.4%; /* 2.4% */
+	}
+}
+
+@media screen and (max-width: 80em) {
+	header {
+		font-size: 0.974em; /* Original 1.02 */
+	}
+
+	.menuBtn span,
+	.menuBtn span::before,
+	.menuBtn span::after {
+		height: 4.86px; /* Original 5px */
+	}
+
+	.menuBtn span::before {
+		top: -11.65px; /* Original 12px */
+	}
+
+	.menuBtn span::after {
+		bottom: -11.65px; /* Original 12px */
+	}
+
+	h1 {
+		width: 7.34em; /* Original: 7.5em */
+		height: 5.14em; /* Original: 5.25em */
+		top: 0.92em; /* 0.95em */
+		left: 2.58%; /* 2.4% */
+	}
+}
+
+@media screen and (max-width: 80em) and (min-width: 75em) {
+	.mainNavMenuItems {
+	min-height: 21.5em;
+	}
+
+	.fadeout {
+		height: 5.5em;
+	}
+
+	.mainNavMenuItems {
+		top: 5.5em;
+		left: 4.4em;
+	}
+}
+
+@media screen and (max-width: 75em) and (min-width: 70em) {
+	.mainNavMenuItems {
+		min-height: 22em;
+	}
+
+	.fadeout {
+		height: 6em;
+	}
+
+	.mainNavMenuItems {
+		top: 6em;
+		left: 1em;
+		right: 0em;
+		margin-left: 0%;
+		margin-right: 0%;
+	}
+}
+
+@media screen and (max-width: 70em) {
+	header {
+		font-size: 0.946em; /* Original 1.02 */
+	}
+
+	.menuBtn span,
+	.menuBtn span::before,
+	.menuBtn span::after {
+		height: 4.68px; /* Original 5px */
+	}
+
+	.menuBtn span::before {
+		top: -11.32px; /* Original 12px */
+	}
+
+	.menuBtn span::after {
+		bottom: -11.32px; /* Original 12px */
+	}
+
+	h1 {
+		width: 7.20em; /* Original: 7.5em */
+		height: 5.04em; /* Original: 5.25em */
+		top: 0.94em; /* 1.00em */
+		left: 2.77%; /* 2.4% */
+	}
+}
+
+@media screen and (max-width: 70em) and (min-width: 65em) {
+	.mainNavMenuItems {
+		min-height: 22.5em;
+	}
+
+	.fadeout {
+		height: 6.5em;
+	}
+
+	.mainNavMenuItems {
+		top: 6.5em;
+		left: 1em;
+		right: 0em;
+		margin-left: -2%;
+		margin-right: -2%;
+	}
+}
+
+@media screen and (max-width: 65em) and (min-width: 60em) {
+	.mainNavMenuItems {
+		min-height: 23em;
+	}
+
+	.fadeout {
+		height: 7em;
+	}
+
+	.mainNavMenuItems {
+		top: 7em;
+		left: 1em;
+		right: 0em;
+		margin-left: -3%;
+		margin-right: -3%;
+	}
+}
+
+@media screen and (max-width: 59.95em) {
+	header {
+		font-size: 0.918em; /* Original 1.02 */
+	}
+
+	.menuBtn span,
+	.menuBtn span::before,
+	.menuBtn span::after {
+		height: 4.5px; /* Original 5px */
+	}
+
+	.menuBtn span::before {
+		top: -11px; /* Original 12px */
+	}
+
+	.menuBtn span::after {
+		bottom: -11px; /* Original 12px */
+	}
+
+	h1 {
+		width: 7.06em; /* Original: 7.5em */
+		height: 4.95em; /* Original: 5.25em */
+		top: 0.96em; /* 1.05em */
+		left: 2.95%; /* 2.4% */
+	}
+
+	.fadeout {
+		display: block;
+		height: 6em;
+	}
+
+	.mainNavMenuItems {
+		width: 86%;
+		margin-top: 11em;
+	}
+
+	.mainNavSubmenu:nth-child(2),
+	.mainNavSubmenu:nth-child(3) {
+		width: 35em;
+	}
+}
+
+@media screen and (max-width: 56em) {
+	.mainNavMenuItems {
+		width: 88%;
+	}
+
+	.mainNavSubmenu:nth-child(2),
+	.mainNavSubmenu:nth-child(3) {
+		width: 34em;
+	}
+}
+
+@media screen and (max-width: 52em) {
+	.mainNavMenuItems {
+		width: 90%;
+	}
+
+	.mainNavSubmenu:nth-child(2),
+	.mainNavSubmenu:nth-child(3) {
+		width: 32.5em;
+	}
+}
+
+@media screen and (max-width: 50em) {
+	header {
+		font-size: 0.892em; /* Original 1.02 */
+	}
+
+	.menuBtn span,
+	.menuBtn span::before,
+	.menuBtn span::after {
+		height: 4.38px; /* Original 5px */
+	}
+
+	.menuBtn span::before {
+		top: -10.75px; /* Original 12px */
+	}
+
+	.menuBtn span::after {
+		bottom: -10.75px; /* Original 12px */
+	}
+
+	h1 {
+		width: 6.95em; /* Original: 7.5em */
+		height: 4.86em; /* Original: 5.25em */
+		top: 0.98em; /* 1.08em */
+		left: 3.10%; /* 2.4% */
+	}
+}
+
+@media screen and (max-width: 48em) {
+	.fadeout {
+		display: block;
+		height: 8em;
+		background: -webkit-linear-gradient(
+			rgba(255, 50, 100, 1) 70%,
+			rgba(255, 50, 100, 0) 100%
+		);
+		background-image: -moz-linear-gradient(
+			rgba(255, 50, 100, 1) 70%,
+			rgba(255, 50, 100, 0) 100%
+		);
+		background-image: -o-linear-gradient(
+			rgba(255, 50, 100, 1) 70%,
+			rgba(255, 50, 100, 0) 100%
+		);
+		background-image: linear-gradient(
+			rgba(255, 50, 100, 1) 70%,
+			rgba(255, 50, 100, 0) 100%
+		);
+		background-image: -ms-linear-gradient(
+			rgba(255, 50, 100, 1) 70%,
+			rgba(255, 50, 100, 0) 100%
+		);
+	}
+
+	.mainNavMenuItems {
+		width: 92%;
+		margin-top: 12em;
+	}
+
+	.mainNavSubmenu:nth-child(3),
+	.mainNavSubmenu:nth-child(6) {
+		margin-bottom: 3.2em;
+	}
+
+	.mainNavSubmenu:nth-child(2),
+	.mainNavSubmenu:nth-child(3) {
+		width: 30em;
+	}
+}
+
+@media screen and (max-width: 46em) {
+	.mainNavMenuItems {
+		width: 94%;
+		margin-top: 11.5em;
+	}
+
+	.mainNavSubmenu:nth-child(2),
+	.mainNavSubmenu:nth-child(3) {
+		width: 29em;
+	}
+}
+
+@media screen and (max-width: 44em) {
+	.fadeout {
+		height: 7.5em;
+	}
+
+	.mainNavMenuItems {
+		width: 94%;
+		margin-top: 11em;
+	}
+
+	.mainNavSubmenu:nth-child(2),
+	.mainNavSubmenu:nth-child(3) {
+		width: 28em;
+	}
+}
+
+@media screen and (max-width: 42em) {
+	.mainNavMenuItems {
+		width: 96%;
+		margin-top: 10em;
+	}
+
+	.mainNavSubmenu:nth-child(2),
+	.mainNavSubmenu:nth-child(3) {
+		width: 27.2em;
+	}
+}
+
+@media screen and (max-width: 40em) {
+	header {
+		font-size: 0.867em; /* Original 1.02 */
+	}
+
+	.menuBtn span,
+	.menuBtn span::before,
+	.menuBtn span::after {
+		height: 4.25px; /* Original 5px */
+	}
+
+	.menuBtn span::before {
+		top: -10.5px; /* Original 12px */
+	}
+
+	.menuBtn span::after {
+		bottom: -10.5px; /* Original 12px */
+	}
+
+	h1 {
+		width: 6.84em; /* Original: 7.5em */
+		height: 4.78em; /* Original: 5.25em */
+		top: 1.00em; /* 1.12em */
+		left: 3.24%; /* 2.4% */
+	}
+
+	.mainNavMenuItems {
+		width: 96%;
+		margin-top: 10em;
+	}
+
+	.mainNavSubmenu:nth-child(2),
+	.mainNavSubmenu:nth-child(3) {
+		width: 26em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 38em) and (min-aspect-ratio: 2/4) {
+	.fadeout {
+		display: none;
+	}
+
+	.mainNavMenuItems {
+		position: relative;
+		width: 90%;
+		margin-top: 1em;
+		margin-bottom: 1em;
+	}
+
+	.mainNavMenuItems:after {
+		content: " ";
+   	display: block;
+   	height: 0;
+   	clear: both;
+	}
+
+	.mainNavSubmenuTitle {
+		margin-bottom: 0.26em;
+	}
+
+	.mainNavSubmenuTitle span,
+	.mainNavSubmenuLink,
+	.mainNavSubmenuLink:visited,
+	.mainNavSubmenuLink:hover,
+	.mainNavSubmenuLink:active {
+		font-size: 1.1em;
+	}
+
+	.mainNavSubmenu:nth-child(2),
+	.mainNavSubmenu:nth-child(3) {
+		width: 20.5em;
+	}
+
+	.mainNavSubmenuLink,
+	.mainNavSubmenuLink:visited,
+	.mainNavSubmenuLink:hover,
+	.mainNavSubmenuLink:active {
+		padding-top: 0.08em;
+		padding-bottom: 0.08em;
+		margin-top: 0.16em;
+		margin-bottom: 0.155em;
+	}
+
+	.mainNavSubmenu:nth-child(2) .mainNavSubmenuItem:nth-child(4) {
+		padding-bottom: 12.3em;
+	}
+
+	.mainNavSubmenu:nth-child(3),
+	.mainNavSubmenu:nth-child(5),
+	.mainNavSubmenu:nth-child(6) {
+		position: absolute;
+		margin-bottom: 0;
+	}
+
+	.mainNavSubmenu:nth-child(3),
+	.mainNavSubmenu:nth-child(6) {
+		bottom: 0;
+	}
+
+	.mainNavSubmenu:nth-child(5),
+	.mainNavSubmenu:nth-child(6) {
+		left: 20.5em;
+	}
+
+	.mainNavSubmenu:nth-child(3) {
+		left: 0;
+	}
+
+	.mainNavSubmenu:nth-child(5) {
+		top: 53.6%;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 38em) and (min-aspect-ratio: 2/4) and (min-height: 18em) {
+	.mainNavMenu {
+		overflow-y: hidden;
+	}
+
+	.mainNavMenuItems {
+		margin-top: 1.2em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 38em) and (min-aspect-ratio: 2/4) and (min-height: 19em) {
+	.mainNavMenuItems {
+		margin-top: 2.2em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 38em) and (min-aspect-ratio: 2/4) and (min-height: 20em) {
+	.mainNavMenuItems {
+		margin-top: 3.2em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 38em) and (min-aspect-ratio: 2/4) and (min-height: 21em) {
+	.mainNavMenuItems {
+		margin-top: 4.2em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 38em) and (min-aspect-ratio: 2/4) and (min-height: 22em) {
+	.mainNavMenuItems {
+		margin-top: 5.2em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 38em) and (min-aspect-ratio: 2/4) and (min-height: 23em) {
+	.mainNavMenuItems {
+		margin-top: 6.2em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 38em) and (min-aspect-ratio: 2/4) and (min-height: 24em) {
+	.mainNavMenuItems {
+		margin-top: 7.2em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 38em) and (min-aspect-ratio: 2/4) and (min-height: 25em) {
+	.mainNavMenuItems {
+		margin-top: 8.2em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 38em) and (min-aspect-ratio: 2/4) and (min-height: 26em) {
+	.mainNavMenuItems {
+		margin-top: 9.2em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 38em) and (min-aspect-ratio: 2/4) and (min-height: 27em) {
+	.mainNavMenuItems {
+		margin-top: 10.2em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 38em) and (min-aspect-ratio: 2/4) and (min-height: 28em) {
+	.mainNavSubmenu:nth-child(2),
+	.mainNavSubmenu:nth-child(3) {
+		margin-left: 2%;
+		margin-right: 8%;
+	}
+
+	.mainNavSubmenu:nth-child(5),
+	.mainNavSubmenu:nth-child(6) {
+		margin-left: 10%;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 38em) and (min-aspect-ratio: 2/4) and (min-height: 29em) {
+	.mainNavMenuItems {
+		margin-top: 11.2em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 38em) and (min-aspect-ratio: 2/4) and (min-height: 30em) {
+	.mainNavSubmenuTitle span,
+	.mainNavSubmenuLink,
+	.mainNavSubmenuLink:visited,
+	.mainNavSubmenuLink:hover,
+	.mainNavSubmenuLink:active {
+		font-size: 1.1em;
+	}
+
+	.mainNavSubmenuLink,
+	.mainNavSubmenuLink:visited,
+	.mainNavSubmenuLink:hover,
+	.mainNavSubmenuLink:active {
+		padding-top: 0.096em;
+		padding-bottom: 0.096em;
+		margin-top: 0.192em;
+		margin-bottom: 0.192em;
+	}
+
+	.mainNavSubmenu:nth-child(2) .mainNavSubmenuItem:nth-child(4) {
+		padding-bottom: 13.5em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 38em) and (min-aspect-ratio: 2/4) and (min-height: 33em) {
+	.mainNavSubmenuTitle span,
+	.mainNavSubmenuLink,
+	.mainNavSubmenuLink:visited,
+	.mainNavSubmenuLink:hover,
+	.mainNavSubmenuLink:active {
+		font-size: 1.11;
+	}
+
+	.mainNavSubmenuLink,
+	.mainNavSubmenuLink:visited,
+	.mainNavSubmenuLink:hover,
+	.mainNavSubmenuLink:active {
+		padding-top: 0.096em;
+		padding-bottom: 0.096em;
+		margin-top: 0.246em;
+		margin-bottom: 0.246em;
+	}
+
+	.mainNavSubmenu:nth-child(2) .mainNavSubmenuItem:nth-child(4) {
+		padding-bottom: 14.63em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 38em) and (min-aspect-ratio: 2/4) and (min-height: 36em) {
+	.mainNavSubmenuTitle span,
+	.mainNavSubmenuLink,
+	.mainNavSubmenuLink:visited,
+	.mainNavSubmenuLink:hover,
+	.mainNavSubmenuLink:active {
+		font-size: 1.13;
+	}
+
+	.mainNavSubmenuLink,
+	.mainNavSubmenuLink:visited,
+	.mainNavSubmenuLink:hover,
+	.mainNavSubmenuLink:active {
+		padding-top: 0.099em;
+		padding-bottom: 0.099em;
+		margin-top: 0.286em;
+		margin-bottom: 0.286em;
+	}
+
+	.mainNavSubmenu:nth-child(2) .mainNavSubmenuItem:nth-child(4) {
+		padding-bottom: 15.79em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 38em) and (min-aspect-ratio: 2/4) and (min-height: 39em) {
+	.mainNavSubmenuTitle span,
+	.mainNavSubmenuLink,
+	.mainNavSubmenuLink:visited,
+	.mainNavSubmenuLink:hover,
+	.mainNavSubmenuLink:active {
+		font-size: 1.15;
+	}
+
+	.mainNavSubmenuLink,
+	.mainNavSubmenuLink:visited,
+	.mainNavSubmenuLink:hover,
+	.mainNavSubmenuLink:active {
+		padding-top: 0.103em;
+		padding-bottom: 0.103em;
+		margin-top: 0.326em;
+		margin-bottom: 0.326em;
+	}
+
+	.mainNavSubmenu:nth-child(2) .mainNavSubmenuItem:nth-child(4) {
+		padding-bottom: 16.95em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 38em) and (min-aspect-ratio: 2/4) and (min-height: 42em) {
+	.mainNavSubmenuTitle span,
+	.mainNavSubmenuLink,
+	.mainNavSubmenuLink:visited,
+	.mainNavSubmenuLink:hover,
+	.mainNavSubmenuLink:active {
+		font-size: 1.17;
+	}
+
+	.mainNavSubmenuLink,
+	.mainNavSubmenuLink:visited,
+	.mainNavSubmenuLink:hover,
+	.mainNavSubmenuLink:active {
+		padding-top: 0.107em;
+		padding-bottom: 0.107em;
+		margin-top: 0.366em;
+		margin-bottom: 0.366em;
+	}
+
+	.mainNavSubmenu:nth-child(2) .mainNavSubmenuItem:nth-child(4) {
+		padding-bottom: 18.11em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 38em) and (min-aspect-ratio: 2/4) and (min-height: 45em) {
+	.mainNavSubmenuTitle span,
+	.mainNavSubmenuLink,
+	.mainNavSubmenuLink:visited,
+	.mainNavSubmenuLink:hover,
+	.mainNavSubmenuLink:active {
+		font-size: 1.19;
+	}
+
+	.mainNavSubmenuLink,
+	.mainNavSubmenuLink:visited,
+	.mainNavSubmenuLink:hover,
+	.mainNavSubmenuLink:active {
+		padding-top: 0.111em;
+		padding-bottom: 0.111em;
+		margin-top: 0.406em;
+		margin-bottom: 0.406em;
+	}
+
+	.mainNavSubmenu:nth-child(2) .mainNavSubmenuItem:nth-child(4) {
+		padding-bottom: 19.27em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 38em) and (min-aspect-ratio: 2/4) and (min-height: 48em) {
+	.mainNavSubmenuTitle span,
+	.mainNavSubmenuLink,
+	.mainNavSubmenuLink:visited,
+	.mainNavSubmenuLink:hover,
+	.mainNavSubmenuLink:active {
+		font-size: 1.21em;
+	}
+
+	.mainNavSubmenuLink,
+	.mainNavSubmenuLink:visited,
+	.mainNavSubmenuLink:hover,
+	.mainNavSubmenuLink:active {
+		padding-top: 0.115em;
+		padding-bottom: 0.115em;
+		margin-top: 0.446em;
+		margin-bottom: 0.446em;
+	}
+
+	.mainNavSubmenu:nth-child(2) .mainNavSubmenuItem:nth-child(4) {
+		padding-bottom: 20.43em;
+	}
+}
+
+
+@media screen and (max-width: 59.95em) and (min-width: 38em) and (min-aspect-ratio: 2/4) and (min-height: 51em) {
+	.mainNavSubmenuTitle span,
+	.mainNavSubmenuLink,
+	.mainNavSubmenuLink:visited,
+	.mainNavSubmenuLink:hover,
+	.mainNavSubmenuLink:active {
+		font-size: 1.23em;
+	}
+
+	.mainNavSubmenuLink,
+	.mainNavSubmenuLink:visited,
+	.mainNavSubmenuLink:hover,
+	.mainNavSubmenuLink:active {
+		padding-top: 0.119em;
+		padding-bottom: 0.119em;
+		margin-top: 0.486em;
+		margin-bottom: 0.486em;
+	}
+
+	.mainNavSubmenu:nth-child(2) .mainNavSubmenuItem:nth-child(4) {
+		padding-bottom: 21.59em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 38em) and (min-aspect-ratio: 2/4) and (min-height: 54em) {
+	.mainNavSubmenuTitle span,
+	.mainNavSubmenuLink,
+	.mainNavSubmenuLink:visited,
+	.mainNavSubmenuLink:hover,
+	.mainNavSubmenuLink:active {
+		font-size: 1.25em;
+	}
+
+	.mainNavSubmenuLink,
+	.mainNavSubmenuLink:visited,
+	.mainNavSubmenuLink:hover,
+	.mainNavSubmenuLink:active {
+		padding-top: 0.123em;
+		padding-bottom: 0.123em;
+		margin-top: 0.526em;
+		margin-bottom: 0.526em;
+	}
+
+	.mainNavSubmenu:nth-child(2) .mainNavSubmenuItem:nth-child(4) {
+		padding-bottom: 22.75em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 38em) and (min-aspect-ratio: 2/4) and (min-height: 57em) {
+	.mainNavSubmenuTitle span,
+	.mainNavSubmenuLink,
+	.mainNavSubmenuLink:visited,
+	.mainNavSubmenuLink:hover,
+	.mainNavSubmenuLink:active {
+		font-size: 1.265em;
+	}
+
+	.mainNavSubmenuLink,
+	.mainNavSubmenuLink:visited,
+	.mainNavSubmenuLink:hover,
+	.mainNavSubmenuLink:active {
+		padding-top: 0.124em;
+		padding-bottom: 0.124em;
+		margin-top: 0.573em;
+		margin-bottom: 0.573em;
+	}
+
+	.mainNavSubmenu:nth-child(2) .mainNavSubmenuItem:nth-child(4) {
+		padding-bottom: 23.895em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 38em) and (min-aspect-ratio: 2/4) and (min-height: 60em) {
+	.mainNavSubmenuTitle span,
+	.mainNavSubmenuLink,
+	.mainNavSubmenuLink:visited,
+	.mainNavSubmenuLink:hover,
+	.mainNavSubmenuLink:active {
+		font-size: 1.285em;
+	}
+
+	.mainNavSubmenuLink,
+	.mainNavSubmenuLink:visited,
+	.mainNavSubmenuLink:hover,
+	.mainNavSubmenuLink:active {
+		padding-top: 0.128em;
+		padding-bottom: 0.128em;
+		margin-top: 0.613em;
+		margin-bottom: 0.613em;
+	}
+
+	.mainNavSubmenu:nth-child(2) .mainNavSubmenuItem:nth-child(4) {
+		padding-bottom: 25.055em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 38em) and (min-aspect-ratio: 2/4) and (min-height: 63em) {
+	.mainNavSubmenuTitle span,
+	.mainNavSubmenuLink,
+	.mainNavSubmenuLink:visited,
+	.mainNavSubmenuLink:hover,
+	.mainNavSubmenuLink:active {
+		font-size: 1.305em;
+	}
+
+	.mainNavSubmenuLink,
+	.mainNavSubmenuLink:visited,
+	.mainNavSubmenuLink:hover,
+	.mainNavSubmenuLink:active {
+		padding-top: 0.132em;
+		padding-bottom: 0.132em;
+		margin-top: 0.653em;
+		margin-bottom: 0.653em;
+	}
+
+	.mainNavSubmenu:nth-child(2) .mainNavSubmenuItem:nth-child(4) {
+		padding-bottom: 26.215em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 38em) and (min-aspect-ratio: 2/4) and (min-height: 66em) {
+	.mainNavSubmenuTitle span,
+	.mainNavSubmenuLink,
+	.mainNavSubmenuLink:visited,
+	.mainNavSubmenuLink:hover,
+	.mainNavSubmenuLink:active {
+		font-size: 1.325em;
+	}
+
+	.mainNavSubmenuLink,
+	.mainNavSubmenuLink:visited,
+	.mainNavSubmenuLink:hover,
+	.mainNavSubmenuLink:active {
+		padding-top: 0.136em;
+		padding-bottom: 0.136em;
+		margin-top: 0.693em;
+		margin-bottom: 0.693em;
+	}
+
+	.mainNavSubmenu:nth-child(2) .mainNavSubmenuItem:nth-child(4) {
+		padding-bottom: 27.375em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 38em) and (min-aspect-ratio: 2/4) and (min-height: 69em) {
+	.mainNavSubmenuTitle span,
+	.mainNavSubmenuLink,
+	.mainNavSubmenuLink:visited,
+	.mainNavSubmenuLink:hover,
+	.mainNavSubmenuLink:active {
+		font-size: 1.342em;
+	}
+
+	.mainNavSubmenuLink,
+	.mainNavSubmenuLink:visited,
+	.mainNavSubmenuLink:hover,
+	.mainNavSubmenuLink:active {
+		padding-top: 0.139em;
+		padding-bottom: 0.139em;
+		margin-top: 0.736em;
+		margin-bottom: 0.736em;
+	}
+
+	.mainNavSubmenu:nth-child(2) .mainNavSubmenuItem:nth-child(4) {
+		padding-bottom: 28.53em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 38em) and (min-aspect-ratio: 2/4) and (min-height: 72em) {
+	.mainNavSubmenuTitle span,
+	.mainNavSubmenuLink,
+	.mainNavSubmenuLink:visited,
+	.mainNavSubmenuLink:hover,
+	.mainNavSubmenuLink:active {
+		font-size: 1.362em;
+	}
+
+	.mainNavSubmenuLink,
+	.mainNavSubmenuLink:visited,
+	.mainNavSubmenuLink:hover,
+	.mainNavSubmenuLink:active {
+		padding-top: 0.143em;
+		padding-bottom: 0.143em;
+		margin-top: 0.776em;
+		margin-bottom: 0.776em;
+	}
+
+	.mainNavSubmenu:nth-child(2) .mainNavSubmenuItem:nth-child(4) {
+		padding-bottom: 29.69em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 38em) and (min-aspect-ratio: 2/4) and (min-height: 75em) {
+	.mainNavSubmenuTitle span,
+	.mainNavSubmenuLink,
+	.mainNavSubmenuLink:visited,
+	.mainNavSubmenuLink:hover,
+	.mainNavSubmenuLink:active {
+		font-size: 1.38em;
+	}
+
+	.mainNavSubmenuLink,
+	.mainNavSubmenuLink:visited,
+	.mainNavSubmenuLink:hover,
+	.mainNavSubmenuLink:active {
+		padding-top: 0.146em;
+		padding-bottom: 0.146em;
+		margin-top: 0.82em;
+		margin-bottom: 0.82em;
+	}
+
+	.mainNavSubmenu:nth-child(2) .mainNavSubmenuItem:nth-child(4) {
+		padding-bottom: 30.84em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 38em) and (min-aspect-ratio: 2/4) and (min-height: 78em) {
+	.mainNavSubmenuTitle span,
+	.mainNavSubmenuLink,
+	.mainNavSubmenuLink:visited,
+	.mainNavSubmenuLink:hover,
+	.mainNavSubmenuLink:active {
+		font-size: 1.4em;
+	}
+
+	.mainNavSubmenuLink,
+	.mainNavSubmenuLink:visited,
+	.mainNavSubmenuLink:hover,
+	.mainNavSubmenuLink:active {
+		padding-top: 0.15em;
+		padding-bottom: 0.15em;
+		margin-top: 0.86em;
+		margin-bottom: 0.86em;
+	}
+
+	.mainNavSubmenu:nth-child(2) .mainNavSubmenuItem:nth-child(4) {
+		padding-bottom: 32em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 39em) and (min-aspect-ratio: 2/4) {
+	.mainNavSubmenu:nth-child(2),
+	.mainNavSubmenu:nth-child(3) {
+		width: 21em;
+	}
+
+	.mainNavSubmenu:nth-child(5),
+	.mainNavSubmenu:nth-child(6) {
+		left: 21em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 40em) and (min-aspect-ratio: 2/4) {
+	.mainNavSubmenu:nth-child(2),
+	.mainNavSubmenu:nth-child(3) {
+		width: 21.5em;
+	}
+
+	.mainNavSubmenu:nth-child(5),
+	.mainNavSubmenu:nth-child(6) {
+		left: 21.5em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 41em) and (min-aspect-ratio: 2/4) {
+	.mainNavSubmenu:nth-child(2),
+	.mainNavSubmenu:nth-child(3) {
+		width: 22em;
+	}
+
+	.mainNavSubmenu:nth-child(5),
+	.mainNavSubmenu:nth-child(6) {
+		left: 22em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 42em) and (min-aspect-ratio: 2/4) {
+	.mainNavMenuItems {
+		width: 92%;
+	}
+
+	.mainNavSubmenu:nth-child(2),
+	.mainNavSubmenu:nth-child(3) {
+		width: 24em;
+	}
+
+	.mainNavSubmenu:nth-child(5),
+	.mainNavSubmenu:nth-child(6) {
+		left: 24em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 43em) and (min-aspect-ratio: 2/4) {
+	.mainNavSubmenu:nth-child(2),
+	.mainNavSubmenu:nth-child(3) {
+		width: 24.62em;
+	}
+
+	.mainNavSubmenu:nth-child(5),
+	.mainNavSubmenu:nth-child(6) {
+		left: 24.62em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 44em) and (min-aspect-ratio: 2/4) {
+	.mainNavSubmenu:nth-child(2),
+	.mainNavSubmenu:nth-child(3) {
+		width: 25.25em;
+	}
+
+	.mainNavSubmenu:nth-child(5),
+	.mainNavSubmenu:nth-child(6) {
+		left: 25.25em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 45em) and (min-aspect-ratio: 2/4) {
+	.mainNavSubmenu:nth-child(2),
+	.mainNavSubmenu:nth-child(3) {
+		width: 25.88em;
+	}
+
+	.mainNavSubmenu:nth-child(5),
+	.mainNavSubmenu:nth-child(6) {
+		left: 25.88em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 46em) and (min-aspect-ratio: 2/4) {
+	.mainNavSubmenu:nth-child(2),
+	.mainNavSubmenu:nth-child(3) {
+		width: 26.5em;
+	}
+
+	.mainNavSubmenu:nth-child(5),
+	.mainNavSubmenu:nth-child(6) {
+		left: 26.5em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 47em) and (min-aspect-ratio: 2/4) {
+	.mainNavSubmenu:nth-child(2),
+	.mainNavSubmenu:nth-child(3) {
+		width: 27.12em;
+	}
+
+	.mainNavSubmenu:nth-child(5),
+	.mainNavSubmenu:nth-child(6) {
+		left: 27.12em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 48em) and (min-aspect-ratio: 2/4) {
+	.mainNavSubmenu:nth-child(2),
+	.mainNavSubmenu:nth-child(3) {
+		width: 27.75em;
+	}
+
+	.mainNavSubmenu:nth-child(5),
+	.mainNavSubmenu:nth-child(6) {
+		left: 27.75em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 49em) and (min-aspect-ratio: 2/4) {
+	.mainNavSubmenu:nth-child(2),
+	.mainNavSubmenu:nth-child(3) {
+		width: 28.38em;
+	}
+
+	.mainNavSubmenu:nth-child(5),
+	.mainNavSubmenu:nth-child(6) {
+		left: 28.38em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 50em) and (min-aspect-ratio: 2/4) {
+	.mainNavSubmenu:nth-child(2),
+	.mainNavSubmenu:nth-child(3) {
+		width: 29em;
+	}
+
+	.mainNavSubmenu:nth-child(5),
+	.mainNavSubmenu:nth-child(6) {
+		left: 29em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 51em) and (min-aspect-ratio: 2/4) {
+	.mainNavSubmenu:nth-child(2),
+	.mainNavSubmenu:nth-child(3) {
+		width: 29.62em;
+	}
+
+	.mainNavSubmenu:nth-child(5),
+	.mainNavSubmenu:nth-child(6) {
+		left: 29.62em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 52em) and (min-aspect-ratio: 2/4) {
+	.mainNavSubmenu:nth-child(2),
+	.mainNavSubmenu:nth-child(3) {
+		width: 30.25em;
+	}
+
+	.mainNavSubmenu:nth-child(5),
+	.mainNavSubmenu:nth-child(6) {
+		left: 30.25em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 53em) and (min-aspect-ratio: 2/4) {
+	.mainNavSubmenu:nth-child(2),
+	.mainNavSubmenu:nth-child(3) {
+		width: 30.87em;
+	}
+
+	.mainNavSubmenu:nth-child(5),
+	.mainNavSubmenu:nth-child(6) {
+		left: 30.87em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 54em) and (min-aspect-ratio: 2/4) {
+	.mainNavSubmenu:nth-child(2),
+	.mainNavSubmenu:nth-child(3) {
+		width: 31.5em;
+	}
+
+	.mainNavSubmenu:nth-child(5),
+	.mainNavSubmenu:nth-child(6) {
+		left: 31.5em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 55em) and (min-aspect-ratio: 2/4) {
+	.mainNavSubmenu:nth-child(2),
+	.mainNavSubmenu:nth-child(3) {
+		width: 32.12em;
+	}
+
+	.mainNavSubmenu:nth-child(5),
+	.mainNavSubmenu:nth-child(6) {
+		left: 32.12em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 56em) and (min-aspect-ratio: 2/4) {
+	.mainNavSubmenu:nth-child(2),
+	.mainNavSubmenu:nth-child(3) {
+		width: 32.75em;
+	}
+
+	.mainNavSubmenu:nth-child(5),
+	.mainNavSubmenu:nth-child(6) {
+		left: 32.75em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 57em) and (min-aspect-ratio: 2/4) {
+	.mainNavSubmenu:nth-child(2),
+	.mainNavSubmenu:nth-child(3) {
+		width: 33.38em;
+	}
+
+	.mainNavSubmenu:nth-child(5),
+	.mainNavSubmenu:nth-child(6) {
+		left: 33.38em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 58em) and (min-aspect-ratio: 2/4) {
+	.mainNavSubmenu:nth-child(2),
+	.mainNavSubmenu:nth-child(3) {
+		width: 34em;
+	}
+
+	.mainNavSubmenu:nth-child(5),
+	.mainNavSubmenu:nth-child(6) {
+		left: 34em;
+	}
+}
+
+@media screen and (max-width: 59.95em) and (min-width: 38em) and (min-aspect-ratio: 2/4) {
+	.mainNavSubmenu:nth-child(2) {
+		margin-bottom: 0;
+		padding-bottom: 0;
+	}
+
+	.mainNavSubmenu:nth-child(3) .mainNavSubmenuItem:nth-child(7) .mainNavSubmenuLink,
+	.mainNavSubmenu:nth-child(3) .mainNavSubmenuItem:nth-child(7) .mainNavSubmenuLink:visited,
+	.mainNavSubmenu:nth-child(3) .mainNavSubmenuItem:nth-child(7) .mainNavSubmenuLink:hover,
+	.mainNavSubmenu:nth-child(3) .mainNavSubmenuItem:nth-child(7) .mainNavSubmenuLink:active,
+	.mainNavSubmenu:nth-child(6) .mainNavSubmenuItem:nth-child(3) .mainNavSubmenuLink,
+	.mainNavSubmenu:nth-child(6) .mainNavSubmenuItem:nth-child(3) .mainNavSubmenuLink:visited,
+	.mainNavSubmenu:nth-child(6) .mainNavSubmenuItem:nth-child(3) .mainNavSubmenuLink:hover,
+	.mainNavSubmenu:nth-child(6) .mainNavSubmenuItem:nth-child(3) .mainNavSubmenuLink:active {
+		margin-bottom: 0;
+		padding-bottom: 0;
+	}
+}
+
+@media screen and (max-width: 38em) {
+	.fadeout {
+		display: none;
+	}
+
+	.mainNavMenu {
+		overflow-y: scroll;
+	}
+
+	.mainNavMenuItems {
+		width: 74%;
+		margin-top: 9.2em;
+	}
+
+	.mainNavSubmenu,
+	.mainNavSubmenu:nth-child(2),
+	.mainNavSubmenu:nth-child(3),
+	.mainNavSubmenu:nth-child(4),
+	.mainNavSubmenu:nth-child(5),
+	.mainNavSubmenu:nth-child(6) {
+		margin: 0;
+		float: none;
+		width: 100%;
+		margin-bottom: 4em;
+	}
+
+	.mainNavSubmenuTitle {
+		margin-bottom: 0.4em;
+	}
+
+	.mainNavSubmenuTitle span {
+		font-size: 1.6em;
+	}
+
+	.mainNavSubmenuLink,
+	.mainNavSubmenuLink:visited,
+	.mainNavSubmenuLink:hover,
+	.mainNavSubmenuLink:active {
+		font-size: 1.6em;
+		padding-top: 0.3em;
+		padding-bottom: 0.3em;
+		margin-top: 0.6em;
+		margin-bottom: 0.62em;
+	}
+
+	.mainNavSubmenuLink::after {
+		bottom: 0em;
+	}
+}
+
+@media screen and (max-width: 35em) {
+	.mainNavMenuItems {
+		width: 77%;
+		margin-top: 8.95em;
+	}
+
+	.mainNavSubmenu,
+	.mainNavSubmenu:nth-child(2),
+	.mainNavSubmenu:nth-child(3),
+	.mainNavSubmenu:nth-child(4),
+	.mainNavSubmenu:nth-child(5),
+	.mainNavSubmenu:nth-child(6) {
+		margin-bottom: 3.72em;
+	}
+
+	.mainNavSubmenuTitle span {
+		font-size: 1.55em;
+	}
+
+	.mainNavSubmenuLink,
+	.mainNavSubmenuLink:visited,
+	.mainNavSubmenuLink:hover,
+	.mainNavSubmenuLink:active {
+		font-size: 1.55em;
+		padding-top: 0.26em;
+		padding-bottom: 0.26em;
+		margin-top: 0.52em;
+		margin-bottom: 0.54em;
+	}
+
+	.mainNavSubmenuLink::after {
+		bottom: -0.025em;
+	}
+}
+
+@media screen and (max-width: 32em) {
+	.mainNavMenuItems {
+		width: 80%;
+		margin-top: 8.7em;
+	}
+
+	.mainNavSubmenu,
+	.mainNavSubmenu:nth-child(2),
+	.mainNavSubmenu:nth-child(3),
+	.mainNavSubmenu:nth-child(4),
+	.mainNavSubmenu:nth-child(5),
+	.mainNavSubmenu:nth-child(6) {
+		margin-bottom: 3.45em;
+	}
+
+	.mainNavSubmenuTitle span {
+		font-size: 1.5em;
+	}
+
+	.mainNavSubmenuLink,
+	.mainNavSubmenuLink:visited,
+	.mainNavSubmenuLink:hover,
+	.mainNavSubmenuLink:active {
+		font-size: 1.5em;
+		padding-top: 0.22em;
+		padding-bottom: 0.22em;
+		margin-top: 0.45em;
+		margin-bottom: 0.47em;
+	}
+
+	.mainNavSubmenuLink::after {
+		bottom: -0.05em;
+	}
+}
+
+@media screen and (max-width: 30em) {
+	header {
+		font-size: 0.842em; /* Original 1.02 */
+	}
+
+	.menuBtn span,
+	.menuBtn span::before,
+	.menuBtn span::after {
+		height: 4.12px; /* Original 5px */
+	}
+
+	.menuBtn span::before {
+		top: -10.25px; /* Original 12px */
+	}
+
+	.menuBtn span::after {
+		bottom: -10.25px; /* Original 12px */
+	}
+
+	h1 {
+		width: 6.73em; /* Original: 7.5em */
+		height: 4.71em; /* Original: 5.25em */
+		top: 1.02em; /* 0.16em */
+		left: 3.37%; /* 2.4% */
+	}
+}
+
+@media screen and (max-width: 29em) {
+	.mainNavMenuItems {
+		width: 83%;
+		margin-top: 8.45em;
+	}
+
+	.mainNavSubmenu,
+	.mainNavSubmenu:nth-child(2),
+	.mainNavSubmenu:nth-child(3),
+	.mainNavSubmenu:nth-child(4),
+	.mainNavSubmenu:nth-child(5),
+	.mainNavSubmenu:nth-child(6) {
+		margin-bottom: 3.2em;
+	}
+
+	.mainNavSubmenuTitle span {
+		font-size: 1.45em;
+	}
+
+	.mainNavSubmenuLink,
+	.mainNavSubmenuLink:visited,
+	.mainNavSubmenuLink:hover,
+	.mainNavSubmenuLink:active {
+		font-size: 1.45em;
+		padding-top: 0.18em;
+		padding-bottom: 0.18em;
+		margin-top: 0.38em;
+		margin-bottom: 0.40em;
+	}
+
+	.mainNavSubmenuLink::after {
+		bottom: -0.075em;
+	}
+}
+
+@media screen and (max-width: 26em) {
+	header {
+		font-size: 0.816em; /* Original 1.02 */
+	}
+
+	.menuBtn span,
+	.menuBtn span::before,
+	.menuBtn span::after {
+		height: 4px; /* Original 5px */
+	}
+
+	.menuBtn span::before {
+		top: -10px; /* Original 12px */
+	}
+
+	.menuBtn span::after {
+		bottom: -10px; /* Original 12px */
+	}
+
+	h1 {
+		width: 6.63em; /* Original: 7.5em */
+		height: 4.64em; /* Original: 5.25em */
+		top: 1.04em; /* 1.2em */
+		left: 3.5%; /* 2.4% */
+	}
+
+	.mainNavMenuItems {
+		width: 86%;
+		margin-top: 8.2em;
+	}
+
+	.mainNavSubmenu,
+	.mainNavSubmenu:nth-child(2),
+	.mainNavSubmenu:nth-child(3),
+	.mainNavSubmenu:nth-child(4),
+	.mainNavSubmenu:nth-child(5),
+	.mainNavSubmenu:nth-child(6) {
+		margin-bottom: 2.88em;
+	}
+
+	.mainNavSubmenuTitle span {
+		font-size: 1.4em;
+	}
+
+	.mainNavSubmenuLink,
+	.mainNavSubmenuLink:visited,
+	.mainNavSubmenuLink:hover,
+	.mainNavSubmenuLink:active {
+		font-size: 1.4em;
+		padding-top: 0.15em;
+		padding-bottom: 0.15em;
+		margin-top: 0.3em;
+		margin-bottom: 0.36em;
+	}
+
+	.mainNavSubmenuLink::after {
+		bottom: -0.1em;
+	}
+}
+
+@media screen and (max-width: 23em) {
+	.mainNavMenuItems {
+		width: 89%;
+		margin-top: 7.95em;
+	}
+
+	.mainNavSubmenu,
+	.mainNavSubmenu:nth-child(2),
+	.mainNavSubmenu:nth-child(3),
+	.mainNavSubmenu:nth-child(4),
+	.mainNavSubmenu:nth-child(5),
+	.mainNavSubmenu:nth-child(6) {
+		margin-bottom: 2.58em;
+	}
+
+	.mainNavSubmenuTitle span {
+		font-size: 1.35em;
+	}
+
+	.mainNavSubmenuLink,
+	.mainNavSubmenuLink:visited,
+	.mainNavSubmenuLink:hover,
+	.mainNavSubmenuLink:active {
+		font-size: 1.35em;
+		padding-top: 0.12em;
+		padding-bottom: 0.12em;
+		margin-top: 0.22em;
+		margin-bottom: 0.25em;
+	}
+}
+
+@media screen and (max-width: 22em) {
+	header {
+		font-size: 0.79em; /* Original 1.02 */
+	}
+
+	.menuBtn span,
+	.menuBtn span::before,
+	.menuBtn span::after {
+		height: 3.88px; /* Original 5px */
+	}
+
+	.menuBtn span::before {
+		top: -9.75px; /* Original 12px */
+	}
+
+	.menuBtn span::after {
+		bottom: -9.75px; /* Original 12px */
+	}
+
+	h1 {
+		width: 6.53em; /* Original: 7.5em */
+		height: 4.57em; /* Original: 5.25em */
+		top: 1.06em; /* 1.24em */
+		left: 3.68%; /* 2.4% */
+	}
+}
+
+@media screen and (max-width: 20em) {
+	.mainNavMenuItems {
+		width: 92%;
+		margin-top: 7.7em;
+	}
+
+	.mainNavSubmenu,
+	.mainNavSubmenu:nth-child(2),
+	.mainNavSubmenu:nth-child(3),
+	.mainNavSubmenu:nth-child(4),
+	.mainNavSubmenu:nth-child(5),
+	.mainNavSubmenu:nth-child(6) {
+		margin-bottom: 2.28em;
+	}
+
+	.mainNavSubmenuTitle span {
+		font-size: 1.3em;
+	}
+
+	.mainNavSubmenuLink,
+	.mainNavSubmenuLink:visited,
+	.mainNavSubmenuLink:hover,
+	.mainNavSubmenuLink:active {
+		font-size: 1.3em;
+		padding-top: 0.09em;
+		padding-bottom: 0.09em;
+		margin-top: 0.15em;
+		margin-bottom: 0.18em;
+	}
+}
+
+@media screen and (max-width: 18em) {
+	header {
+		font-size: 0.765em; /* Original 1.02 */
+	}
+
+	.menuBtn span,
+	.menuBtn span::before,
+	.menuBtn span::after {
+		height: 3.75px; /* Original 5px */
+	}
+
+	.menuBtn span::before {
+		top: -9.5px; /* Original 12px */
+	}
+
+	.menuBtn span::after {
+		bottom: -9.5px; /* Original 12px */
+	}
+
+	h1 {
+		width: 6.43em; /* Original: 7.5em */
+		height: 4.5em; /* Original: 5.25em */
+		top: 1.08em; /* 1.28em */
+		left: 3.86%; /* 2.4% */
+	}
+}
+
+@media screen and (max-width: 16em) {
+	.mainNavMenuItems {
+		width: 95%;
+		margin-top: 7.45em;
+	}
+
+	.mainNavSubmenu,
+	.mainNavSubmenu:nth-child(2),
+	.mainNavSubmenu:nth-child(3),
+	.mainNavSubmenu:nth-child(4),
+	.mainNavSubmenu:nth-child(5),
+	.mainNavSubmenu:nth-child(6) {
+		margin-bottom: 1.98em;
+	}
+
+	.mainNavSubmenuTitle span {
+		font-size: 1.25em;
+	}
+
+	.mainNavSubmenuLink,
+	.mainNavSubmenuLink:visited,
+	.mainNavSubmenuLink:hover,
+	.mainNavSubmenuLink:active {
+		font-size: 1.25em;
+		padding-top: 0.06em;
+		padding-bottom: 0.06em;
+		margin-top: 0.8em;
+		margin-bottom: 0.12em;
+	}
+}
+
+@media screen and (max-width: 14em) {
+	header {
+		font-size: 0.74em; /* Original 1.02 */
+	}
+
+	.menuBtn span,
+	.menuBtn span::before,
+	.menuBtn span::after {
+		height: 3.62px; /* Original 5px */
+	}
+
+	.menuBtn span::before {
+		top: -9.25px; /* Original 12px */
+	}
+
+	.menuBtn span::after {
+		bottom: -9.25px; /* Original 12px */
+	}
+
+	h1 {
+		width: 6.33em; /* Original: 7.5em */
+		height: 4.43em; /* Original: 5.25em */
+		top: 1.10em; /* 1.32em */
+		left: 4.12%; /* 2.4% */
+	}
+}
+
+@media screen and (max-width: 10em) {
+	header {
+		font-size: 0.715em; /* Original 1.02 */
+	}
+
+	.menuBtn span,
+	.menuBtn span::before,
+	.menuBtn span::after {
+		height: 3.5px; /* Original 5px */
+	}
+
+	.menuBtn span::before {
+		top: -9px; /* Original 12px */
+	}
+
+	.menuBtn span::after {
+		bottom: -9px; /* Original 12px */
+	}
+
+	h1 {
+		width: 6.23em; /* Original: 7.5em */
+		height: 4.36em; /* Original: 5.25em */
+		top: 1.12em; /* 1.36em */
+		left: 4.38%; /* 2.4% */
+	}
+}
+
+/*
+.mainNavMenuItems {
+	background: yellow;
+}
+
+.mainNavSubmenu {
+	background: green;
+}
+
+.mainNavSubmenuList {
+	background: orange;
+}
+
+.mainNavSubmenuTitle {
+	background: pink;
+}
+
+.mainNavSubmenuTitle span {
+	background: red;
+}
+
+.mainNavSubmenuItem {
+	background: black;
+}
+
+.mainNavSubmenuLink {
+	background: violet;
+}*/
