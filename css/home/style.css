@@ -319,6 +319,10 @@
 
 .homepagePdGText::after {
 	-webkit-transform: scaleX(0);
+		 -moz-transform: scaleX(0);
+			-ms-transform: scaleX(0);
+			 -o-transform: scaleX(0);
+					transform: scaleX(0);
 	-webkit-animation-name: pdg-loading-mask;
 		 -moz-animation-name: pdg-loading-mask;
 			-ms-animation-name: pdg-loading-mask;
