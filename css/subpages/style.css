@@ -102,6 +102,7 @@
 	margin-right: auto;
 	padding-top: 4em;
 	padding-bottom: 4em;
+	padding-right: 5%;
 	width: 70%;
 	float: right;
 }
@@ -128,6 +129,59 @@
 
 
 /* Media queries */
+
+.subpageBody header,
+.subpageContentSection {
+	font-size: 0.95em;
+}
+
+.subpageBody header {
+	height: 7em;
+}
+
+.subpageContentSection {
+	min-height: calc(100% - 7em);
+}
+
+.subpageContentSection:first-of-type {
+	margin-top: 7em;
+}
+
+.subpageBody header h1 {
+	width: 7.5em;
+	height: 5.25em;
+	left: 5%;
+	top: 0.9em;
+}
+
+.subpageBody .menuBtn,
+.subpageBody .mainNavBackground,
+.subpageBody .pageContentBackground {
+	right: 5%;
+	top: 0.85em;
+}
+
+.subpageBody .menuBtn span,
+.subpageBody .menuBtn span::before,
+.subpageBody .menuBtn span::after {
+	height: 5px;
+}
+
+.subpageBody .menuBtn span::before {
+	top: -11px;
+}
+
+.subpageBody .menuBtn span::after {
+	bottom: -11px;
+}
+
+.subpageBody .menuBtn.is-active span::before {
+  top: 0;
+}
+
+.subpageBody .menuBtn.is-active span::after {
+  bottom: 0;
+}
 
 @media screen and (max-width: 40em) {
 	.subpageBody header {
