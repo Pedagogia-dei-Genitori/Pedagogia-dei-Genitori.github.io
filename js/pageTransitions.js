@@ -14,18 +14,25 @@ function pageIsReadyForTransitions()
     // Do custom stuff only if the browser supports CSS transitions
     if (Modernizr.csstransitions)
     {
-      // Prevents just loading the page normally
-      e.preventDefault();
+      // Check we're trying to load a link in the same domain
+      if (this.host == window.location.host)
+      {
+        // Prevents just loading the page normally
+        e.preventDefault();
 
-      // Get the URL of the page we need to load
-      var pageToGoTo = $(this).attr("href");
+        // Get the pathname of the page we need to load
+        var pathnameOfPageToGoTo = this.pathname;
 
-      // Go to that page (unless we are already transitioning to another page)
-      if (!pageIsCurrentlyTransitioning)
-        transitionToOtherPage(pageToGoTo, true);
+        if (pathnameOfPageToGoTo != window.location.pathname)
+        {
+          // Go to the page (unless we are already transitioning to another page)
+          if (!pageIsCurrentlyTransitioning)
+            transitionToOtherPage(pathnameOfPageToGoTo, true);
 
-      // We've started our first transition (so we need to handle back/forward from now on as well - see handling function below)
-      pageTransitionHasBeenTriggered = true;
+          // We've started our first transition (so we need to handle back/forward from now on as well - see handling function below)
+          pageTransitionHasBeenTriggered = true;
+        }
+      }
     }
   });
 
@@ -44,7 +51,7 @@ function pageIsReadyForTransitions()
     pageTransitionHasBeenTriggered = true;
   });
 
-  function transitionToOtherPage(pageToGoTo, addPageToHistory)
+  function transitionToOtherPage(pathnameOfPageToGoTo, addPageToHistory)
   {
     pageIsCurrentlyTransitioning = true;
 
@@ -55,24 +62,24 @@ function pageIsReadyForTransitions()
     $(".pageTransitionLoadingBar").one("webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend", function()
     {
       $(".pageTransitionLoadingBar").off("webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend");
-      urlOfLastPageLoaded = pageToGoTo;
-      loadNewPageContent(pageToGoTo, addPageToHistory);
+      urlOfLastPageLoaded = pathnameOfPageToGoTo;
+      loadNewPageContent(pathnameOfPageToGoTo, addPageToHistory);
     });
   }
 
 
-  function loadNewPageContent(pageToLoad, addPageToHistory)
+  function loadNewPageContent(pathnameOfPageToLoad, addPageToHistory)
   {
     // Create a new content wrapper for the <main> element by loading it from the page we are transitioning to
     var newMainContentWrapper = $("<div class='mainContentWrapper'></div>");
-    newMainContentWrapper.load(pageToLoad + " .mainContentWrapper > *", function(e)
+    newMainContentWrapper.load(pathnameOfPageToLoad + " .mainContentWrapper > *", function(e)
     {
+      // Set the html content of the <main> element to be the wrapper we created
+      $("main").html(newMainContentWrapper);
+
       // Make sure the menu gets closed in case it's open
       if ($(".menuBtn").hasClass("is-active"))
         $(".menuBtn").click();
-
-      // Set the html content of the <main> element to be the wrapper we created
-      $("main").html(newMainContentWrapper);
 
       // Set 2 second timeout, which allows animations to hide old page and show progress bar
       setTimeout(function()
@@ -81,16 +88,16 @@ function pageIsReadyForTransitions()
         $("body").removeClass("pageTransitioning");
 
         // Set the correct class on the body to match which type of page we are loading (e.g. homepage or subpage) - used for CSS
-        if ($("body").hasClass("homepageBody"))
-        {
-          $("body").removeClass(); // Remove all classes
-          $("body").addClass("subpageBody");
-        }
-        else if ($("body").hasClass("subpageBody"))
+        if (pathnameOfPageToLoad == "" || pathnameOfPageToLoad == "/")
         {
           $("body").removeClass(); // Remove all classes
           $("body").addClass("homepageBody");
           $("body").addClass("homepageAnimated");
+        }
+        else
+        {
+          $("body").removeClass(); // Remove all classes
+          $("body").addClass("subpageBody");
         }
 
         // Wait until for the first animation on the progress bar to finish
@@ -106,9 +113,9 @@ function pageIsReadyForTransitions()
       // Add the page we've loaded to the window's history
       if (addPageToHistory)
       {
-        if ((pageToLoad != window.location.href) && (pageToLoad != window.location.pathname))
+        if ((pathnameOfPageToLoad != window.location.href) && (pathnameOfPageToLoad != window.location.pathname))
         {
-          window.history.pushState({path: pageToLoad}, "", pageToLoad);
+          window.history.pushState({path: pathnameOfPageToLoad}, "", pathnameOfPageToLoad);
         }
       }
     });
