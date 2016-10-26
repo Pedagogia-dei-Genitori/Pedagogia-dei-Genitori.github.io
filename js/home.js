@@ -4,19 +4,23 @@ var pageLoadIsCompete = setInterval(function()
   {
     clearInterval(pageLoadIsCompete);
 
-    // Show the page's content with the mask animation
-    document.body.classList.remove("homepageLoading");
-
     // Wait a delay and then start animating the page's rotating text
     var maskAnimationWait = 4000;
     animateHomepageRotatingText(maskAnimationWait);
 
-    // Wait 6 seconds
-    setTimeout(function()
+    if (!hasClass(document.body, "homepageAnimated"))
     {
-      // Make sure the intro mask animations don't repeat after closing the menu
-      document.body.classList.add("homepageAnimated");
-    }, 6000);
+      // Show the page's content with the mask animation
+      document.body.classList.remove("homepageLoading");
+
+      // Wait 6 seconds
+      setTimeout(function()
+      {
+        // Make sure the intro mask animations don't repeat after closing the menu
+        document.body.classList.add("homepageAnimated");
+      }, 6000);
+    }
+
   }
 }, 10);
 
