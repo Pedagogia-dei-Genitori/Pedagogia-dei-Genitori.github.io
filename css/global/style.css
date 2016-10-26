@@ -187,6 +187,11 @@ main {
 		 	-ms-transform-origin: left center;
 			 -o-transform-origin: left center;
 			 		transform-origin: left center;
+	-webkit-transition: -webkit-transform 0s 0.4s; /* Don't hide change the progress level indicator until the progress bar gets hidden */
+		 -moz-transition: -moz-transform 0s 0.4s; /* Don't hide change the progress level indicator until the progress bar gets hidden */
+			-ms-transition: -ms-transform 0s 0.4s; /* Don't hide change the progress level indicator until the progress bar gets hidden */
+			 -o-transition: -o-transform 0s 0.4s; /* Don't hide change the progress level indicator until the progress bar gets hidden */
+					transition: transform 0s 0.4s; /* Don't hide change the progress level indicator until the progress bar gets hidden */
 }
 
 .pageTransitioning .pageTransitionLoadingBar::before {
