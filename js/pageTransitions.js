@@ -59,9 +59,24 @@ function pageIsReadyForTransitions()
 
   function loadNewPageContent(pageToLoad, addPageToHistory)
   {
+    // Set the correct class on the body to match which type of page we are loading (e.g. homepage or subpage) - used for CSS
+    if ($("body").hasClass("homepageBody"))
+    {
+      $("body").removeClass(); // Remove all classes
+      $("body").addClass("subpageBody");
+    }
+    else if ($("body").hasClass("subpageBody"))
+    {
+      $("body").removeClass(); // Remove all classes
+      $("body").addClass("homepageBody");
+      $("body").addClass("homepageAnimated");
+    }
+
+    // Create a new content wrapper for the <main> element by loading it from the page we are transitioning to
     var newMainContentWrapper = $("<div class='mainContentWrapper'></div>");
     newMainContentWrapper.load(pageToLoad + " .mainContentWrapper > *", function(e)
     {
+      // Set the html content of the <main> element to be the wrapper we created
       $("main").html(newMainContentWrapper);
     });
   }
