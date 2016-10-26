@@ -9,3 +9,15 @@
 			 url("roboto-thin.ttf")  format("truetype"),
 			 url("roboto-thin.svg#roboto-thin") format("svg");
 }
+
+@font-face {
+	font-family: "Roboto";
+	font-style: normal;
+	font-weight: 200;
+	src: url("roboto-light.eot");
+	src: local("☺"),
+			 url("roboto-light.woff2") format("woff2"),
+			 url("roboto-light.woff") format("woff"),
+			 url("roboto-light.ttf")  format("truetype"),
+			 url("roboto-light.svg#roboto-light") format("svg");
+}
