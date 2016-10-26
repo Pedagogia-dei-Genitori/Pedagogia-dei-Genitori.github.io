@@ -101,6 +101,7 @@ function pageIsReadyForTransitions()
           $("body").removeClass(); // Remove all classes
           $("body").addClass("homepageBody");
           $("body").addClass("homepageAnimated");
+          animateHomepageRotatingText();
         }
         else
         {

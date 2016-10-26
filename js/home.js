@@ -11,8 +11,7 @@ var pageLoadIsCompete = setInterval(function()
     else
     {
       // Wait a delay and then start animating the page's rotating text
-      var maskAnimationWait = 4000;
-      animateHomepageRotatingText(maskAnimationWait);
+      animateHomepageRotatingText();
 
       if (!hasClass(document.body, "homepageAnimated"))
       {
@@ -31,8 +30,9 @@ var pageLoadIsCompete = setInterval(function()
 }, 10);
 
 
-function animateHomepageRotatingText(changeInterval)
+function animateHomepageRotatingText()
 {
+  var changeInterval = 4000;
   var changingWords = document.querySelectorAll(".homepageChangingText");
 
   var arrayOfChangingWords = [];
