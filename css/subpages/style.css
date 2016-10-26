@@ -116,6 +116,10 @@
 	font-weight: 400;
 }
 
+.subpageContentSectionParagraph:last-of-type {
+	margin-bottom: 2em;
+}
+
 .subpageNavTitle {
 	position: fixed;
 	bottom: 0;
