@@ -4,9 +4,11 @@ function pageIsReadyForTransitions()
     async: true
   });
 
+  history.replaceState({pushCausedByTransition: true}, "", "");
+
   var pageIsCurrentlyTransitioning = false; // Indicates whether we're currently loading another page or not
   var pageTransitionHasBeenTriggered = false; // Used to prevent confusing the popstate event emitted by Safari on page load with a back/forward
-  var urlOfLastPageLoaded = "";
+  var pathnameOfLastPageLoaded = "";
 
   // Handle links that lead to another page
   $("body").on("click", "[data-type='goToOtherPage']", function(e)
@@ -37,15 +39,21 @@ function pageIsReadyForTransitions()
   });
 
   // Handle popstate events (e.g. back/forward)
-  $(window).on("popstate", function()
+  $(window).on("popstate", function(e)
   {
     // If we've not yet transitioned to another page, we should ignore this pop event as there's no back/forward we can handle (Safari emits popstate event on page load)
-    if (pageTransitionHasBeenTriggered)
+    if (e.originalEvent.state.pushCausedByTransition)
     {
       // Do custom stuff only if the browser supports CSS transitions
       if (Modernizr.csstransitions)
       {
-
+        if (!pageIsCurrentlyTransitioning)
+        {
+          if (location.pathname != pathnameOfLastPageLoaded)
+          {
+            transitionToOtherPage(location.pathname, false);
+          }
+        }
       }
     }
     pageTransitionHasBeenTriggered = true;
@@ -62,7 +70,7 @@ function pageIsReadyForTransitions()
     $(".pageTransitionLoadingBar").one("webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend", function()
     {
       $(".pageTransitionLoadingBar").off("webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend");
-      urlOfLastPageLoaded = pathnameOfPageToGoTo;
+      pathnameOfLastPageLoaded = pathnameOfPageToGoTo;
       loadNewPageContent(pathnameOfPageToGoTo, addPageToHistory);
     });
   }
@@ -115,7 +123,7 @@ function pageIsReadyForTransitions()
       {
         if ((pathnameOfPageToLoad != window.location.href) && (pathnameOfPageToLoad != window.location.pathname))
         {
-          window.history.pushState({path: pathnameOfPageToLoad}, "", pathnameOfPageToLoad);
+          window.history.pushState({path: pathnameOfPageToLoad, pushCausedByTransition: true}, "", pathnameOfPageToLoad);
         }
       }
     });
