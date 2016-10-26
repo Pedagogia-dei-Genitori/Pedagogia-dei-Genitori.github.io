@@ -73,6 +73,13 @@
 					animation-timing-function: linear;
 }
 
+.subpageContentSection * {
+	-webkit-user-select: auto;
+	-moz-user-select: auto;
+	-ms-user-select: auto;
+	user-select: auto;
+}
+
 .subpageContentSection {
 	width: 100%;
 	display: table;
@@ -134,6 +141,7 @@
 }
 
 .subpageAnimated .subpageWhiteBGLayer {
+	display: none;
 	background-color: transparent;
 }
 
