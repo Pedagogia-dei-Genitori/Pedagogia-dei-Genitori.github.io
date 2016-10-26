@@ -25,14 +25,21 @@ function pageIsReadyForTransitions()
         // Get the pathname of the page we need to load
         var pathnameOfPageToGoTo = this.pathname;
 
-        if (pathnameOfPageToGoTo != window.location.pathname)
+        // Check that we're not already transitioning to another page
+        if (!pageIsCurrentlyTransitioning)
         {
-          // Go to the page (unless we are already transitioning to another page)
-          if (!pageIsCurrentlyTransitioning)
+          // Either transition to another page or reload this one
+          if (pathnameOfPageToGoTo != window.location.pathname)
+          {
             transitionToOtherPage(pathnameOfPageToGoTo, true);
 
-          // We've started our first transition (so we need to handle back/forward from now on as well - see handling function below)
-          pageTransitionHasBeenTriggered = true;
+            // We've started our first transition (so we need to handle back/forward from now on as well - see handling function below)
+            pageTransitionHasBeenTriggered = true;
+          }
+          else
+          {
+            window.location.reload(true);
+          }
         }
       }
     }
