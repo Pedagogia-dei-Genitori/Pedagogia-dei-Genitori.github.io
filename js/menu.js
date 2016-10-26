@@ -192,7 +192,8 @@ function domContentHasLoaded()
     menuButton.classList.remove("is-active");
 
     // Show the page's main content again
-    documentHeaderElmnt.style.position = documentHeaderElmntPosition;
+    documentHeaderElmnt.style.position = "";
+    documentHeaderElmnt.removeAttribute("style");
     documentMainElmnt.style.display = "block";
 
     // Show the PdG logo again
