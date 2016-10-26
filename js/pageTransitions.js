@@ -1,5 +1,9 @@
 function pageIsReadyForTransitions()
 {
+  $.ajaxSetup({
+    async: true
+  });
+
   var pageIsCurrentlyTransitioning = false; // Indicates whether we're currently loading another page or not
   var pageTransitionHasBeenTriggered = false; // Used to prevent confusing the popstate event emitted by Safari on page load with a back/forward
   var urlOfLastPageLoaded = "";
