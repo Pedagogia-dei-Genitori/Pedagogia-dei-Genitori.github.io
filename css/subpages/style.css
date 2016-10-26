@@ -1,3 +1,76 @@
+.subpageBody header {
+	visibility: hidden;
+	opacity: 0;
+	background: #fff;
+	-webkit-animation-name: pdg-opacity-fadein;
+		 -moz-animation-name: pdg-opacity-fadein;
+			-ms-animation-name: pdg-opacity-fadein;
+			 -o-animation-name: pdg-opacity-fadein;
+					animation-name: pdg-opacity-fadein;
+}
+
+.subpageWhiteBGLayer {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+	z-index: 2;
+	-webkit-animation-name: pdg-opacity-fadeout;
+		 -moz-animation-name: pdg-opacity-fadeout;
+			-ms-animation-name: pdg-opacity-fadeout;
+			 -o-animation-name: pdg-opacity-fadeout;
+					animation-name: pdg-opacity-fadeout;
+}
+
+.subpageBody header,
+.subpageWhiteBGLayer {
+	-webkit-animation-fill-mode: forwards;
+		 -moz-animation-fill-mode: forwards;
+			-ms-animation-fill-mode: forwards;
+			 -o-animation-fill-mode: forwards;
+					animation-fill-mode: forwards;
+	-webkit-animation-duration: 0.8s;
+		 -moz-animation-duration: 0.8s;
+			-ms-animation-duration: 0.8s;
+			 -o-animation-duration: 0.8s;
+					animation-duration: 0.8s;
+	-webkit-animation-delay: 0.2s;
+		 -moz-animation-delay: 0.2s;
+			-ms-animation-delay: 0.2s;
+			 -o-animation-delay: 0.2s;
+					animation-delay: 0.2s;
+	-webkit-animation-timing-function: linear;
+		 -moz-animation-timing-function: linear;
+			-ms-animation-timing-function: linear;
+			 -o-animation-timing-function: linear;
+					animation-timing-function: linear;
+}
+
+
+/* Media queries */
+
+@media screen and (min-width: 60em) {
+}
+
+
+.subpageAnimated header {
+	visibility: visible;
+	opacity: 1;
+}
+
+.subpageAnimated .subpageWhiteBGLayer {
+	background-color: transparent;
+}
+
+.subpageAnimated header,
+.subpageAnimated .subpageWhiteBGLayer {
+	-webkit-animation: none;
+		 -moz-animation: none;
+			-ms-animation: none;
+			 -o-animation: none;
+					animation: none;
+}
+
 .subpageLoading *,
 .subpageLoading *::before,
 .subpageLoading *::after {

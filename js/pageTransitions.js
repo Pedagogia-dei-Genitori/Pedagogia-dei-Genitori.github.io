@@ -106,6 +106,7 @@ function pageIsReadyForTransitions()
         {
           $("body").removeClass(); // Remove all classes
           $("body").addClass("subpageBody");
+          $("body").addClass("subpageAnimated");
         }
 
         // Wait until for the first animation on the progress bar to finish

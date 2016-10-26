@@ -4,23 +4,29 @@ var pageLoadIsCompete = setInterval(function()
   {
     clearInterval(pageLoadIsCompete);
 
-    // Wait a delay and then start animating the page's rotating text
-    var maskAnimationWait = 4000;
-    animateHomepageRotatingText(maskAnimationWait);
-
-    if (!hasClass(document.body, "homepageAnimated"))
+    if (hasClass(document.body, "subpageBody"))
     {
-      // Show the page's content with the mask animation
-      document.body.classList.remove("homepageLoading");
-
-      // Wait 6 seconds
-      setTimeout(function()
-      {
-        // Make sure the intro mask animations don't repeat after closing the menu
-        document.body.classList.add("homepageAnimated");
-      }, 6000);
+      subpageLoadHasBeenCompleted();
     }
+    else
+    {
+      // Wait a delay and then start animating the page's rotating text
+      var maskAnimationWait = 4000;
+      animateHomepageRotatingText(maskAnimationWait);
 
+      if (!hasClass(document.body, "homepageAnimated"))
+      {
+        // Show the page's content with the mask animation
+        document.body.classList.remove("homepageLoading");
+
+        // Wait 6 seconds
+        setTimeout(function()
+        {
+          // Make sure the intro mask animations don't repeat after closing the menu
+          document.body.classList.add("homepageAnimated");
+        }, 6000);
+      }
+    }
   }
 }, 10);
 
