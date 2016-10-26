@@ -102,7 +102,7 @@ function pageIsReadyForTransitions()
       // Add the page we've loaded to the window's history
       if (addPageToHistory)
       {
-        if (pageToLoad != window.location)
+        if ((pageToLoad != window.location.href) && (pageToLoad != window.location.pathname))
         {
           window.history.pushState({path: pageToLoad}, "", pageToLoad);
         }
