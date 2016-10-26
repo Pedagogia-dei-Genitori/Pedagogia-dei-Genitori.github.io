@@ -24,6 +24,17 @@
 }
 
 
+/* Colours */
+
+.subpageContentSectionTitle {
+	color: #ff3264;
+}
+
+.subpageContentSectionParagraph {
+	color: #222222;
+}
+
+
 .subpageBody header {
 	visibility: hidden;
 	opacity: 0;
@@ -106,7 +117,9 @@
 }
 
 .subpageContentSectionTitle {
-	font-weight: 200;
+	font-size: 3em;
+	font-weight: 100;
+	margin-bottom: 1em;
 }
 
 .subpageContentSectionParagraph {
