@@ -61,6 +61,26 @@
 					animation-timing-function: linear;
 }
 
+.subpageContentSection {
+	-webkit-box-sizing: content-box;
+		 -moz-box-sizing: content-box;
+			-ms-box-sizing: content-box;
+			 -o-box-sizing: content-box;
+					box-sizing: content-box;
+	width: 100%;
+	border-bottom: 1px solid #ebebeb;
+}
+
+.subpageContentSection:nth-of-type(even) {
+	background-color: #f5f5f5;
+}
+
+.subpageNavTitle {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+}
+
 
 /* Media queries */
 

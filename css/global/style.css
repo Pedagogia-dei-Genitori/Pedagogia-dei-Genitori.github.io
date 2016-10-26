@@ -306,7 +306,8 @@ main {
 /* Header */
 
 header,
-.mainNavMenu {
+.mainNavMenu,
+.subpageContentSection {
 	font-size: 1.02em;
 }
 
@@ -316,6 +317,14 @@ header {
 	left: 0;
 	width: 100%;
 	height: 7em;
+}
+
+.subpageContentSection {
+	min-height: calc(100% - 7em);
+}
+
+.subpageContentSection:first-of-type {
+	margin-top: 7em;
 }
 
 header,
@@ -1118,7 +1127,8 @@ h1 img,
 }
 
 @media screen and (min-width: 150em) {
-	header {
+	header,
+	.subpageContentSection {
 		font-size: 1.42em; /* Original 1.02 */
 	}
 
@@ -1145,7 +1155,8 @@ h1 img,
 }
 
 @media screen and (max-width: 150em) {
-	header {
+	header,
+	.subpageContentSection {
 		font-size: 1.42em; /* Original 1.02 */
 	}
 
@@ -1172,7 +1183,8 @@ h1 img,
 }
 
 @media screen and (max-width: 135em) {
-	header {
+	header,
+	.subpageContentSection {
 		font-size: 1.32em; /* Original 1.02 */
 	}
 
@@ -1199,7 +1211,8 @@ h1 img,
 }
 
 @media screen and (max-width: 120em) {
-	header {
+	header,
+	.subpageContentSection {
 		font-size: 1.22em; /* Original 1.02 */
 	}
 
@@ -1226,7 +1239,8 @@ h1 img,
 }
 
 @media screen and (max-width: 105em) {
-	header {
+	header,
+	.subpageContentSection {
 		font-size: 1.12em; /* Original 1.02 */
 	}
 
@@ -1253,7 +1267,8 @@ h1 img,
 }
 
 @media screen and (max-width: 90em) {
-	header {
+	header,
+	.subpageContentSection {
 		font-size: 1.02em; /* Original 1.02 */
 	}
 
@@ -1280,7 +1295,8 @@ h1 img,
 }
 
 @media screen and (max-width: 80em) {
-	header {
+	header,
+	.subpageContentSection {
 		font-size: 0.974em; /* Original 1.02 */
 	}
 
@@ -1340,7 +1356,8 @@ h1 img,
 }
 
 @media screen and (max-width: 70em) {
-	header {
+	header,
+	.subpageContentSection {
 		font-size: 0.946em; /* Original 1.02 */
 	}
 
@@ -1403,7 +1420,8 @@ h1 img,
 }
 
 @media screen and (max-width: 59.95em) {
-	header {
+	header,
+	.subpageContentSection {
 		font-size: 0.918em; /* Original 1.02 */
 	}
 
@@ -1467,7 +1485,8 @@ h1 img,
 }
 
 @media screen and (max-width: 50em) {
-	header {
+	header,
+	.subpageContentSection {
 		font-size: 0.892em; /* Original 1.02 */
 	}
 
@@ -1576,7 +1595,8 @@ h1 img,
 }
 
 @media screen and (max-width: 40em) {
-	header {
+	header,
+	.subpageContentSection {
 		font-size: 0.867em; /* Original 1.02 */
 	}
 
@@ -2564,7 +2584,8 @@ h1 img,
 }
 
 @media screen and (max-width: 30em) {
-	header {
+	header,
+	.subpageContentSection {
 		font-size: 0.842em; /* Original 1.02 */
 	}
 
@@ -2626,7 +2647,8 @@ h1 img,
 }
 
 @media screen and (max-width: 26em) {
-	header {
+	header,
+	.subpageContentSection {
 		font-size: 0.816em; /* Original 1.02 */
 	}
 
@@ -2717,7 +2739,8 @@ h1 img,
 }
 
 @media screen and (max-width: 22em) {
-	header {
+	header,
+	.subpageContentSection {
 		font-size: 0.79em; /* Original 1.02 */
 	}
 
@@ -2775,7 +2798,8 @@ h1 img,
 }
 
 @media screen and (max-width: 18em) {
-	header {
+	header,
+	.subpageContentSection {
 		font-size: 0.765em; /* Original 1.02 */
 	}
 
@@ -2833,7 +2857,8 @@ h1 img,
 }
 
 @media screen and (max-width: 14em) {
-	header {
+	header,
+	.subpageContentSection {
 		font-size: 0.74em; /* Original 1.02 */
 	}
 
@@ -2860,7 +2885,8 @@ h1 img,
 }
 
 @media screen and (max-width: 10em) {
-	header {
+	header,
+	.subpageContentSection {
 		font-size: 0.715em; /* Original 1.02 */
 	}
 
