@@ -12,6 +12,18 @@
 	height: 100%;
 }
 
+
+/* Fonts */
+
+.subpageContentSectionTitle {
+	font-family: "Roboto", "Montserrat", "Avenir Next", "HelveticaNeue-Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.subpageContentSectionParagraph {
+	font-family: "Open Sans", "Avenir Next", "HelveticaNeue-Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+
 .subpageBody header {
 	visibility: hidden;
 	opacity: 0;
@@ -84,6 +96,14 @@
 	padding-bottom: 4em;
 	width: 70%;
 	float: right;
+}
+
+.subpageContentSectionTitle {
+	font-weight: 200;
+}
+
+.subpageContentSectionParagraph {
+	font-weight: 400;
 }
 
 .subpageNavTitle {
