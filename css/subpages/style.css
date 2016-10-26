@@ -1,7 +1,22 @@
+.subpageBody *,
+.subpageBody *::before,
+.subpageBody *::after {
+	-webkit-box-sizing: border-box;
+		 -moz-box-sizing: border-box;
+		 	-ms-box-sizing: border-box;
+			 -o-box-sizing: border-box;
+			 		box-sizing: border-box;
+}
+
+.subpageBody {
+	height: 100%;
+}
+
 .subpageBody header {
 	visibility: hidden;
 	opacity: 0;
-	background: #fff;
+	background: rgba(255, 255, 255, 0.9);
+	border-bottom: 1px solid #ebebeb;
 	-webkit-animation-name: pdg-opacity-fadein;
 		 -moz-animation-name: pdg-opacity-fadein;
 			-ms-animation-name: pdg-opacity-fadein;
@@ -49,7 +64,11 @@
 
 /* Media queries */
 
-@media screen and (min-width: 60em) {
+@media screen and (max-width: 40em) {
+	.subpageBody header {
+		position: absolute;
+		background: #fff;
+	}
 }
 
 
