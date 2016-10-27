@@ -6,11 +6,11 @@
 /* Fonts */
 
 .subpageContentSectionTitle {
-	font-family: "Montserrat Alternates", "Montserrat", "Avenir Next", "HelveticaNeue-Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: "Ubuntu", "Avenir Next", "Montserrat", "Avenir Next", "HelveticaNeue-Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .subpageContentSectionParagraph {
-	font-family: "Open Sans", "Avenir Next", "HelveticaNeue-Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: "Ubuntu", "HelveticaNeue-Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 
@@ -156,16 +156,15 @@
 
 .subpageContentSectionTitle {
 	font-size: 3em;
-	font-weight: 200;
+	font-weight: 400;
 	margin-bottom: 0.6em;
 }
 
 .subpageContentSectionParagraph {
 	font-size: 1em;
 	font-weight: 400;
-	line-height: 1.6em;
-	word-spacing: 0.25em;
-	margin-bottom: 0.8em;
+	line-height: 1.8em;
+	margin-bottom: 1.2em;
 }
 
 .subpageContentSectionParagraph:last-of-type {

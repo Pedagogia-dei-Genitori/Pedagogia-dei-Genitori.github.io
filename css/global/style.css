@@ -644,8 +644,8 @@ h1 img,
 	overflow: visible;
 	width: 102%;
 	height: 102%;
-	top: -5%;
-	left: -5%;
+	top: -1%;
+	left: -1%;
 	-webkit-transform: scale(1); /* Make the element visible when the "Menu" button hasn't been clicked (doesn't have "is-active" class) */
 		 -moz-transform: scale(1); /* Make the element visible when the "Menu" button hasn't been clicked (doesn't have "is-active" class) */
 			-ms-transform: scale(1); /* Make the element visible when the "Menu" button hasn't been clicked (doesn't have "is-active" class) */
