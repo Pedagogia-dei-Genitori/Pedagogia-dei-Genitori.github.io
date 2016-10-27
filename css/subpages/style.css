@@ -43,6 +43,8 @@
 }
 
 .subpageBody header,
+.subpageContentSection,
+.subpageNav,
 .subpageWhiteBGLayer {
 	-webkit-animation-fill-mode: forwards;
 		 -moz-animation-fill-mode: forwards;
@@ -73,17 +75,22 @@
 	font-size: 0.95em;
 }
 
-.subpageBody header {
-	height: 7em;
+.subpageBody header,
+.subpageContentSection,
+.subpageNav {
 	visibility: hidden;
 	opacity: 0;
-	background: rgba(255, 255, 255, 0.9);
-	border-bottom: 1px solid #ebebeb;
 	-webkit-animation-name: pdg-opacity-fadein;
 		 -moz-animation-name: pdg-opacity-fadein;
 			-ms-animation-name: pdg-opacity-fadein;
 			 -o-animation-name: pdg-opacity-fadein;
 					animation-name: pdg-opacity-fadein;
+}
+
+.subpageBody header {
+	height: 7em;
+	background: rgba(255, 255, 255, 0.9);
+	border-bottom: 1px solid #ebebeb;
 }
 
 .subpageBody main {
@@ -178,6 +185,7 @@
 
 .subpageNav {
 	position: fixed;
+	z-index: 2;
 	top: -webkit-calc(50% + 3.5em);
 	top: -moz-calc(50% + 3.5em);
 	top: calc(50% + 3.5em);
@@ -209,7 +217,9 @@
 }
 
 
-.subpageAnimated header {
+.subpageAnimated header,
+.subpageAnimated .subpageContentSection,
+.subpageAnimated .subpageNav {
 	visibility: visible;
 	opacity: 1;
 }
@@ -220,6 +230,8 @@
 }
 
 .subpageAnimated header,
+.subpageAnimated .subpageContentSection,
+.subpageAnimated .subpageNav,
 .subpageAnimated .subpageWhiteBGLayer {
 	-webkit-animation: none;
 		 -moz-animation: none;
