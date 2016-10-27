@@ -642,10 +642,10 @@ h1 img,
 
 .menuBtn::before { /* This is used to draw the background of the "Menu" button when the menu is closed (coloured background) */
 	overflow: visible;
-	width: 102%;
-	height: 102%;
-	top: -1%;
-	left: -1%;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
 	-webkit-transform: scale(1); /* Make the element visible when the "Menu" button hasn't been clicked (doesn't have "is-active" class) */
 		 -moz-transform: scale(1); /* Make the element visible when the "Menu" button hasn't been clicked (doesn't have "is-active" class) */
 			-ms-transform: scale(1); /* Make the element visible when the "Menu" button hasn't been clicked (doesn't have "is-active" class) */
