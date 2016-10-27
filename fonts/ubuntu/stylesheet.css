@@ -9,3 +9,15 @@
 			 url("ubuntu-light.ttf")  format("truetype"),
 			 url("ubuntu-light.svg#ubuntu-light") format("svg");
 }
+
+@font-face {
+	font-family: "Ubuntu";
+	font-style: normal;
+	font-weight: 400;
+	src: url("ubuntu-regular.eot");
+	src: local("☺"),
+			 url("ubuntu-regular.woff2") format("woff2"),
+			 url("ubuntu-regular.woff") format("woff"),
+			 url("ubuntu-regular.ttf")  format("truetype"),
+			 url("ubuntu-regular.svg#ubuntu-regular") format("svg");
+}
