@@ -174,9 +174,6 @@ function domContentHasLoaded()
 
       // Hide the PdG logo
       headingImg.style.display = "none";
-
-      // Remove the menu button's background so that the expand/contract effect works
-      menuButton.style.background = "none"
     });
   }
 
@@ -201,10 +198,7 @@ function domContentHasLoaded()
 
     // In case it was changed (e.g. window resized), set the body's background colour back to white
     documentBodyElmnt.style.background = "#fff"
-
-    // Set the menu button's background back to red
-    menuButton.style.background = "ff3264"
-
+    
     // Expand the page's white background, thus hiding the menu
     $(cntntBackgroundSpan).velocity({translateZ: 0, scaleX: 1, scaleY: 1}, 500, "easeInCubic", function()
     {
