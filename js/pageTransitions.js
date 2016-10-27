@@ -9,6 +9,7 @@ function pageIsReadyForTransitions()
   var pageIsCurrentlyTransitioning = false; // Indicates whether we're currently loading another page or not
   var pageTransitionHasBeenTriggered = false; // Used to prevent confusing the popstate event emitted by Safari on page load with a back/forward
   var pathnameOfLastPageLoaded = "";
+  var hashOfLastPageLoaded = "";
 
   // Handle links that lead to another page
   $("body").on("click", "[data-type='goToOtherPage']", function(e)
@@ -28,10 +29,16 @@ function pageIsReadyForTransitions()
         // Check that we're not already transitioning to another page
         if (!pageIsCurrentlyTransitioning)
         {
+          var hashOfPageToGoTo;
+          if (checkThatObjectNotNullOrUndefined(this.hash))
+            hashOfPageToGoTo = this.hash;
+          else
+            hashOfPageToGoTo = "";
+
           // Either transition to another page or reload this one
           if (pathnameOfPageToGoTo != window.location.pathname)
           {
-            transitionToOtherPage(pathnameOfPageToGoTo, true);
+            transitionToOtherPage(pathnameOfPageToGoTo, hashOfPageToGoTo, true);
 
             // We've started our first transition (so we need to handle back/forward from now on as well - see handling function below)
             pageTransitionHasBeenTriggered = true;
@@ -56,9 +63,19 @@ function pageIsReadyForTransitions()
       {
         if (!pageIsCurrentlyTransitioning)
         {
+          var hashToGoTo;
+          if (checkThatObjectNotNullOrUndefined(location.hash))
+            hashToGoTo = location.hash;
+          else
+            hashToGoTo = "";
+
           if (location.pathname != pathnameOfLastPageLoaded)
           {
-            transitionToOtherPage(location.pathname, false);
+            transitionToOtherPage(location.pathname, hashToGoTo, false);
+          }
+          else if (hashToGoTo != hashOfLastPageLoaded)
+          {
+
           }
         }
       }
@@ -66,7 +83,7 @@ function pageIsReadyForTransitions()
     pageTransitionHasBeenTriggered = true;
   });
 
-  function transitionToOtherPage(pathnameOfPageToGoTo, addPageToHistory)
+  function transitionToOtherPage(pathnameOfPageToGoTo, hashOfPageToGoTo, addPageToHistory)
   {
     pageIsCurrentlyTransitioning = true;
 
@@ -78,12 +95,13 @@ function pageIsReadyForTransitions()
     {
       $(".pageTransitionLoadingBar").off("webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend");
       pathnameOfLastPageLoaded = pathnameOfPageToGoTo;
-      loadNewPageContent(pathnameOfPageToGoTo, addPageToHistory);
+      hashOfLastPageLoaded = hashOfPageToGoTo;
+      loadNewPageContent(pathnameOfPageToGoTo, hashOfPageToGoTo, addPageToHistory);
     });
   }
 
 
-  function loadNewPageContent(pathnameOfPageToLoad, addPageToHistory)
+  function loadNewPageContent(pathnameOfPageToLoad, hashOfPageToLoad, addPageToHistory)
   {
     // Create a new content wrapper for the <main> element by loading it from the page we are transitioning to
     var newMainContentWrapper = $("<div class='mainContentWrapper'></div>");
@@ -117,17 +135,17 @@ function pageIsReadyForTransitions()
           $("body").addClass("subpageAnimated");
         }
 
-        // Scroll to the right section of the page
-        subpageIsReadyForNavigation();
-
         // Add the page we've loaded to the window's history
         if (addPageToHistory)
         {
           if ((pathnameOfPageToLoad != window.location.href) && (pathnameOfPageToLoad != window.location.pathname))
           {
-            window.history.pushState({path: pathnameOfPageToLoad, pushCausedByTransition: true}, "", pathnameOfPageToLoad);
+            window.history.pushState({path: pathnameOfPageToLoad, pushCausedByTransition: true}, "", pathnameOfPageToLoad + hashOfPageToLoad);
           }
         }
+
+        // Scroll to the right section of the page
+        subpageIsReadyForNavigation();
 
         // Wait until for the first animation on the progress bar to finish
         $(".pageTransitionLoadingBar").one("webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend", function()
