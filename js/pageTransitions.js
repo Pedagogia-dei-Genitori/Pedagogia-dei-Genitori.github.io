@@ -154,6 +154,10 @@ function pageIsReadyForTransitions()
 
           // Were now free to transition to another page
           pageIsCurrentlyTransitioning = false;
+
+          // In case back/forward was pressed again
+          if (!((window.location.pathname == pathnameOfLastPageLoaded) && (window.location.hash) == hashOfLastPageLoaded))
+            transitionToOtherPage(window.location.pathname, window.location.hash, false);
         });
       }, 2250);
     });
