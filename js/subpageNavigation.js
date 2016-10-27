@@ -17,16 +17,21 @@ function subpageIsReadyForNavigation()
       e.preventDefault();
 
       // Scoll to the corresponding section of the page
-      scrollToPageElement($(this.hash + "_hash"));
+      scrollToPageElement(this.hash, true);
     });
   }
 
 
-  function scrollToPageElement(elmntToScrollTo)
+  function scrollToPageElement(elmntID, showScroll)
   {
+    var elmntToScrollTo = $(elmntID + "_hash");
     var targetToScrollTo = elmntToScrollTo.offset().top - getMainElmntTopMargin();
 
-    $("body,html").animate({"scrollTop":targetToScrollTo}, 600);
+    var scrollSpeed = 600;
+    if (!showScroll)
+      scrollSpeed = 0;
+
+    $("body,html").animate({"scrollTop":targetToScrollTo}, scrollSpeed);
   }
 
 
