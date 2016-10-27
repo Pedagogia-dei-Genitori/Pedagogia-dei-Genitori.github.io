@@ -67,7 +67,9 @@
 }
 
 .subpageBody header,
-.subpageContentSection {
+.subpageBody main,
+.subpageContentSection,
+.subpageNav {
 	font-size: 0.95em;
 }
 
@@ -84,6 +86,10 @@
 					animation-name: pdg-opacity-fadein;
 }
 
+.subpageBody main {
+	margin-top: 7em;
+}
+
 .subpageContentSection {
 	width: 100%;
 	height: auto;
@@ -92,10 +98,6 @@
 	min-height: calc(100% - 7em);
 	display: table;
 	border-bottom: 1px solid #ebebeb;
-}
-
-.subpageContentSection:first-of-type {
-	margin-top: 7em;
 }
 
 .subpageContentSection * {
@@ -174,6 +176,18 @@
 	margin-bottom: 2em;
 }
 
+.subpageNav {
+	position: fixed;
+	top: -webkit-calc(50% + 3.5em);
+	top: -moz-calc(50% + 3.5em);
+	top: calc(50% + 3.5em);
+	left: 5%;
+	-webkit-transform: translateY(-50%);
+		 -moz-transform: translateY(-50%);
+			-ms-transform: translateY(-50%);
+			 -o-transform: translateY(-50%);
+					transform: translateY(-50%);
+}
 
 /* Media queries */
 
