@@ -319,14 +319,6 @@ header {
 	height: 7em;
 }
 
-.subpageContentSection {
-	min-height: calc(100% - 7em);
-}
-
-.subpageContentSection:first-of-type {
-	margin-top: 7em;
-}
-
 header,
 h1 {
 	z-index: 3;
