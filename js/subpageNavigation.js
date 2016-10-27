@@ -8,6 +8,8 @@ function subpageIsReadyForNavigation()
     subpageContentSections = $(".subpageContentSection");
     subpageIntNavLinks = $(".subpageNavLink");
 
+    scrollToURLHash();
+
     // Capture clicks of the links in the page-specific nav
     subpageIntNavLinks.off("click");
     subpageIntNavLinks.on("click", function(e)
@@ -25,6 +27,13 @@ function subpageIsReadyForNavigation()
     var targetToScrollTo = elmntToScrollTo.offset().top - getMainElmntTopMargin();
 
     $("body,html").animate({"scrollTop":targetToScrollTo}, 600);
+  }
+
+
+  function scrollToURLHash()
+  {
+    var urlHash = window.location.hash;
+
   }
 
 
