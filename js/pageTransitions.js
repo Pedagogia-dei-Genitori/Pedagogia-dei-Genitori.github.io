@@ -117,6 +117,15 @@ function pageIsReadyForTransitions()
           $("body").addClass("subpageAnimated");
         }
 
+        // Add the page we've loaded to the window's history
+        if (addPageToHistory)
+        {
+          if ((pathnameOfPageToLoad != window.location.href) && (pathnameOfPageToLoad != window.location.pathname))
+          {
+            window.history.pushState({path: pathnameOfPageToLoad, pushCausedByTransition: true}, "", pathnameOfPageToLoad);
+          }
+        }
+
         // Wait until for the first animation on the progress bar to finish
         $(".pageTransitionLoadingBar").one("webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend", function()
         {
@@ -125,16 +134,7 @@ function pageIsReadyForTransitions()
           // Were now free to transition to another page
           pageIsCurrentlyTransitioning = false;
         });
-      }, 2000);
-
-      // Add the page we've loaded to the window's history
-      if (addPageToHistory)
-      {
-        if ((pathnameOfPageToLoad != window.location.href) && (pathnameOfPageToLoad != window.location.pathname))
-        {
-          window.history.pushState({path: pathnameOfPageToLoad, pushCausedByTransition: true}, "", pathnameOfPageToLoad);
-        }
-      }
+      }, 2500);
     });
   }
 }
