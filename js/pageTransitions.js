@@ -117,6 +117,9 @@ function pageIsReadyForTransitions()
           $("body").addClass("subpageAnimated");
         }
 
+        // Scroll to the right section of the page
+        subpageIsReadyForNavigation();
+
         // Add the page we've loaded to the window's history
         if (addPageToHistory)
         {
