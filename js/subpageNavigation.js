@@ -39,6 +39,13 @@ function subpageIsReadyForNavigation()
   {
     var urlHash = window.location.hash;
 
+    if (checkThatObjectNotNullOrUndefined(urlHash))
+    {
+      if (urlHash.length > 1)
+      {
+        scrollToPageElement(urlHash, false);
+      }
+    }
   }
 
 
