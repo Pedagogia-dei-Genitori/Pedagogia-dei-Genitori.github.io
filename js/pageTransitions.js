@@ -134,7 +134,7 @@ function pageIsReadyForTransitions()
           // Were now free to transition to another page
           pageIsCurrentlyTransitioning = false;
         });
-      }, 2500);
+      }, 2250);
     });
   }
 }

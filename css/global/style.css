@@ -154,11 +154,11 @@ main {
 			-ms-transform: translateX(-50%) translateY(-50%) scaleX(0.3);
 			 -o-transform: translateX(-50%) translateY(-50%) scaleX(0.3);
 					transform: translateX(-50%) translateY(-50%) scaleX(0.3);
-	-webkit-transition: visibility 0s 0.3s, -webkit-transform 0.6s 0.58s; /* Determines how quickly the progress bar appears and contracts (visibility should have .1 less delay and be .1 less than body::before contraction) */
-		 -moz-transition: visibility 0s 0.3s, -moz-transform 0.6s 0.58s; /* Determines how quickly the progress bar appears and contracts (visibility should have .1 less delay and be .1 less than body::before contraction) */
-			-ms-transition: visibility 0s 0.3s, -ms-transform 0.6s 0.58s; /* Determines how quickly the progress bar appears and contracts (visibility should have .1 less delay and be .1 less than body::before contraction) */
-			 -o-transition: visibility 0s 0.3s, -o-transform 0.6s 0.58s; /* Determines how quickly the progress bar appears and contracts (visibility should have .1 less delay and be .1 less than body::before contraction) */
-					transition: visibility 0s 0.3s, transform 0.6s 0.58s; /* Determines how quickly the progress bar appears and contracts (visibility should have .1 less delay and be .1 less than body::before contraction) */
+	-webkit-transition: visibility 0s 0.3s, -webkit-transform 0.6s 0.5s; /* Determines how quickly the progress bar appears and contracts (visibility should have .1 less delay and be .1 less than body::before contraction) */
+		 -moz-transition: visibility 0s 0.3s, -moz-transform 0.6s 0.5s; /* Determines how quickly the progress bar appears and contracts (visibility should have .1 less delay and be .1 less than body::before contraction) */
+			-ms-transition: visibility 0s 0.3s, -ms-transform 0.6s 0.5s; /* Determines how quickly the progress bar appears and contracts (visibility should have .1 less delay and be .1 less than body::before contraction) */
+			 -o-transition: visibility 0s 0.3s, -o-transform 0.6s 0.5s; /* Determines how quickly the progress bar appears and contracts (visibility should have .1 less delay and be .1 less than body::before contraction) */
+					transition: visibility 0s 0.3s, transform 0.6s 0.5s; /* Determines how quickly the progress bar appears and contracts (visibility should have .1 less delay and be .1 less than body::before contraction) */
 }
 
 .pageTransitionLoadingBar::before { /* This is the actual bar showing progress (which isn't actually the real progress, just an animation with preset duration) */
