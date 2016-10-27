@@ -85,8 +85,11 @@
 }
 
 .subpageContentSection {
-	min-height: calc(100% - 7em);
 	width: 100%;
+	height: auto;
+	min-height: -webkit-calc(100% - 7em);
+	min-height: -moz-calc(100% - 7em);
+	min-height: calc(100% - 7em);
 	display: table;
 	border-bottom: 1px solid #ebebeb;
 }
