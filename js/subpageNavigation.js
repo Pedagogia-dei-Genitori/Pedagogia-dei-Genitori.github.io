@@ -51,8 +51,11 @@ function subpageIsReadyForNavigation()
       if (urlHash.length > 1)
       {
         scrollToPageElement(urlHash, false);
+        return;
       }
     }
+
+    window.scroll(0,0);
   }
 
 

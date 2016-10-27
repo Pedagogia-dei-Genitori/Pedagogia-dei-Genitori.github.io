@@ -7,6 +7,7 @@ var pageLoadIsCompete = setInterval(function()
     if (hasClass(document.body, "subpageBody"))
     {
       subpageLoadHasBeenCompleted();
+      subpageIsReadyForNavigation();
     }
     else
     {
