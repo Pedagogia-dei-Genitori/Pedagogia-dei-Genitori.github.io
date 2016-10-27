@@ -10,6 +10,13 @@ function subpageIsReadyForNavigation()
 
     scrollToURLHash();
 
+    // When the window scrolls, make sure to set the correct menu item in the nav as selected
+    updateSelectedNavItem();
+    $(window).on("scroll", function()
+    {
+      updateSelectedNavItem();
+    });
+
     // Capture clicks of the links in the page-specific nav
     subpageIntNavLinks.off("click");
     subpageIntNavLinks.on("click", function(e)
@@ -46,6 +53,12 @@ function subpageIsReadyForNavigation()
         scrollToPageElement(urlHash, false);
       }
     }
+  }
+
+
+  function updateSelectedNavItem()
+  {
+
   }
 
 
