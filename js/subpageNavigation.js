@@ -58,7 +58,20 @@ function subpageIsReadyForNavigation()
 
   function updateSelectedNavItem()
   {
-
+    // Loop over the sections in the subpage
+    subpageContentSections.each(function()
+    {
+      var topOfContentSectionAboveHalfWindow = $(this).offset().top - ($(window).height() + getMainElmntTopMargin())/2 < $(window).scrollTop();
+      var bottomOfContentSectionBelowHalfWindow = $(this).offset().top + $(this).height() - ($(window).height() + getMainElmntTopMargin())/2 > $(window).scrollTop();
+      if (topOfContentSectionAboveHalfWindow && bottomOfContentSectionBelowHalfWindow)
+      {
+        $("#" + this.id + "_link").addClass("selectedSubpageNavLink");
+      }
+      else
+      {
+        $("#" + this.id + "_link").removeClass("selectedSubpageNavLink");
+      }
+    });
   }
 
 

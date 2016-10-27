@@ -197,6 +197,10 @@
 					transform: translateY(-50%);
 }
 
+.selectedSubpageNavLink {
+	color: red;
+}
+
 /* Media queries */
 
 @media screen and (max-width: 40em) {
