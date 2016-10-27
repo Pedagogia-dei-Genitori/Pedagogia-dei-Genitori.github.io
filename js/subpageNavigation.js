@@ -15,7 +15,7 @@ function subpageIsReadyForNavigation()
       e.preventDefault();
 
       // Scoll to the corresponding section of the page
-      scrollToPageElement($(this.hash));
+      scrollToPageElement($(this.hash + "_hash"));
     });
   }
 
