@@ -144,7 +144,8 @@ function domContentHasLoaded()
   });
 
   pageIsReadyForTransitions();
-
+  subpageIsReadyForNavigation();
+  
 
   function openMainNavMenu()
   {
