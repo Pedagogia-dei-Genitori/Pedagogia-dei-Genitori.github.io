@@ -22,6 +22,14 @@ function subpageIsReadyForNavigation()
 
   function scrollToPageElement(elmntToScrollTo)
   {
-    $("body,html").animate({"scrollTop":elmntToScrollTo.offset().top}, 600);
+    var targetToScrollTo = elmntToScrollTo.offset().top - getMainElmntTopMargin();
+
+    $("body,html").animate({"scrollTop":targetToScrollTo}, 600);
+  }
+
+
+  function getMainElmntTopMargin()
+  {
+    return $("main").outerHeight(true) - $("main").outerHeight();
   }
 }
