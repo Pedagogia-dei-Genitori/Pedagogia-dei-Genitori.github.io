@@ -622,45 +622,67 @@
 	}
 
 	.subpageBody header {
-		height: 7.5em;
+		height: 7em;
 		background: #fff;
-		border-bottom: 5em solid #ff3264;
+		border-bottom: 4em solid #ff3264;
 	}
 
 	.subpageBody main {
-		margin-top: 12.5em;
+		margin-top: 11em;
 	}
 
 	.subpageContentSection {
-		min-height: -webkit-calc(100% - 12.5em);
-		min-height: -moz-calc(100% - 12.5em);
-		min-height: calc(100% - 12.5em);
+		min-height: -webkit-calc(100% - 11em);
+		min-height: -moz-calc(100% - 11em);
+		min-height: calc(100% - 11em);
 	}
 
 	.subpageBody header h1 {
 		width: 7em;
 		height: 4.9em;
 		left: 2%;
-		top: 1.05em;
+		top: 1em;
 	}
 
 	.subpageBody .menuBtn,
 	.subpageBody .mainNavBackground,
 	.subpageBody .pageContentBackground {
 		right: 2.8%;
+		top: 0.7em;
+	}
+
+	.subpageBody .menuBtn span,
+	.subpageBody .menuBtn span::before,
+	.subpageBody .menuBtn span::after {
+		height: 4px;
+	}
+
+	.subpageBody .menuBtn span::before {
+		top: -10px;
+	}
+
+	.subpageBody .menuBtn span::after {
+		bottom: -10px;
 	}
 
 	.subpageContentSectionInnerWrapper {
-		width: 100%;
 		float: none;
+		width: -webkit-calc(100% - 4em);
+		width: -moz-calc(100% - 4em);
+		width: calc(100% - 4em);
+		margin: 0 auto;
+		padding-top: 1.4em;
+		padding-bottom: 1.4em;
 	}
 
 	.subpageContentSectionTitle {
+		width: 100%;
 		font-size: 2em;
 		text-align: center;
 	}
 
 	.subpageContentSectionParagraph {
+		width: 100%;
 		font-size: 0.9em;
 	}
 }
