@@ -605,19 +605,25 @@
 
 @media screen and (max-width: 50em) {
 	.subpageContentSectionInnerWrapper {
-		display: none;
+		/*display: none;*/
 	}
 }
 
 @media screen and (max-width: 40em) {
 	.subpageBody header {
-		position: absolute;
 		background: #fff;
 		border: none;
 	}
 
-	.subpageBody .menuBtn {
-		position: fixed;
+	.subpageNav {
+		display: none;
+	}
+
+	.subpageBody header,
+	.subpageBody main,
+	.subpageContentSection,
+	.subpageNav {
+		font-size: 0.8em;
 	}
 
 	.subpageContentSectionInnerWrapper {
