@@ -665,9 +665,9 @@
 
 	.subpageContentSectionInnerWrapper {
 		float: none;
-		width: -webkit-calc(100% - 3em);
-		width: -moz-calc(100% - 3em);
-		width: calc(100% - 3em);
+		width: -webkit-calc(100% - 2.4em);
+		width: -moz-calc(100% - 2.4em);
+		width: calc(100% - 2.4em);
 		margin: 0 auto;
 		padding-top: 2.6em;
 		padding-bottom: 1em;
@@ -685,7 +685,7 @@
 
 	.subpageContentSectionParagraph {
 		width: 100%;
-		font-size: 0.85em;
+		font-size: 0.8em;
 	}
 }
 
