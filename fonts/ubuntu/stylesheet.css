@@ -45,3 +45,27 @@
 			 url("ubuntu-italic.ttf")  format("truetype"),
 			 url("ubuntu-italic.svg#ubuntu-italic") format("svg");
 }
+
+@font-face {
+	font-family: "Ubuntu";
+	font-style: normal;
+	font-weight: 500;
+	src: url("ubuntu-medium.eot");
+	src: local("☺"),
+			 url("ubuntu-medium.woff2") format("woff2"),
+			 url("ubuntu-medium.woff") format("woff"),
+			 url("ubuntu-medium.ttf")  format("truetype"),
+			 url("ubuntu-medium.svg#ubuntu-medium") format("svg");
+}
+
+@font-face {
+	font-family: "Ubuntu";
+	font-style: normal;
+	font-weight: 600;
+	src: url("ubuntu-bold.eot");
+	src: local("☺"),
+			 url("ubuntu-bold.woff2") format("woff2"),
+			 url("ubuntu-bold.woff") format("woff"),
+			 url("ubuntu-bold.ttf")  format("truetype"),
+			 url("ubuntu-bold.svg#ubuntu-bold") format("svg");
+}
