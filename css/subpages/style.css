@@ -632,9 +632,7 @@
 	}
 
 	.subpageContentSection {
-		min-height: -webkit-calc(100% - 11em);
-		min-height: -moz-calc(100% - 11em);
-		min-height: calc(100% - 11em);
+		min-height: 0;
 	}
 
 	.subpageBody header h1 {
@@ -667,12 +665,16 @@
 
 	.subpageContentSectionInnerWrapper {
 		float: none;
-		width: -webkit-calc(100% - 2em);
-		width: -moz-calc(100% - 2em);
-		width: calc(100% - 2em);
+		width: -webkit-calc(100% - 3em);
+		width: -moz-calc(100% - 3em);
+		width: calc(100% - 3em);
 		margin: 0 auto;
-		padding-top: 1.4em;
-		padding-bottom: 1.4em;
+		padding-top: 2.6em;
+		padding-bottom: 1em;
+	}
+
+	.subpageContentSection:first-of-type .subpageContentSectionInnerWrapper {
+		padding-top: 1em;
 	}
 
 	.subpageContentSectionTitle {
