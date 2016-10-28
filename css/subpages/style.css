@@ -10,6 +10,11 @@
 	font-family: "Ubuntu", "Avenir Next", Avenir, "Lato", "HelveticaNeue-Light", "Helvetica Neue", "Montserrat", "Segoe UI", Helvetica, Arial, sans-serif;
 }
 
+.subpageNavTitle,
+.subpageNavList {
+	font-family: "Montserrat", "Avenir Next", "HelveticaNeue-Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
 
 /* Colours */
 
