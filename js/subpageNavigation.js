@@ -34,7 +34,7 @@ function subpageIsReadyForNavigation()
     var elmntToScrollTo = $(elmntID + "_hash");
     var targetToScrollTo = elmntToScrollTo.offset().top - getMainElmntTopMargin();
 
-    var scrollSpeed = 600;
+    var scrollSpeed = 300;
     if (!showScroll)
       scrollSpeed = 0;
 
@@ -61,29 +61,32 @@ function subpageIsReadyForNavigation()
 
   function updateSelectedNavItem()
   {
-    // Loop over the sections in the subpage
-    subpageContentSections.each(function()
+    setTimeout(function()
     {
-      var correspondingNavItem = $("#" + this.id + "_link");
-      var topOfContentSectionAboveHalfWindow = $(this).offset().top - ($(window).height() + getMainElmntTopMargin())/2 < $(window).scrollTop();
-      var bottomOfContentSectionBelowHalfWindow = $(this).offset().top + $(this).height() - ($(window).height() + getMainElmntTopMargin())/2 > $(window).scrollTop();
-      if (topOfContentSectionAboveHalfWindow && bottomOfContentSectionBelowHalfWindow)
+      // Loop over the sections in the subpage
+      subpageContentSections.each(function()
       {
-        if (!(correspondingNavItem.hasClass("selectedSubpageNavLink")))
+        var correspondingNavItem = $("#" + this.id + "_link");
+        var topOfContentSectionAboveHalfWindow = $(this).offset().top - ($(window).height() + getMainElmntTopMargin())/2 < $(window).scrollTop();
+        var bottomOfContentSectionBelowHalfWindow = $(this).offset().top + $(this).height() - ($(window).height() + getMainElmntTopMargin())/2 > $(window).scrollTop();
+        if (topOfContentSectionAboveHalfWindow && bottomOfContentSectionBelowHalfWindow)
         {
-          correspondingNavItem.addClass("selectedSubpageNavLink");
+          if (!(correspondingNavItem.hasClass("selectedSubpageNavLink")))
+          {
+            correspondingNavItem.addClass("selectedSubpageNavLink");
 
-          // Update the page's URL as well
-          if (!($("body").hasClass("pageTransitioning")))
-            window.history.replaceState({path: window.location.pathname, pushCausedByTransition: true}, "", window.location.pathname + "#" + this.id.substring(0, this.id.indexOf("_hash")));
+            // Update the page's URL as well
+            if (!($("body").hasClass("pageTransitioning")))
+              window.history.replaceState({path: window.location.pathname, pushCausedByTransition: true}, "", window.location.pathname + "#" + this.id.substring(0, this.id.indexOf("_hash")));
+          }
         }
-      }
-      else
-      {
-        if (correspondingNavItem.hasClass("selectedSubpageNavLink"))
-          correspondingNavItem.removeClass("selectedSubpageNavLink");
-      }
-    });
+        else
+        {
+          if (correspondingNavItem.hasClass("selectedSubpageNavLink"))
+            correspondingNavItem.removeClass("selectedSubpageNavLink");
+        }
+      });
+    }, 300);
   }
 
 
