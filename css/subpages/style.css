@@ -464,6 +464,151 @@
 	}
 }
 
+@media screen and (min-width: 90em) {
+	.subpageBody header h1,
+	.subpageNav {
+		left: 6%;
+	}
+
+	.subpageBody .menuBtn,
+	.subpageBody .mainNavBackground,
+	.subpageBody .pageContentBackground {
+		right: 6%;
+	}
+
+	.subpageContentSectionInnerWrapper {
+		padding-right: 6%;
+	}
+}
+
+@media screen and (min-width: 100em) {
+	.subpageBody header h1,
+	.subpageNav {
+		left: 9%;
+	}
+
+	.subpageBody .menuBtn,
+	.subpageBody .mainNavBackground,
+	.subpageBody .pageContentBackground {
+		right: 9%;
+	}
+
+	.subpageContentSectionInnerWrapper {
+		padding-right: 9%;
+	}
+}
+
+@media screen and (min-width: 110em) {
+	.subpageBody header h1,
+	.subpageNav {
+		left: 12%;
+	}
+
+	.subpageBody .menuBtn,
+	.subpageBody .mainNavBackground,
+	.subpageBody .pageContentBackground {
+		right: 12%;
+	}
+
+	.subpageContentSectionInnerWrapper {
+		padding-right: 12%;
+	}
+}
+
+@media screen and (min-width: 110em) {
+	.subpageBody header h1,
+	.subpageNav {
+		left: 15%;
+	}
+
+	.subpageBody .menuBtn,
+	.subpageBody .mainNavBackground,
+	.subpageBody .pageContentBackground {
+		right: 15%;
+	}
+
+	.subpageContentSectionInnerWrapper {
+		padding-right: 15%;
+	}
+}
+
+@media screen and (min-width: 130em) {
+	.subpageBody header h1,
+	.subpageNav {
+		left: 18%;
+	}
+
+	.subpageBody .menuBtn,
+	.subpageBody .mainNavBackground,
+	.subpageBody .pageContentBackground {
+		right: 18%;
+	}
+
+	.subpageContentSectionInnerWrapper {
+		padding-right: 18%;
+	}
+}
+
+@media screen and (max-width: 84em) {
+	.subpageContentSectionInnerWrapper {
+		width: 40em;
+	}
+}
+
+@media screen and (max-width: 80em) {
+	.subpageContentSectionInnerWrapper {
+		width: 38em;
+	}
+}
+
+@media screen and (max-width: 76.5em) {
+	.subpageContentSectionInnerWrapper {
+		width: 36em;
+	}
+}
+
+@media screen and (max-width: 73em) {
+	.subpageContentSectionInnerWrapper {
+		width: 34em;
+	}
+}
+
+@media screen and (max-width: 69em) {
+	.subpageContentSectionInnerWrapper {
+		width: 32em;
+	}
+}
+
+@media screen and (max-width: 65em) {
+	.subpageContentSectionInnerWrapper {
+		width: 30em;
+	}
+}
+
+@media screen and (max-width: 61.5em) {
+	.subpageContentSectionInnerWrapper {
+		width: 28em;
+	}
+}
+
+@media screen and (max-width: 58em) {
+	.subpageContentSectionInnerWrapper {
+		width: 26em;
+	}
+}
+
+@media screen and (max-width: 54em) {
+	.subpageContentSectionInnerWrapper {
+		width: 24em;
+	}
+}
+
+@media screen and (max-width: 50em) {
+	.subpageContentSectionInnerWrapper {
+		display: none;
+	}
+}
+
 @media screen and (max-width: 40em) {
 	.subpageBody header {
 		position: absolute;
