@@ -610,30 +610,44 @@
 }
 
 @media screen and (max-width: 40em) {
-	.subpageBody header {
-		background: #fff;
-		border-bottom: 5em solid #ff3264;
-	}
-
 	.subpageNav {
 		display: none;
-	}
-
-	.subpageBody header h1 {
-		left: 2%;
-	}
-
-	.subpageBody .menuBtn,
-	.subpageBody .mainNavBackground,
-	.subpageBody .pageContentBackground {
-		right: 2.5%;
 	}
 
 	.subpageBody header,
 	.subpageBody main,
 	.subpageContentSection,
 	.subpageNav {
-		font-size: 0.75em;
+		font-size: 0.8em;
+	}
+
+	.subpageBody header {
+		height: 7.5em;
+		background: #fff;
+		border-bottom: 5em solid #ff3264;
+	}
+
+	.subpageBody main {
+		margin-top: 12.5em;
+	}
+
+	.subpageContentSection {
+		min-height: -webkit-calc(100% - 12.5em);
+		min-height: -moz-calc(100% - 12.5em);
+		min-height: calc(100% - 12.5em);
+	}
+
+	.subpageBody header h1 {
+		width: 7em;
+		height: 4.9em;
+		left: 2%;
+		top: 1.05em;
+	}
+
+	.subpageBody .menuBtn,
+	.subpageBody .mainNavBackground,
+	.subpageBody .pageContentBackground {
+		right: 2.8%;
 	}
 
 	.subpageContentSectionInnerWrapper {
@@ -642,7 +656,7 @@
 	}
 
 	.subpageContentSectionTitle {
-		font-size: 1.8em;
+		font-size: 2em;
 		text-align: center;
 	}
 
