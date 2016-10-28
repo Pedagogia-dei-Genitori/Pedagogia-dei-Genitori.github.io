@@ -246,6 +246,7 @@ function domContentHasLoaded()
         animatingBackground = false;
         menuButton.classList.remove("is-animating");
         navBackgroundSpan.style.position = "absolute";
+        subpageIsReadyForNavigation();
       });
     }
   }
