@@ -37,6 +37,18 @@
 @font-face {
 	font-family: "Montserrat";
 	font-style: normal;
+	font-weight: 500;
+	src: url("montserrat-medium.eot");
+	src: local("☺"),
+			 url("montserrat-medium.woff2") format("woff2"),
+			 url("montserrat-medium.woff") format("woff"),
+			 url("montserrat-medium.ttf")  format("truetype"),
+			 url("montserrat-medium.svg#montserrat-medium") format("svg");
+}
+
+@font-face {
+	font-family: "Montserrat";
+	font-style: normal;
 	font-weight: 600;
 	src: url("montserrat-semibold.eot");
 	src: local("☺"),
