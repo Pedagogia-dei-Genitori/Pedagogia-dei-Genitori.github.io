@@ -45,7 +45,7 @@ function pageIsReadyForTransitions()
           }
           else
           {
-            window.location.reload(true);
+            transitionToSectionInPage(hashOfPageToGoTo);
           }
         }
       }
@@ -82,6 +82,35 @@ function pageIsReadyForTransitions()
     }
     pageTransitionHasBeenTriggered = true;
   });
+
+
+  function transitionToSectionInPage(hashOfSectionToGoTo)
+  {
+    if (hashOfSectionToGoTo === "")
+    {
+      // If there's no section specified by a fragment identifier, just reload the page
+      window.location.reload(true);
+    }
+    else
+    {
+      // Make sure the menu gets closed in case it's open
+      if ($(".menuBtn").hasClass("is-active"))
+        $(".menuBtn").click();
+
+      // Wait for the menu to close and scroll to the correct section by simulating a click on its corresponding internal nav item
+      setTimeout(function()
+      {
+        $(".subpageNavLink").each(function()
+        {
+          if (this.hash === hashOfSectionToGoTo)
+          {
+            this.click();
+          }
+        });
+      }, 700);
+    }
+  }
+
 
   function transitionToOtherPage(pathnameOfPageToGoTo, hashOfPageToGoTo, addPageToHistory)
   {
