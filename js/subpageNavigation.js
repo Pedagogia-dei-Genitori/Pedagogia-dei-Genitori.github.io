@@ -69,6 +69,8 @@ function subpageIsReadyForNavigation()
       if (topOfContentSectionAboveHalfWindow && bottomOfContentSectionBelowHalfWindow)
       {
         $("#" + this.id + "_link").addClass("selectedSubpageNavLink");
+        if (!($("body").hasClass("pageTransitioning")))
+          window.history.replaceState({path: window.location.pathname, pushCausedByTransition: false}, "", window.location.pathname + "#" + this.id.substring(0, this.id.indexOf("_hash")));
       }
       else
       {
