@@ -64,17 +64,24 @@ function subpageIsReadyForNavigation()
     // Loop over the sections in the subpage
     subpageContentSections.each(function()
     {
+      var correspondingNavItem = $("#" + this.id + "_link");
       var topOfContentSectionAboveHalfWindow = $(this).offset().top - ($(window).height() + getMainElmntTopMargin())/2 < $(window).scrollTop();
       var bottomOfContentSectionBelowHalfWindow = $(this).offset().top + $(this).height() - ($(window).height() + getMainElmntTopMargin())/2 > $(window).scrollTop();
       if (topOfContentSectionAboveHalfWindow && bottomOfContentSectionBelowHalfWindow)
       {
-        $("#" + this.id + "_link").addClass("selectedSubpageNavLink");
-        if (!($("body").hasClass("pageTransitioning")))
-          window.history.replaceState({path: window.location.pathname, pushCausedByTransition: false}, "", window.location.pathname + "#" + this.id.substring(0, this.id.indexOf("_hash")));
+        if (!(correspondingNavItem.hasClass("selectedSubpageNavLink")))
+        {
+          correspondingNavItem.addClass("selectedSubpageNavLink");
+
+          // Update the page's URL as well
+          if (!($("body").hasClass("pageTransitioning")))
+            window.history.replaceState({path: window.location.pathname, pushCausedByTransition: true}, "", window.location.pathname + "#" + this.id.substring(0, this.id.indexOf("_hash")));
+        }
       }
       else
       {
-        $("#" + this.id + "_link").removeClass("selectedSubpageNavLink");
+        if (correspondingNavItem.hasClass("selectedSubpageNavLink"))
+          correspondingNavItem.removeClass("selectedSubpageNavLink");
       }
     });
   }
