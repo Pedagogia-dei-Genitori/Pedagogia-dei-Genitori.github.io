@@ -26,6 +26,14 @@
 	color: #222222;
 }
 
+.subpageNavTitle {
+	color: #b6002e;
+}
+
+.subpageContentSection {
+	background-color: #fff;
+}
+
 .subpageContentSection:nth-of-type(even) {
 	background-color: #f5f5f5;
 }
@@ -197,6 +205,14 @@
 			-ms-transform: translateY(-50%);
 			 -o-transform: translateY(-50%);
 					transform: translateY(-50%);
+}
+
+.subpageNavTitle {
+	width: 100%;
+	font-weight: 600;
+	font-size: 1.25em;
+	text-transform: uppercase;
+	cursor: default;
 }
 
 .selectedSubpageNavLink {
