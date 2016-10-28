@@ -125,6 +125,7 @@ function domContentHasLoaded()
       if (this.classList.contains("is-active"))
       { // We need to close the main navigation menu
         closeMainNavMenu();
+        subpageIsReadyForNavigation();
       }
       else
       { // We need to open the main navigation menu
@@ -145,7 +146,7 @@ function domContentHasLoaded()
 
   pageIsReadyForTransitions();
   subpageIsReadyForNavigation();
-  
+
 
   function openMainNavMenu()
   {
@@ -199,7 +200,7 @@ function domContentHasLoaded()
 
     // In case it was changed (e.g. window resized), set the body's background colour back to white
     documentBodyElmnt.style.background = "#fff"
-    
+
     // Expand the page's white background, thus hiding the menu
     $(cntntBackgroundSpan).velocity({translateZ: 0, scaleX: 1, scaleY: 1}, 500, "easeInCubic", function()
     {
@@ -246,7 +247,6 @@ function domContentHasLoaded()
         animatingBackground = false;
         menuButton.classList.remove("is-animating");
         navBackgroundSpan.style.position = "absolute";
-        subpageIsReadyForNavigation();
       });
     }
   }
