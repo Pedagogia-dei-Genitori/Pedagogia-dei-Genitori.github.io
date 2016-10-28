@@ -641,7 +641,7 @@
 		width: 7em;
 		height: 4.9em;
 		left: 2%;
-		top: 1em;
+		top: 0.9em;
 	}
 
 	.subpageBody .menuBtn,
@@ -667,9 +667,9 @@
 
 	.subpageContentSectionInnerWrapper {
 		float: none;
-		width: -webkit-calc(100% - 4em);
-		width: -moz-calc(100% - 4em);
-		width: calc(100% - 4em);
+		width: -webkit-calc(100% - 2em);
+		width: -moz-calc(100% - 2em);
+		width: calc(100% - 2em);
 		margin: 0 auto;
 		padding-top: 1.4em;
 		padding-bottom: 1.4em;
