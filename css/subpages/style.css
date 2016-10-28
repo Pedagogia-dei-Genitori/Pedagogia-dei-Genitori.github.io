@@ -32,7 +32,9 @@
 .selectedSubpageNavLink,
 .selectedSubpageNavLink:hover,
 .selectedSubpageNavLink:visited,
-.selectedSubpageNavLink:active {
+.selectedSubpageNavLink:active,
+.subpageNavListItem::before,
+.subpageNavListItem::after {
 	color: #ff3264;
 }
 
@@ -283,10 +285,9 @@
 	right: 0;
 	bottom: 0;
 	left: 0;
-	color: #d94f5c;
 	border-style: solid;
-	-webkit-transition: -webkit-transform 0.2s cubic-bezier(1, 0.6, 0, 1);
-	transition: transform 0.2s cubic-bezier(1, 0.6, 0, 1);
+	-webkit-transition: -webkit-transform 0s cubic-bezier(1, 0.6, 0, 1);
+	transition: transform 0s cubic-bezier(1, 0.6, 0, 1);
 }
 
 .subpageNavListItem::before {
