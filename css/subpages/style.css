@@ -33,21 +33,23 @@
 .selectedSubpageNavLink:hover,
 .selectedSubpageNavLink:visited,
 .selectedSubpageNavLink:active,
+.subpageNavTitle,
+.subpageNavTitle::before,
 .subpageNavListItem::before,
 .subpageNavListItem::after {
 	color: #ff3264;
+}
+
+.subpageNavTitle {
+	border-color: #ff3264;
 }
 
 .subpageContentSectionParagraph {
 	color: #222222;
 }
 
+.subpageContentSection,
 .subpageNavTitle {
-	background-color: #ff3264;
-	color: #fff;
-}
-
-.subpageContentSection {
 	background-color: #fff;
 }
 
@@ -187,7 +189,7 @@
 	margin-left: auto;
 	margin-right: auto;
 	padding-top: 2em;
-	padding-bottom: 4em;
+	padding-bottom: 2em;
 	padding-right: 5%;
 	width: 45em;
 	float: right;
@@ -225,14 +227,20 @@
 }
 
 .subpageNavTitle {
-	width: 100%;
+	-webkit-box-sizing: border-box;
+		 -moz-box-sizing: border-box;
+		 			box-sizing: border-box;
+	position: relative;
+	top: 0;
+	left: 0;
+	border: 4px solid;
 	font-weight: 600;
 	font-size: 1.15em;
 	line-height: 1.3em;
 	text-align: center;
 	text-transform: uppercase;
-	padding: 0.3em 0em;
-	margin-bottom: 0.8em;
+	padding: 0.3em 0;
+	margin-bottom: 1.6em;
 	cursor: default;
 	-webkit-user-select: none;
 		 -moz-user-select: none;
@@ -277,27 +285,36 @@
 	cursor: pointer;
 }
 
-
-
+.subpageNavTitle::before,
 .subpageNavListItem::before,
 .subpageNavListItem::after {
-	content: '';
+	content: "";
 	position: absolute;
-	z-index: -1;
 	top: 0;
-	right: 0;
 	bottom: 0;
 	left: 0;
+	right: 0;
+	z-index: -1;
 	border-style: solid;
-	-webkit-transition: -webkit-transform 0s cubic-bezier(1, 0.6, 0, 1);
-	transition: transform 0s cubic-bezier(1, 0.6, 0, 1);
+	-webkit-transition: all 0s;
+		 -moz-transition: all 0s;
+			-ms-transition: all 0s;
+			 -o-transition: all 0s;
+					transition: all 0s;
 }
 
+.subpageNavTitle::before,
 .subpageNavListItem::before {
-	border-width: 2px 0 0;
-	-webkit-transform: translateY(calc(100% - 2px));
-	transform: translateY(calc(100% - 2px));
+	border-width: 0 2px 0 0;
 }
+
+.subpageNavTitle::before {
+	right: -4px;
+	top: 100%;
+	height: calc(1.6em + 4px);
+}
+
+
 
 .subpageNavListItem::after {
 	right: -1px;
@@ -310,30 +327,20 @@
 }
 
 .subpageNavListItem.selectedSubpageNavListItem::before {
-	-webkit-transform: translate(0, 0);
-	transform: translate(0, 0);
-	-webkit-transition-timing-function: cubic-bezier(1, 0.6, 0, 1.22);
-	transition-timing-function: cubic-bezier(1, 0.6, 0, 1.22);
+	-webkit-transform: translateX(calc(2px - 100%));
+	transform: translateX(calc(2px - 100%));
 }
 
 .subpageNavListItem.selectedSubpageNavListItem::after {
 	-webkit-transform: scale(1);
 	transform: scale(1);
-	-webkit-transition-timing-function: cubic-bezier(1, 0.6, 0, 1.22);
-	transition-timing-function: cubic-bezier(1, 0.6, 0, 1.22);
 }
-
-.subpageNavListItem::before {
-		border-width: 0 2px 0 0;
-		-webkit-transform: translateX(calc(2px - 100%));
-		transform: translateX(calc(2px - 100%));
-	}
 
 	.subpageNavListItem::after {
 		top: -1px;
 		right: 0;
 		bottom: -1px;
-		left: 0;
+		left: 1px;
 		border-width: 2px 0;
 		-webkit-transform: scale(0, 1);
 		transform: scale(0, 1);
