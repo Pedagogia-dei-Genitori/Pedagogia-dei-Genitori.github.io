@@ -43,7 +43,8 @@
 }
 
 .subpageNavTitle {
-	color: #b6002e;
+	background-color: #ff3264;
+	color: #fff;
 }
 
 .subpageContentSection {
@@ -226,10 +227,12 @@
 .subpageNavTitle {
 	width: 100%;
 	font-weight: 600;
-	font-size: 1.25em;
+	font-size: 1.15em;
+	line-height: 1.3em;
 	text-align: center;
 	text-transform: uppercase;
-	margin-bottom: 1.6em;
+	padding: 0.3em 0em;
+	margin-bottom: 0.8em;
 	cursor: default;
 	-webkit-user-select: none;
 		 -moz-user-select: none;
