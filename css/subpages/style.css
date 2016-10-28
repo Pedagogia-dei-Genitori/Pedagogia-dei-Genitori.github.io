@@ -30,6 +30,13 @@
 	color: #b6002e;
 }
 
+.subpageNavLink,
+.subpageNavLink:hover,
+.subpageNavLink:visited,
+.subpageNavLink:active {
+	color: #929292;
+}
+
 .subpageContentSection {
 	background-color: #fff;
 }
