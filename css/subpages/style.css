@@ -612,18 +612,36 @@
 @media screen and (max-width: 40em) {
 	.subpageBody header {
 		background: #fff;
-		border: none;
+		border-bottom: 40px solid red;
 	}
 
 	.subpageNav {
 		display: none;
 	}
 
+	.subpageBody header h1 {
+		left: 1%;
+	}
+
+	.subpageBody .menuBtn,
+	.subpageBody .mainNavBackground,
+	.subpageBody .pageContentBackground {
+		right: 1.5%;
+	}
+
 	.subpageBody header,
 	.subpageBody main,
 	.subpageContentSection,
 	.subpageNav {
-		font-size: 0.8em;
+		font-size: 0.7em;
+	}
+
+	.subpageContentSectionTitle {
+		font-size: 1.5em;
+	}
+
+	.subpageContentSectionParagraph {
+		font-size: 0.9em;
 	}
 
 	.subpageContentSectionInnerWrapper {
