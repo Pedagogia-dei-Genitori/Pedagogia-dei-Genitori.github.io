@@ -74,6 +74,7 @@ function subpageIsReadyForNavigation()
           if (!(correspondingNavItem.hasClass("selectedSubpageNavLink")))
           {
             correspondingNavItem.addClass("selectedSubpageNavLink");
+            correspondingNavItem.parent().addClass("selectedSubpageNavListItem");
 
             // Update the page's URL as well
             if (!($("body").hasClass("pageTransitioning")))
@@ -84,6 +85,7 @@ function subpageIsReadyForNavigation()
         {
           if (correspondingNavItem.hasClass("selectedSubpageNavLink"))
             correspondingNavItem.removeClass("selectedSubpageNavLink");
+            correspondingNavItem.parent().removeClass("selectedSubpageNavListItem");
         }
       });
     }, 300);
