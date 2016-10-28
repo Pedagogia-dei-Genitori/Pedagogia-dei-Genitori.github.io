@@ -75,7 +75,7 @@ function pageIsReadyForTransitions()
           }
           else if (hashToGoTo != hashOfLastPageLoaded)
           {
-
+            transitionToSectionInPage(hashToGoTo);
           }
         }
       }
