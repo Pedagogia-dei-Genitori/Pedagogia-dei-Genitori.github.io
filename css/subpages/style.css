@@ -658,9 +658,26 @@
 @media screen and (max-width: 46em) {
 	.subpageBody header,
 	.subpageBody main,
-	.subpageContentSection,
-	.subpageNav {
+	.subpageContentSection {
 		font-size: 0.9em;
+	}
+
+	.subpageNav {
+		font-size: 0.9rem;
+		position: fixed;
+		width: 100%;
+		height: 4em;
+		top: 7em;
+		left: 0;
+		right: 0;
+		margin: 0;
+		padding: 0;
+		-webkit-transform: none;
+			 -moz-transform: none;
+				-ms-transform: none;
+				 -o-transform: none;
+						transform: none;
+		background-color: #ff3264;
 	}
 
 	.subpageBody header {
