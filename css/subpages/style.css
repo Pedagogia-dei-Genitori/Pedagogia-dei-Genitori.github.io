@@ -740,6 +740,7 @@
 	}
 
 	.subpageNavListItem {
+		visibility: hidden;
 		top: -webkit-calc(4em + 1px);
 		top: -moz-calc(4em + 1px);
 		top: calc(4em + 1px);
@@ -767,6 +768,7 @@
 	}
 
 	.narrowWidthSubpageNav .subpageNavListItem {
+		visibility: visible;
 		-webkit-transform: perspective(365px) rotateX(0deg);
 			 -moz-transform: perspective(365px) rotateX(0deg);
 				-ms-transform: perspective(365px) rotateX(0deg);
