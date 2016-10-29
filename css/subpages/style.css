@@ -670,7 +670,7 @@
 	.subpageBody header {
 		height: 7em;
 		background: #fff;
-		border-bottom: 4em solid #ff3264;
+		border: none;
 	}
 
 	.subpageBody main {
