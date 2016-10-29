@@ -604,12 +604,55 @@
 }
 
 @media screen and (max-width: 50em) {
+	.subpageBody header,
+	.subpageBody main,
+	.subpageContentSection,
+	.subpageNav {
+		font-size: 0.9em;
+	}
+
+	.subpageBody .menuBtn span,
+	.subpageBody .menuBtn span::before,
+	.subpageBody .menuBtn span::after {
+		height: 4px;
+	}
+
+	.subpageBody .menuBtn span::before {
+		top: -10.5px;
+	}
+
+	.subpageBody .menuBtn span::after {
+		bottom: -10.5px;
+	}
+
+	.subpageContentSectionTitle {
+		font-size: 2.2em;
+	}
+
+	.subpageContentSectionParagraph {
+		font-size: 0.9em;
+	}
+
+	.subpageBody header h1 {
+		left: 3%;
+	}
+
+	.subpageBody .menuBtn,
+	.subpageBody .mainNavBackground,
+	.subpageBody .pageContentBackground {
+		right: 3%;
+	}
+
 	.subpageContentSectionInnerWrapper {
-		/*display: none;*/
+		padding-right: 3%;
+	}
+
+	.subpageNav {
+		left: 3%;
 	}
 }
 
-@media screen and (max-width: 40em) {
+@media screen and (max-width: 46em) {
 	.subpageNav {
 		display: none;
 	}
@@ -618,7 +661,7 @@
 	.subpageBody main,
 	.subpageContentSection,
 	.subpageNav {
-		font-size: 0.8em;
+		font-size: 0.9em;
 	}
 
 	.subpageBody header {
@@ -633,6 +676,109 @@
 
 	.subpageContentSection {
 		min-height: 0;
+	}
+
+	.subpageBody header h1 {
+		left: 3%;
+	}
+
+	.subpageBody .menuBtn,
+	.subpageBody .mainNavBackground,
+	.subpageBody .pageContentBackground {
+		right: 3%;
+	}
+
+	.subpageContentSectionInnerWrapper {
+		padding-right: 3%;
+	}
+
+	.subpageNav {
+		left: 3%;
+	}
+
+	.subpageContentSectionInnerWrapper {
+		float: none;
+		width: -webkit-calc(100% - 8em);
+		width: -moz-calc(100% - 8em);
+		width: calc(100% - 8em);
+		margin: 0 auto;
+		padding-top: 2.6em;
+		padding-bottom: 1em;
+	}
+
+	.subpageContentSection:first-of-type .subpageContentSectionInnerWrapper {
+		padding-top: 1em;
+	}
+
+	.subpageContentSectionTitle {
+		width: 100%;
+		font-size: 2.2em;
+		text-align: center;
+	}
+
+	.subpageContentSectionParagraph {
+		width: 100%;
+		font-size: 0.9em;
+	}
+}
+
+@media screen and (max-width: 41em) {
+	.subpageBody header,
+	.subpageBody main,
+	.subpageContentSection,
+	.subpageNav {
+		font-size: 0.85em;
+	}
+
+	.subpageBody header h1 {
+		width: 7.25em;
+		height: 5.08em;
+		left: 2.5%;
+		top: 0.94em;
+	}
+
+	.subpageBody .menuBtn,
+	.subpageBody .mainNavBackground,
+	.subpageBody .pageContentBackground {
+		right: 2.9%;
+		top: 0.75em;
+	}
+
+	.subpageBody .menuBtn span,
+	.subpageBody .menuBtn span::before,
+	.subpageBody .menuBtn span::after {
+		height: 4px;
+	}
+
+	.subpageBody .menuBtn span::before {
+		top: -10.25px;
+	}
+
+	.subpageBody .menuBtn span::after {
+		bottom: -10.25px;
+	}
+
+	.subpageContentSectionInnerWrapper {
+		width: -webkit-calc(100% - 5.2em);
+		width: -moz-calc(100% - 5.2em);
+		width: calc(100% - 5.2em);
+	}
+
+	.subpageContentSectionTitle {
+		font-size: 2.1em;
+	}
+
+	.subpageContentSectionParagraph {
+		font-size: 0.85em;
+	}
+}
+
+@media screen and (max-width: 36em) {
+	.subpageBody header,
+	.subpageBody main,
+	.subpageContentSection,
+	.subpageNav {
+		font-size: 0.8em;
 	}
 
 	.subpageBody header h1 {
@@ -664,27 +810,16 @@
 	}
 
 	.subpageContentSectionInnerWrapper {
-		float: none;
 		width: -webkit-calc(100% - 2.4em);
 		width: -moz-calc(100% - 2.4em);
 		width: calc(100% - 2.4em);
-		margin: 0 auto;
-		padding-top: 2.6em;
-		padding-bottom: 1em;
-	}
-
-	.subpageContentSection:first-of-type .subpageContentSectionInnerWrapper {
-		padding-top: 1em;
 	}
 
 	.subpageContentSectionTitle {
-		width: 100%;
 		font-size: 2em;
-		text-align: center;
 	}
 
 	.subpageContentSectionParagraph {
-		width: 100%;
 		font-size: 0.8em;
 	}
 }
