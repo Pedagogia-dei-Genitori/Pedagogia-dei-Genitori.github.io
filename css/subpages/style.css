@@ -1133,53 +1133,53 @@
 	.subpageBody header,
 	.subpageBody main,
 	.subpageContentSection {
-		font-size: 0.7em;
+		font-size: 0.8em;
 	}
 
 	.subpageNav {
-		font-size: 0.7rem;
+		font-size: 0.8rem;
 	}
 
 	.subpageBody header h1 {
-		width: 6.5em;
-		height: 4.55em;
-		left: 1%;
-		top: 1.06em;
+		width: 7em;
+		height: 4.9em;
+		left: 2%;
+		top: 0.98em;
 	}
 
 	.subpageBody .menuBtn,
 	.subpageBody .mainNavBackground,
 	.subpageBody .pageContentBackground {
-		right: 2.6%;
-		top: 0.6em;
+		right: 2.8%;
+		top: 0.7em;
 	}
 
 	.subpageBody .menuBtn span,
 	.subpageBody .menuBtn span::before,
 	.subpageBody .menuBtn span::after {
-		height: 3.5px;
+		height: 4px;
 	}
 
 	.subpageBody .menuBtn span::before {
-		top: -9.5px;
+		top: -10px;
 	}
 
 	.subpageBody .menuBtn span::after {
-		bottom: -9.5px;
+		bottom: -10px;
 	}
 
 	.subpageContentSectionInnerWrapper {
-		width: -webkit-calc(100% - 1em);
-		width: -moz-calc(100% - 1em);
-		width: calc(100% - 1em);
+		width: -webkit-calc(100% - 2.4em);
+		width: -moz-calc(100% - 2.4em);
+		width: calc(100% - 2.4em);
 	}
 
 	.subpageContentSectionTitle {
-		font-size: 1.8em;
+		font-size: 2em;
 	}
 
 	.subpageContentSectionParagraph {
-		font-size: 0.7em;
+		font-size: 2em;
 	}
 }
 
