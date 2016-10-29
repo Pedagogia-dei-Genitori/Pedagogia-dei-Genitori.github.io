@@ -656,10 +656,6 @@
 }
 
 @media screen and (max-width: 46em) {
-	.subpageNav {
-		display: none;
-	}
-
 	.subpageBody header,
 	.subpageBody main,
 	.subpageContentSection,
