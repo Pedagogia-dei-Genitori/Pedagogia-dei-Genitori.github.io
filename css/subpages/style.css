@@ -316,9 +316,9 @@
 	top: -webkit-calc(100% - 1px);
 	top: -moz-calc(100% - 1px);
 	top: calc(100% - 1px);
-	height: -webkit-calc(1.6em + 5px);
-	height: -moz-calc(1.6em + 5px);
-	height: calc(1.6em + 5px);
+	height: -webkit-calc(1.6em + 6px);
+	height: -moz-calc(1.6em + 6px);
+	height: calc(1.6em + 6px);
 }
 
 .subpageNavListItem::after {
