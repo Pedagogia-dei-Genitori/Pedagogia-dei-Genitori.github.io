@@ -745,7 +745,7 @@
 		top: -moz-calc(4em + 1px);
 		top: calc(4em + 1px);
 		width: 90%;
-		height: 3.5em;
+		height: 0;
 		margin: 0 auto;
 		overflow: hidden;
 		background-color: #ff3264;
@@ -768,6 +768,7 @@
 	}
 
 	.narrowWidthSubpageNav .subpageNavListItem {
+		height: 3.5em;
 		visibility: visible;
 		-webkit-transform: perspective(365px) rotateX(0deg);
 			 -moz-transform: perspective(365px) rotateX(0deg);
