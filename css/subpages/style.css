@@ -684,6 +684,33 @@
 		background-color: #ff3264;
 	}
 
+	.subpageNavTitle {
+		position: absolute;
+		width: 100%;
+		top: 52%;
+		left: 0;
+		right: 0;
+		-webkit-transform: translateY(-50%);
+			 -moz-transform: translateY(-50%);
+				-ms-transform: translateY(-50%);
+				 -o-transform: translateY(-50%);
+						transform: translateY(-50%);
+		border: none;
+		font-size: 1.6em;
+		font-weight: 600;
+		text-align: center;
+		text-transform: uppercase;
+		vertical-align: middle;
+		padding: 0;
+		margin: 0;
+		color: #980026;
+		cursor: pointer;
+		-webkit-user-select: none;
+			 -moz-user-select: none;
+				-ms-user-select: none;
+						user-select: none;
+	}
+
 	.subpageNavTitleBr {
 		display: none;
 	}
