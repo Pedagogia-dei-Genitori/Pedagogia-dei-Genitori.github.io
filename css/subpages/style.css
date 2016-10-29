@@ -933,7 +933,7 @@
 		padding-right: 0;
 	}
 
-	.subpageContentSection:first-of-type .subpageContentSectionInnerWrapper {
+	.subpageContentSectionInnerWrapper {
 		padding-top: 1.8em;
 	}
 
