@@ -688,6 +688,14 @@
 		display: none;
 	}
 
+	.subpageNavTitle::before,
+	.subpageNavListItem::before,
+	.subpageNavListItem::after {
+		display: none;
+		visibility: hidden;
+		opacity: 0;
+	}
+
 	.subpageBody header {
 		height: 7em;
 		background: #fff;
