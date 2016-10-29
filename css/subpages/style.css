@@ -704,7 +704,7 @@
 		text-align: center;
 		text-transform: uppercase;
 		vertical-align: middle;
-		padding: 0;
+		padding: 0.5em 0em;
 		margin: 0;
 		color: #980026;
 		cursor: pointer;
@@ -723,6 +723,130 @@
 		margin: 0 auto;
 		background-color: #ff3264;
 		border-bottom: 1px solid #c70026;
+		-webkit-transform-origin: 50% 0%;
+			 -moz-transform-origin: 50% 0%;
+			  -ms-transform-origin: 50% 0%;
+				 -o-transform-origin: 50% 0%;
+				 		transform-origin: 50% 0%;
+		-webkit-transform: perspective(365px) rotateX(-90deg);
+			 -moz-transform: perspective(365px) rotateX(-90deg);
+				-ms-transform: perspective(365px) rotateX(-90deg);
+				 -o-transform: perspective(365px) rotateX(-90deg);
+						transform: perspective(365px) rotateX(-90deg);
+		-webkit-transition: all 0.15s linear 0s;
+			 -moz-transition: all 0.15s linear 0s;
+				-ms-transition: all 0.15s linear 0s;
+				 -o-transition: all 0.15s linear 0s;
+						transition: all 0.15s linear 0s;
+	}
+
+	.narrowWidthSubpageNav .subpageNavListItem {
+		-webkit-transform: perspective(365px) rotateX(0deg);
+			 -moz-transform: perspective(365px) rotateX(0deg);
+				-ms-transform: perspective(365px) rotateX(0deg);
+				 -o-transform: perspective(365px) rotateX(0deg);
+						transform: perspective(365px) rotateX(0deg);
+		-webkit-transition: all 0.15s linear 0s;
+			 -moz-transition: all 0.15s linear 0s;
+				-ms-transition: all 0.15s linear 0s;
+				 -o-transition: all 0.15s linear 0s;
+						transition: all 0.15s linear 0s;
+	}
+
+	.subpageNavListItem:nth-child(1) {
+		-webkit-transition-delay: 0.75s;
+			 -moz-transition-delay: 0.75s;
+				-ms-transition-delay: 0.75s;
+				 -o-transition-delay: 0.75s;
+						transition-delay: 0.75s;
+	}
+
+	.subpageNavListItem:nth-child(2) {
+		-webkit-transition-delay: 0.6s;
+			 -moz-transition-delay: 0.6s;
+				-ms-transition-delay: 0.6s;
+				 -o-transition-delay: 0.6s;
+						transition-delay: 0.6s;
+	}
+
+	.subpageNavListItem:nth-child(3) {
+		-webkit-transition-delay: 0.45s;
+			 -moz-transition-delay: 0.45s;
+				-ms-transition-delay: 0.45s;
+				 -o-transition-delay: 0.45s;
+						transition-delay: 0.45s;
+	}
+
+	.subpageNavListItem:nth-child(4) {
+		-webkit-transition-delay: 0.3s;
+			 -moz-transition-delay: 0.3s;
+				-ms-transition-delay: 0.3s;
+				 -o-transition-delay: 0.3s;
+						transition-delay: 0.3s;
+	}
+
+	.subpageNavListItem:nth-child(5) {
+		-webkit-transition-delay: 0.15s;
+			 -moz-transition-delay: 0.15s;
+				-ms-transition-delay: 0.15s;
+				 -o-transition-delay: 0.15s;
+						transition-delay: 0.15s;
+	}
+
+	.subpageNavListItem:nth-child(6) {
+		-webkit-transition-delay: 0s;
+			 -moz-transition-delay: 0s;
+				-ms-transition-delay: 0s;
+				 -o-transition-delay: 0s;
+						transition-delay: 0s;
+	}
+
+	.narrowWidthSubpageNav .subpageNavListItem:nth-child(1) {
+		-webkit-transition-delay: 0s;
+			 -moz-transition-delay: 0s;
+				-ms-transition-delay: 0s;
+				 -o-transition-delay: 0s;
+						transition-delay: 0s;
+	}
+
+	.narrowWidthSubpageNav .subpageNavListItem:nth-child(2) {
+		-webkit-transition-delay: 0.15s;
+			 -moz-transition-delay: 0.15s;
+				-ms-transition-delay: 0.15s;
+				 -o-transition-delay: 0.15s;
+						transition-delay: 0.15s;
+	}
+
+	.narrowWidthSubpageNav .subpageNavListItem:nth-child(3) {
+		-webkit-transition-delay: 0.3s;
+			 -moz-transition-delay: 0.3s;
+				-ms-transition-delay: 0.3s;
+				 -o-transition-delay: 0.3s;
+						transition-delay: 0.3s;
+	}
+
+	.narrowWidthSubpageNav .subpageNavListItem:nth-child(4) {
+		-webkit-transition-delay: 0.45s;
+			 -moz-transition-delay: 0.45s;
+				-ms-transition-delay: 0.45s;
+				 -o-transition-delay: 0.45s;
+						transition-delay: 0.45s;
+	}
+
+	.narrowWidthSubpageNav .subpageNavListItem:nth-child(5) {
+		-webkit-transition-delay: 0.6s;
+			 -moz-transition-delay: 0.6s;
+				-ms-transition-delay: 0.6s;
+				 -o-transition-delay: 0.6s;
+						transition-delay: 0.6s;
+	}
+
+	.narrowWidthSubpageNav .subpageNavListItem:nth-child(6) {
+		-webkit-transition-delay: 0.75s;
+			 -moz-transition-delay: 0.75s;
+				-ms-transition-delay: 0.75s;
+				 -o-transition-delay: 0.75s;
+						transition-delay: 0.75s;
 	}
 
 	.subpageNavLink,
@@ -734,11 +858,10 @@
 		left: 0;
 		right: 0;
 		top: 50%;
-		font-size: 1.4em;
 		font-weight: 300;
 		color: #faf2e0;
 		margin: 0;
-		padding: 1em 0;
+		padding: 0;
 		-webkit-transform: translateY(-50%);
 			 -moz-transform: translateY(-50%);
 				-ms-transform: translateY(-50%);
@@ -750,7 +873,7 @@
 						user-select: none;
 		-webkit-touch-callout: none;
 		-khtml-user-select: none;
-		-webkit-tap-highlight-color: rgba(50, 50, 50, 0.5);
+		-webkit-tap-highlight-color: rgba(152, 0, 38, 0.5);
 		-webkit-transition: all 0s;
 			 -moz-transition: all 0s;
 				-ms-transition: all 0s;
@@ -818,6 +941,13 @@
 		width: 100%;
 		font-size: 2.2em;
 		text-align: center;
+	}
+
+	.subpageNavLink,
+	.subpageNavLink:hover,
+	.subpageNavLink:visited,
+	.subpageNavLink:active {
+		font-size: 1.4em;
 	}
 
 	.subpageContentSectionParagraph {
