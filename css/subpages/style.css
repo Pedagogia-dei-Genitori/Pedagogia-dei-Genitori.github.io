@@ -716,6 +716,7 @@
 		margin: 0 auto;
 		padding-top: 2.6em;
 		padding-bottom: 1em;
+		padding-right: 0;
 	}
 
 	.subpageContentSection:first-of-type .subpageContentSectionInnerWrapper {
