@@ -42,6 +42,16 @@ function subpageIsReadyForNavigation()
     $(window).on("scroll", function()
     {
       updateSelectedNavItem();
+
+      var spHeader = $(".subpageBody header");
+      if (spHeader.offset().top + spHeader.height() < $(window).scrollTop()) {
+            $(".subpageNav").css("position", "fixed");
+            $(".subpageNav").css("top", "0");
+
+        } else {
+            $(".subpageNav").css("position", "absolute");
+            $(".subpageNav").css("top", "");
+        }
     });
 
     // Capture clicks of the links in the page-specific nav
