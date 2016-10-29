@@ -14,10 +14,18 @@ function subpageIsReadyForNavigation()
       if($(".subpageNav").hasClass("narrowWidthSubpageNav"))
       {
         $(".subpageNav").removeClass("narrowWidthSubpageNav");
+        setTimeout(function()
+        {
+          $(".subpageNavTitleTriangle").html("&#9660;");
+        }, 600);
       }
       else
       {
         $(".subpageNav").addClass("narrowWidthSubpageNav");
+        setTimeout(function()
+        {
+          $(".subpageNavTitleTriangle").html("&#9650;");
+        }, 900);
       }
     }
   });
