@@ -696,7 +696,7 @@
 				 -o-transform: translateY(-50%);
 						transform: translateY(-50%);
 		border: none;
-		font-size: 1.6em;
+		font-size: 1.7em;
 		font-weight: 600;
 		text-align: center;
 		text-transform: uppercase;
@@ -830,6 +830,10 @@
 	.subpageContentSectionParagraph {
 		font-size: 0.875em;
 	}
+
+	.subpageNavTitle {
+		font-size: 1.68em;
+	}
 }
 
 @media screen and (max-width: 42em) {
@@ -891,6 +895,10 @@
 
 	.subpageContentSectionParagraph {
 		font-size: 0.865em;
+	}
+
+	.subpageNavTitle {
+		font-size: 1.66em;
 	}
 }
 
@@ -954,6 +962,10 @@
 	.subpageContentSectionParagraph {
 		font-size: 0.855em;
 	}
+
+	.subpageNavTitle {
+		font-size: 1.64em;
+	}
 }
 
 @media screen and (max-width: 32.5em) {
@@ -1015,6 +1027,10 @@
 
 	.subpageContentSectionParagraph {
 		font-size: 0.846em;
+	}
+
+	.subpageNavTitle {
+		font-size: 1.62em;
 	}
 }
 
@@ -1078,6 +1094,10 @@
 	.subpageContentSectionParagraph {
 		font-size: 0.836em;
 	}
+
+	.subpageNavTitle {
+		font-size: 1.6em;
+	}
 }
 
 @media screen and (max-width: 22.5em) {
@@ -1140,6 +1160,10 @@
 	.subpageContentSectionParagraph {
 		font-size: 0.826em;
 	}
+
+	.subpageNavTitle {
+		font-size: 1.58em;
+	}
 }
 
 @media screen and (max-width: 18em) {
@@ -1201,6 +1225,10 @@
 
 	.subpageContentSectionParagraph {
 		font-size: 0.816em;
+	}
+
+	.subpageNavTitle {
+		font-size: 1.56em;
 	}
 }
 
