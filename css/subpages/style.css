@@ -44,8 +44,15 @@
 	border-color: #ff3264;
 }
 
-.subpageContentSectionParagraph {
+.subpageContentSectionParagraph,
+.subpageContentLink,
+.subpageContentLink:visited,
+.subpageContentLink:active {
 	color: #222222;
+}
+
+.subpageContentLink:hover {
+	color: #ff3264;
 }
 
 .subpageNavTitle {
@@ -360,6 +367,19 @@
 					transform: scale(1);
 }
 
+.subpageContentLink,
+.subpageContentLink:hover,
+.subpageContentLink:visited,
+.subpageContentLink:active {
+	text-decoration: none;
+	border-bottom: 2px solid #ff3264;
+	cursor: pointer !important;
+	-webkit-transition: color 0.5s linear 0s;
+		 -moz-transition: color 0.5s linear 0s;
+			-ms-transition: color 0.5s linear 0s;
+			 -o-transition: color 0.5s linear 0s;
+					transition: color 0.5s linear 0s;
+}
 
 /* Media queries */
 
