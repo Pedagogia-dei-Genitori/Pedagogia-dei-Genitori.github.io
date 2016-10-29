@@ -1270,6 +1270,13 @@
 		font-size: 2em;
 	}
 
+	.subpageNavLink,
+	.subpageNavLink:hover,
+	.subpageNavLink:visited,
+	.subpageNavLink:active {
+		font-size: 1.3em;
+	}
+
 	.subpageContentSectionParagraph {
 		font-size: 0.836em;
 	}
