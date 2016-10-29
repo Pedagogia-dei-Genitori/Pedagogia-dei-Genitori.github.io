@@ -721,6 +721,7 @@
 		width: 90%;
 		height: 3.5em;
 		margin: 0 auto;
+		overflow: hidden;
 		background-color: #ff3264;
 		border-bottom: 1px solid #c70026;
 		-webkit-transform-origin: 50% 0%;
@@ -861,7 +862,7 @@
 		font-weight: 300;
 		color: #faf2e0;
 		margin: 0;
-		padding: 0;
+		padding: 1em 0;
 		-webkit-transform: translateY(-50%);
 			 -moz-transform: translateY(-50%);
 				-ms-transform: translateY(-50%);
