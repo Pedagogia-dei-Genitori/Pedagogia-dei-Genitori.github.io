@@ -251,6 +251,10 @@
 					user-select: none;
 }
 
+.subpageNavTitleBr {
+	display: block;
+}
+
 .subpageNavListItem {
 	display: block;
 	position: relative;
@@ -678,6 +682,10 @@
 				 -o-transform: none;
 						transform: none;
 		background-color: #ff3264;
+	}
+
+	.subpageNavTitleBr {
+		display: none;
 	}
 
 	.subpageBody header {
