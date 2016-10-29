@@ -695,10 +695,6 @@
 		padding-right: 3%;
 	}
 
-	.subpageNav {
-		left: 3%;
-	}
-
 	.subpageContentSectionInnerWrapper {
 		float: none;
 		width: -webkit-calc(100% - 8em);
