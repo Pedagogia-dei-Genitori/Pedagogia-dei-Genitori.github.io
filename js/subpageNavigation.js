@@ -42,6 +42,9 @@ function subpageIsReadyForNavigation()
     {
       e.preventDefault();
 
+      // Close the internal nav menu which might be open if the screen is narrow
+      $(".subpageNavTitle").click();
+
       // Scoll to the corresponding section of the page
       scrollToPageElement(this.hash, true);
     });
