@@ -884,6 +884,11 @@
 		cursor: pointer;
 	}
 
+	.selectedSubpageNavLink {
+		font-weight: 500;
+		text-decoration: underline;
+	}
+
 	.subpageNavTitleBr {
 		display: none;
 	}
