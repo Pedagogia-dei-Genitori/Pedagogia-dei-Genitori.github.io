@@ -251,6 +251,10 @@
 					user-select: none;
 }
 
+.subpageNavTitleTriangle {
+	display: none;
+}
+
 .subpageNavTitleBr {
 	display: block;
 }
@@ -887,6 +891,11 @@
 	.selectedSubpageNavLink {
 		font-weight: 500;
 		text-decoration: underline;
+	}
+
+	.subpageNavTitleTriangle {
+		display: inline;
+		margin-right: 0.5em;
 	}
 
 	.subpageNavTitleBr {
