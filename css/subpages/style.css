@@ -733,11 +733,11 @@
 				-ms-transform: perspective(365px) rotateX(-90deg);
 				 -o-transform: perspective(365px) rotateX(-90deg);
 						transform: perspective(365px) rotateX(-90deg);
-		-webkit-transition: all 0.15s linear 0s;
-			 -moz-transition: all 0.15s linear 0s;
-				-ms-transition: all 0.15s linear 0s;
-				 -o-transition: all 0.15s linear 0s;
-						transition: all 0.15s linear 0s;
+		-webkit-transition: all 0.1s linear 0s;
+			 -moz-transition: all 0.1s linear 0s;
+				-ms-transition: all 0.1s linear 0s;
+				 -o-transition: all 0.1s linear 0s;
+						transition: all 0.1s linear 0s;
 	}
 
 	.narrowWidthSubpageNav .subpageNavListItem {
@@ -754,30 +754,22 @@
 	}
 
 	.subpageNavListItem:nth-child(1) {
-		-webkit-transition-delay: 0.75s;
-			 -moz-transition-delay: 0.75s;
-				-ms-transition-delay: 0.75s;
-				 -o-transition-delay: 0.75s;
-						transition-delay: 0.75s;
+		-webkit-transition-delay: 0.5s;
+			 -moz-transition-delay: 0.5s;
+				-ms-transition-delay: 0.5s;
+				 -o-transition-delay: 0.5s;
+						transition-delay: 0.5s;
 	}
 
 	.subpageNavListItem:nth-child(2) {
-		-webkit-transition-delay: 0.6s;
-			 -moz-transition-delay: 0.6s;
-				-ms-transition-delay: 0.6s;
-				 -o-transition-delay: 0.6s;
-						transition-delay: 0.6s;
+		-webkit-transition-delay: 0.4s;
+			 -moz-transition-delay: 0.4s;
+				-ms-transition-delay: 0.4s;
+				 -o-transition-delay: 0.4s;
+						transition-delay: 0.4s;
 	}
 
 	.subpageNavListItem:nth-child(3) {
-		-webkit-transition-delay: 0.45s;
-			 -moz-transition-delay: 0.45s;
-				-ms-transition-delay: 0.45s;
-				 -o-transition-delay: 0.45s;
-						transition-delay: 0.45s;
-	}
-
-	.subpageNavListItem:nth-child(4) {
 		-webkit-transition-delay: 0.3s;
 			 -moz-transition-delay: 0.3s;
 				-ms-transition-delay: 0.3s;
@@ -785,12 +777,20 @@
 						transition-delay: 0.3s;
 	}
 
+	.subpageNavListItem:nth-child(4) {
+		-webkit-transition-delay: 0.2s;
+			 -moz-transition-delay: 0.2s;
+				-ms-transition-delay: 0.2s;
+				 -o-transition-delay: 0.2s;
+						transition-delay: 0.2s;
+	}
+
 	.subpageNavListItem:nth-child(5) {
-		-webkit-transition-delay: 0.15s;
-			 -moz-transition-delay: 0.15s;
-				-ms-transition-delay: 0.15s;
-				 -o-transition-delay: 0.15s;
-						transition-delay: 0.15s;
+		-webkit-transition-delay: 0.1s;
+			 -moz-transition-delay: 0.1s;
+				-ms-transition-delay: 0.1s;
+				 -o-transition-delay: 0.1s;
+						transition-delay: 0.1s;
 	}
 
 	.subpageNavListItem:nth-child(6) {
