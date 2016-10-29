@@ -3,6 +3,25 @@ function subpageIsReadyForNavigation()
   var subpageContentSections;
   var subpageIntNavLinks;
 
+  $(".subpageNavTitle").on("click", function(e)
+  {
+    e.stopImmediatePropagation();
+    e.stopPropagation();
+    e.preventDefault();
+
+    if($(this).css("cursor") === "pointer")
+    {
+      if($(".subpageNav").hasClass("narrowWidthSubpageNav"))
+      {
+        $(".subpageNav").removeClass("narrowWidthSubpageNav");
+      }
+      else
+      {
+        $(".subpageNav").addClass("narrowWidthSubpageNav");
+      }
+    }
+  });
+
   if ($("body").hasClass("subpageBody"))
   {
     subpageContentSections = $(".subpageContentSection");
