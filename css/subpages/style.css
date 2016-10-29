@@ -736,7 +736,7 @@
 	}
 
 	.subpageContentSection:first-of-type .subpageContentSectionInnerWrapper {
-		padding-top: 1em;
+		padding-top: 1.8em;
 	}
 
 	.subpageContentSectionTitle {
@@ -1175,7 +1175,7 @@
 	}
 
 	.subpageContentSectionTitle {
-		font-size: 1.9em;
+		font-size: 2em;
 	}
 
 	.subpageContentSectionParagraph {
