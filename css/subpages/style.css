@@ -728,9 +728,12 @@
 @media screen and (max-width: 43.5em) {
 	.subpageBody header,
 	.subpageBody main,
-	.subpageContentSection,
-	.subpageNav {
+	.subpageContentSection {
 		font-size: 0.875em;
+	}
+
+	.subpageNav {
+		font-size: 0.875rem;
 	}
 
 	.subpageBody header h1 {
@@ -779,9 +782,12 @@
 @media screen and (max-width: 41em) {
 	.subpageBody header,
 	.subpageBody main,
-	.subpageContentSection,
-	.subpageNav {
+	.subpageContentSection {
 		font-size: 0.85em;
+	}
+
+	.subpageNav {
+		font-size: 0.85rem;
 	}
 
 	.subpageBody header h1 {
@@ -830,9 +836,12 @@
 @media screen and (max-width: 38.5em) {
 	.subpageBody header,
 	.subpageBody main,
-	.subpageContentSection,
-	.subpageNav {
+	.subpageContentSection {
 		font-size: 0.825em;
+	}
+
+	.subpageNav {
+		font-size: 0.825rem;
 	}
 
 	.subpageBody header h1 {
@@ -881,9 +890,12 @@
 @media screen and (max-width: 36em) {
 	.subpageBody header,
 	.subpageBody main,
-	.subpageContentSection,
-	.subpageNav {
+	.subpageContentSection {
 		font-size: 0.8em;
+	}
+
+	.subpageNav {
+		font-size: 0.8rem;
 	}
 
 	.subpageBody header h1 {
@@ -932,9 +944,12 @@
 @media screen and (max-width: 33.5em) {
 	.subpageBody header,
 	.subpageBody main,
-	.subpageContentSection,
-	.subpageNav {
+	.subpageContentSection {
 		font-size: 0.775em;
+	}
+
+	.subpageNav {
+		font-size: 0.775rem;
 	}
 
 	.subpageBody header h1 {
@@ -983,9 +998,12 @@
 @media screen and (max-width: 31em) {
 	.subpageBody header,
 	.subpageBody main,
-	.subpageContentSection,
-	.subpageNav {
+	.subpageContentSection {
 		font-size: 0.75em;
+	}
+
+	.subpageNav {
+		font-size: 0.75rem;
 	}
 
 	.subpageBody header h1 {
@@ -1034,9 +1052,12 @@
 @media screen and (max-width: 27.5em) {
 	.subpageBody header,
 	.subpageBody main,
-	.subpageContentSection,
-	.subpageNav {
+	.subpageContentSection {
 		font-size: 0.725em;
+	}
+
+	.subpageNav {
+		font-size: 0.725rem;
 	}
 
 	.subpageBody header h1 {
@@ -1085,9 +1106,12 @@
 @media screen and (max-width: 25em) {
 	.subpageBody header,
 	.subpageBody main,
-	.subpageContentSection,
-	.subpageNav {
+	.subpageContentSection {
 		font-size: 0.7em;
+	}
+
+	.subpageNav {
+		font-size: 0.7rem;
 	}
 
 	.subpageBody header h1 {
