@@ -722,6 +722,57 @@
 	}
 }
 
+@media screen and (max-width: 43.5em) {
+	.subpageBody header,
+	.subpageBody main,
+	.subpageContentSection,
+	.subpageNav {
+		font-size: 0.875em;
+	}
+
+	.subpageBody header h1 {
+		width: 7.38em;
+		height: 5.16em;
+		left: 2.75%;
+		top: 0.92em;
+	}
+
+	.subpageBody .menuBtn,
+	.subpageBody .mainNavBackground,
+	.subpageBody .pageContentBackground {
+		right: 2.95%;
+		top: 0.775em;
+	}
+
+	.subpageBody .menuBtn span,
+	.subpageBody .menuBtn span::before,
+	.subpageBody .menuBtn span::after {
+		height: 4px;
+	}
+
+	.subpageBody .menuBtn span::before {
+		top: -10.38px;
+	}
+
+	.subpageBody .menuBtn span::after {
+		bottom: -10.38px;
+	}
+
+	.subpageContentSectionInnerWrapper {
+		width: -webkit-calc(100% - 6.6em);
+		width: -moz-calc(100% - 6.6em);
+		width: calc(100% - 6.6em);
+	}
+
+	.subpageContentSectionTitle {
+		font-size: 2.15em;
+	}
+
+	.subpageContentSectionParagraph {
+		font-size: 0.875em;
+	}
+}
+
 @media screen and (max-width: 41em) {
 	.subpageBody header,
 	.subpageBody main,
@@ -773,6 +824,57 @@
 	}
 }
 
+@media screen and (max-width: 38.5em) {
+	.subpageBody header,
+	.subpageBody main,
+	.subpageContentSection,
+	.subpageNav {
+		font-size: 0.825em;
+	}
+
+	.subpageBody header h1 {
+		width: 7.12em;
+		height: 5em;
+		left: 2.25%;
+		top: 0.96em;
+	}
+
+	.subpageBody .menuBtn,
+	.subpageBody .mainNavBackground,
+	.subpageBody .pageContentBackground {
+		right: 2.85%;
+		top: 0.725em;
+	}
+
+	.subpageBody .menuBtn span,
+	.subpageBody .menuBtn span::before,
+	.subpageBody .menuBtn span::after {
+		height: 4px;
+	}
+
+	.subpageBody .menuBtn span::before {
+		top: -10.12px;
+	}
+
+	.subpageBody .menuBtn span::after {
+		bottom: -10.12px;
+	}
+
+	.subpageContentSectionInnerWrapper {
+		width: -webkit-calc(100% - 3.8em);
+		width: -moz-calc(100% - 3.8em);
+		width: calc(100% - 3.8em);
+	}
+
+	.subpageContentSectionTitle {
+		font-size: 2.05em;
+	}
+
+	.subpageContentSectionParagraph {
+		font-size: 0.825em;
+	}
+}
+
 @media screen and (max-width: 36em) {
 	.subpageBody header,
 	.subpageBody main,
@@ -821,6 +923,210 @@
 
 	.subpageContentSectionParagraph {
 		font-size: 0.8em;
+	}
+}
+
+@media screen and (max-width: 33.5em) {
+	.subpageBody header,
+	.subpageBody main,
+	.subpageContentSection,
+	.subpageNav {
+		font-size: 0.775em;
+	}
+
+	.subpageBody header h1 {
+		width: 6.88em;
+		height: 4.8em;
+		left: 1.75%;
+		top: 1.0em;
+	}
+
+	.subpageBody .menuBtn,
+	.subpageBody .mainNavBackground,
+	.subpageBody .pageContentBackground {
+		right: 2.75%;
+		top: 0.675em;
+	}
+
+	.subpageBody .menuBtn span,
+	.subpageBody .menuBtn span::before,
+	.subpageBody .menuBtn span::after {
+		height: 3.88px;
+	}
+
+	.subpageBody .menuBtn span::before {
+		top: -9.88px;
+	}
+
+	.subpageBody .menuBtn span::after {
+		bottom: -9.88px;
+	}
+
+	.subpageContentSectionInnerWrapper {
+		width: -webkit-calc(100% - 2em);
+		width: -moz-calc(100% - 2em);
+		width: calc(100% - 2em);
+	}
+
+	.subpageContentSectionTitle {
+		font-size: 1.95em;
+	}
+
+	.subpageContentSectionParagraph {
+		font-size: 0.775em;
+	}
+}
+
+@media screen and (max-width: 31em) {
+	.subpageBody header,
+	.subpageBody main,
+	.subpageContentSection,
+	.subpageNav {
+		font-size: 0.75em;
+	}
+
+	.subpageBody header h1 {
+		width: 6.75em;
+		height: 4.725em;
+		left: 1.5%;
+		top: 1.02em;
+	}
+
+	.subpageBody .menuBtn,
+	.subpageBody .mainNavBackground,
+	.subpageBody .pageContentBackground {
+		right: 2.7%;
+		top: 0.65em;
+	}
+
+	.subpageBody .menuBtn span,
+	.subpageBody .menuBtn span::before,
+	.subpageBody .menuBtn span::after {
+		height: 3.75px;
+	}
+
+	.subpageBody .menuBtn span::before {
+		top: -9.75px;
+	}
+
+	.subpageBody .menuBtn span::after {
+		bottom: -9.75px;
+	}
+
+	.subpageContentSectionInnerWrapper {
+		width: -webkit-calc(100% - 1.6em);
+		width: -moz-calc(100% - 1.6em);
+		width: calc(100% - 1.6em);
+	}
+
+	.subpageContentSectionTitle {
+		font-size: 1.9em;
+	}
+
+	.subpageContentSectionParagraph {
+		font-size: 0.75em;
+	}
+}
+
+@media screen and (max-width: 27.5em) {
+	.subpageBody header,
+	.subpageBody main,
+	.subpageContentSection,
+	.subpageNav {
+		font-size: 0.725em;
+	}
+
+	.subpageBody header h1 {
+		width: 6.62em;
+		height: 4.634em;
+		left: 1.25%;
+		top: 1.04em;
+	}
+
+	.subpageBody .menuBtn,
+	.subpageBody .mainNavBackground,
+	.subpageBody .pageContentBackground {
+		right: 2.65%;
+		top: 0.625em;
+	}
+
+	.subpageBody .menuBtn span,
+	.subpageBody .menuBtn span::before,
+	.subpageBody .menuBtn span::after {
+		height: 3.62px;
+	}
+
+	.subpageBody .menuBtn span::before {
+		top: -9.62px;
+	}
+
+	.subpageBody .menuBtn span::after {
+		bottom: -9.62px;
+	}
+
+	.subpageContentSectionInnerWrapper {
+		width: -webkit-calc(100% - 1.2em);
+		width: -moz-calc(100% - 1.2em);
+		width: calc(100% - 1.2em);
+	}
+
+	.subpageContentSectionTitle {
+		font-size: 1.85em;
+	}
+
+	.subpageContentSectionParagraph {
+		font-size: 0.725em;
+	}
+}
+
+@media screen and (max-width: 25em) {
+	.subpageBody header,
+	.subpageBody main,
+	.subpageContentSection,
+	.subpageNav {
+		font-size: 0.7em;
+	}
+
+	.subpageBody header h1 {
+		width: 6.5em;
+		height: 4.55em;
+		left: 1%;
+		top: 1.06em;
+	}
+
+	.subpageBody .menuBtn,
+	.subpageBody .mainNavBackground,
+	.subpageBody .pageContentBackground {
+		right: 2.6%;
+		top: 0.6em;
+	}
+
+	.subpageBody .menuBtn span,
+	.subpageBody .menuBtn span::before,
+	.subpageBody .menuBtn span::after {
+		height: 3.5px;
+	}
+
+	.subpageBody .menuBtn span::before {
+		top: -9.5px;
+	}
+
+	.subpageBody .menuBtn span::after {
+		bottom: -9.5px;
+	}
+
+	.subpageContentSectionInnerWrapper {
+		width: -webkit-calc(100% - 1em);
+		width: -moz-calc(100% - 1em);
+		width: calc(100% - 1em);
+	}
+
+	.subpageContentSectionTitle {
+		font-size: 1.8em;
+	}
+
+	.subpageContentSectionParagraph {
+		font-size: 0.7em;
 	}
 }
 
