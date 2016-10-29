@@ -929,13 +929,9 @@
 		width: -moz-calc(100% - 8em);
 		width: calc(100% - 8em);
 		margin: 0 auto;
-		padding-top: 2.6em;
+		padding-top: 1.5em;
 		padding-bottom: 1em;
 		padding-right: 0;
-	}
-
-	.subpageContentSectionInnerWrapper {
-		padding-top: 1.8em;
 	}
 
 	.subpageContentSectionTitle {
