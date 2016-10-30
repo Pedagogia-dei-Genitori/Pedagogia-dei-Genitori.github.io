@@ -150,6 +150,8 @@ function domContentHasLoaded()
 
   function openMainNavMenu()
   {
+    window.scroll(0,0);
+
     // We're about to run some animations
     animatingButton = true;
     animatingBackground = true;
