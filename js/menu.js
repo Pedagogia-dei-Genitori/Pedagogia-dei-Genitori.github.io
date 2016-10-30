@@ -150,12 +150,6 @@ function domContentHasLoaded()
 
   function openMainNavMenu()
   {
-    $(".subpageBody header").css("-webkit-transform", "none");
-    $(".subpageBody header").css("-moz-transform", "none");
-    $(".subpageBody header").css("-ms-transform", "none");
-    $(".subpageBody header").css("-o-transform", "none");
-    $(".subpageBody header").css("transform", "none");
-
     // We're about to run some animations
     animatingButton = true;
     animatingBackground = true;
@@ -253,11 +247,6 @@ function domContentHasLoaded()
         animatingBackground = false;
         menuButton.classList.remove("is-animating");
         navBackgroundSpan.style.position = "absolute";
-        $(".subpageBody header").css("-webkit-transform", "");
-        $(".subpageBody header").css("-moz-transform", "");
-        $(".subpageBody header").css("-ms-transform", "");
-        $(".subpageBody header").css("-o-transform", "");
-        $(".subpageBody header").css("transform", "");
       });
     }
   }

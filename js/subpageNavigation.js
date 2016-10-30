@@ -179,8 +179,11 @@ function subpageIsReadyForNavigation()
 
   function hideSubpageHeader()
   {
-    if (!($(".subpageBody header").hasClass("subpageBodyHiddenHeader")))
-      $(".subpageBody header").addClass("subpageBodyHiddenHeader")
+    $(".subpageBody header").css("-webkit-transform", "translateY(-100%)");
+    $(".subpageBody header").css("-moz-transform", "translateY(-100%)");
+    $(".subpageBody header").css("-ms-transform", "translateY(-100%)");
+    $(".subpageBody header").css("-o-transform", "translateY(-100%)");
+    $(".subpageBody header").css("transform", "translateY(-100%)");
 
     if (!($(".subpageNav").hasClass("subpageNavWithHiddenHeader")))
       $(".subpageNav").addClass("subpageNavWithHiddenHeader")
@@ -189,8 +192,11 @@ function subpageIsReadyForNavigation()
 
   function showSubpageHeader()
   {
-    if ($(".subpageBody header").hasClass("subpageBodyHiddenHeader"))
-      $(".subpageBody header").removeClass("subpageBodyHiddenHeader")
+    $(".subpageBody header").css("-webkit-transform", "");
+    $(".subpageBody header").css("-moz-transform", "");
+    $(".subpageBody header").css("-ms-transform", "");
+    $(".subpageBody header").css("-o-transform", "");
+    $(".subpageBody header").css("transform", "");
 
     if ($(".subpageNav").hasClass("subpageNavWithHiddenHeader"))
       $(".subpageNav").removeClass("subpageNavWithHiddenHeader")
