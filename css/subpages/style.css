@@ -222,6 +222,10 @@
 	margin-bottom: 2em;
 }
 
+.subpageContentSectionParagraph b {
+	font-weight: 500;
+}
+
 .subpageNav {
 	position: fixed;
 	z-index: 200;
