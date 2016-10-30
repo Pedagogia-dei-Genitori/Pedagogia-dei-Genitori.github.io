@@ -37,10 +37,6 @@ function subpageIsReadyForNavigation()
     {
       windowHasChanged();
     });
-    $("body").on("touchmove", function()
-    {
-      windowHasChanged();
-    });
 
     // Same thing if the window resizes
     $(window).resize(function()
@@ -66,7 +62,7 @@ function subpageIsReadyForNavigation()
   function windowHasChanged()
   {
     updateSelectedNavItem();
-    setHeaderProperties();
+    showOrHideHeaderBasedOnScrollPosition();
   }
 
 
@@ -133,29 +129,35 @@ function subpageIsReadyForNavigation()
   }
 
 
-  function setHeaderProperties()
+  function showOrHideHeaderBasedOnScrollPosition()
   {
     if (!($(".subpageNavTitleTriangle").css("display") === "none"))
     {
-      var spHeader = $(".subpageBody header");
-      var spNav = $(".subpageNav");
-      if ($(window).scrollTop() > spHeader.height())
-      {
-        if (!(spHeader.hasClass("subpageBodyHiddenHeader")))
-          spHeader.addClass("subpageBodyHiddenHeader")
-
-        if (!(spNav.hasClass("subpageNavWithHiddenHeader")))
-          spNav.addClass("subpageNavWithHiddenHeader")
-      }
+      if ($(window).scrollTop() > $(".subpageBody header").height())
+        hideSubpageHeader();
       else
-      {
-        if (spHeader.hasClass("subpageBodyHiddenHeader"))
-          spHeader.removeClass("subpageBodyHiddenHeader")
-
-        if (spNav.hasClass("subpageNavWithHiddenHeader"))
-          spNav.removeClass("subpageNavWithHiddenHeader")
-      }
+        showSubpageHeader();
     }
+  }
+
+
+  function hideSubpageHeader()
+  {
+    if (!($(".subpageBody header").hasClass("subpageBodyHiddenHeader")))
+      $(".subpageBody header").addClass("subpageBodyHiddenHeader")
+
+    if (!($(".subpageNav").hasClass("subpageNavWithHiddenHeader")))
+      $(".subpageNav").addClass("subpageNavWithHiddenHeader")
+  }
+
+
+  function showSubpageHeader()
+  {
+    if ($(".subpageBody header").hasClass("subpageBodyHiddenHeader"))
+      $(".subpageBody header").removeClass("subpageBodyHiddenHeader")
+
+    if ($(".subpageNav").hasClass("subpageNavWithHiddenHeader"))
+      $(".subpageNav").removeClass("subpageNavWithHiddenHeader")
   }
 
 
