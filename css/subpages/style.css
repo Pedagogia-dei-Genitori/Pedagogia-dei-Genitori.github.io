@@ -940,6 +940,14 @@
 						transition: transform 0.2s;
 	}
 
+	.subpageNav {
+		-webkit-transform: translateY(0);
+			 -moz-transform: translateY(0);
+				-ms-transform: translateY(0);
+				 -o-transform: translateY(0);
+						transform: translateY(0);
+	}
+
 	.subpageBody main {
 		margin-top: 11em;
 	}
