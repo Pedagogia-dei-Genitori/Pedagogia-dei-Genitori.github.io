@@ -204,11 +204,11 @@ function subpageIsReadyForNavigation()
     $(".subpageBody header").css("-o-transform", "");
     $(".subpageBody header").css("transform", "");
 
-    $(".subpageNav").css("-webkit-transform", "translateY(0)");
-    $(".subpageNav").css("-moz-transform", "translateY(0)");
-    $(".subpageNav").css("-ms-transform", "translateY(0)");
-    $(".subpageNav").css("-o-transform", "translateY(0)");
-    $(".subpageNav").css("transform", "translateY(0)");
+    $(".subpageNav").css("-webkit-transform", "");
+    $(".subpageNav").css("-moz-transform", "");
+    $(".subpageNav").css("-ms-transform", "");
+    $(".subpageNav").css("-o-transform", "");
+    $(".subpageNav").css("transform", "");
   }
 
 
