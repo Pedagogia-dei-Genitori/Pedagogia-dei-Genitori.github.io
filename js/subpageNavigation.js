@@ -138,27 +138,23 @@ function subpageIsReadyForNavigation()
     if (!($(".subpageNavTitleTriangle").css("display") === "none"))
     {
       var spHeader = $(".subpageBody header");
-      if (spHeader.offset().top + spHeader.height() < $(window).scrollTop())
+      var spNav = $(".subpageNav");
+      if ($(window).scrollTop() > spHeader.height())
       {
-        $(".subpageNav").css("position", "fixed");
-        $(".subpageNav").css("top", "0");
-        $(".subpageNav").style.display='none';
-        $(".subpageNav").offsetHeight;
-        $(".subpageNav").style.display='';
+        if (!(spHeader.hasClass("subpageBodyHiddenHeader")))
+          spHeader.addClass("subpageBodyHiddenHeader")
+
+        if (!(spNav.hasClass("subpageNavWithHiddenHeader")))
+          spNav.addClass("subpageNavWithHiddenHeader")
       }
       else
       {
-        $(".subpageNav").css("position", "absolute");
-        $(".subpageNav").css("top", "");
-        $(".subpageNav").style.display='none';
-        $(".subpageNav").offsetHeight;
-        $(".subpageNav").style.display='';
+        if (spHeader.hasClass("subpageBodyHiddenHeader"))
+          spHeader.removeClass("subpageBodyHiddenHeader")
+
+        if (spNav.hasClass("subpageNavWithHiddenHeader"))
+          spNav.removeClass("subpageNavWithHiddenHeader")
       }
-    }
-    else
-    {
-      $(".subpageNav").css("position", "");
-      $(".subpageNav").css("top", "");
     }
   }
 
