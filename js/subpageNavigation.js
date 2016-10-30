@@ -37,6 +37,10 @@ function subpageIsReadyForNavigation()
     {
       windowHasChanged();
     });
+    $("body").on("touchmove", function()
+    {
+      windowHasChanged();
+    });
 
     // Same thing if the window resizes
     $(window).resize(function()
