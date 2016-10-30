@@ -179,6 +179,7 @@ function subpageIsReadyForNavigation()
 
   function hideSubpageHeader()
   {
+    /*
     $(".subpageBody header").css("-webkit-transform", "translateY(-100%)");
     $(".subpageBody header").css("-moz-transform", "translateY(-100%)");
     $(".subpageBody header").css("-ms-transform", "translateY(-100%)");
@@ -186,7 +187,7 @@ function subpageIsReadyForNavigation()
     $(".subpageBody header").css("transform", "translateY(-100%)");
 
     if (!($(".subpageNav").hasClass("subpageNavWithHiddenHeader")))
-      $(".subpageNav").addClass("subpageNavWithHiddenHeader")
+      $(".subpageNav").addClass("subpageNavWithHiddenHeader")*/
   }
 
 
