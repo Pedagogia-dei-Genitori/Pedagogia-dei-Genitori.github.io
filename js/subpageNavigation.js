@@ -39,16 +39,19 @@ function subpageIsReadyForNavigation()
     updateSelectedNavItem();
     $(window).on("scroll", function()
     {
-      if ($(window).scrollTop() <= $(".subpageBody header").height())
+      if (!($(".subpageNavTitleTriangle").css("display") === "none"))
       {
-        showSubpageHeader();
-      }
-      else
-      {
-        if (!windowIsCurrentlyScrolling)
+        if ($(window).scrollTop() <= $(".subpageBody header").height())
         {
-          windowIsCurrentlyScrolling = true;
-          (!(window.requestAnimationFrame)) ? setTimeout(showOrHideSubpageHeader, 250) : requestAnimationFrame(showOrHideSubpageHeader);
+          showSubpageHeader();
+        }
+        else
+        {
+          if (!windowIsCurrentlyScrolling)
+          {
+            windowIsCurrentlyScrolling = true;
+            (!(window.requestAnimationFrame)) ? setTimeout(showOrHideSubpageHeader, 250) : requestAnimationFrame(showOrHideSubpageHeader);
+          }
         }
       }
 
