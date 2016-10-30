@@ -3,6 +3,10 @@ function subpageIsReadyForNavigation()
   var subpageContentSections;
   var subpageIntNavLinks;
 
+  var windowIsCurrentlyScrolling = false;
+  var previousWindowTopPosition = 0;
+  var scrollDelta = 10;
+
   $(".subpageNavTitle").on("click", function(e)
   {
     e.stopImmediatePropagation();
@@ -35,13 +39,27 @@ function subpageIsReadyForNavigation()
     updateSelectedNavItem();
     $(window).on("scroll", function()
     {
-      windowHasChanged();
+      if ($(window).scrollTop() <= $(".subpageBody header").height())
+      {
+        showSubpageHeader();
+      }
+      else
+      {
+        if (!windowIsCurrentlyScrolling)
+        {
+          windowIsCurrentlyScrolling = true;
+          (!(window.requestAnimationFrame)) ? setTimeout(showOrHideSubpageHeader, 250) : requestAnimationFrame(showOrHideSubpageHeader);
+        }
+      }
+
+      updateSelectedNavItem();
     });
 
     // Same thing if the window resizes
     $(window).resize(function()
     {
-      windowHasChanged();
+      showOrHideHeaderBasedOnScrollPosition();
+      updateSelectedNavItem();
     });
 
     // Capture clicks of the links in the page-specific nav
@@ -56,13 +74,6 @@ function subpageIsReadyForNavigation()
       // Scoll to the corresponding section of the page
       scrollToPageElement(this.hash, true);
     });
-  }
-
-
-  function windowHasChanged()
-  {
-    updateSelectedNavItem();
-    showOrHideHeaderBasedOnScrollPosition();
   }
 
 
@@ -126,6 +137,26 @@ function subpageIsReadyForNavigation()
         }
       });
     }, 300);
+  }
+
+
+  function showOrHideSubpageHeader()
+  {
+    var currentWindowTopPosition = $(window).scrollTop();
+
+    if ((previousWindowTopPosition - currentWindowTopPosition) > scrollDelta)
+    {
+      //if scrolling up...
+      showSubpageHeader();
+    }
+    else if((currentWindowTopPosition - previousWindowTopPosition) > scrollDelta)
+    {
+      //if scrolling down...
+      showOrHideHeaderBasedOnScrollPosition()
+    }
+
+    previousWindowTopPosition = currentWindowTopPosition;
+		windowIsCurrentlyScrolling = false;
   }
 
 
