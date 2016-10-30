@@ -235,25 +235,40 @@
 	margin-top: -0.8em;
 }
 
+.subpageContentSectionParagraph:last-of-type.subpageContentSectionParagraphOverList,
 .subpageContentSectionParagraphOverList {
 	margin-bottom: 0.4em;
 }
 
 .subpageContentSectionHeading {
-	display: inline-block;
+	display: inline;
 	font-size: 1em;
 	border-bottom: 2px solid #222222;
 	font-weight: 500;
+	line-height: 1.2em;
 	margin-bottom: 0.7em;
+	margin-top: 0.8em;
 }
 
 .subpageContentSectionHeadingWithMargin {
 	margin-top: 1em;
 }
 
+.subpageContentSectionParagraphBeforeHeading {
+	margin-bottom: 2em;
+}
+
+.subpageContentSectionParagraphAfterHeading {
+	margin-top: 0.8em;
+}
+
 .subpageContentSectionList {
 	margin-top: 0em;
 	margin-bottom: 1.2em;
+}
+
+.subpageContentSectionListExtraMargin {
+	margin-bottom: 2em;
 }
 
 .subpageContentSectionList li {
@@ -270,8 +285,14 @@
 	left: 0;
 }
 
-.subpageContentSectionParagraph b {
+.subpageContentSectionParagraph b,
+.subpageContentSectionList li b {
 	font-weight: 500;
+}
+
+.subpageContentSectionParagraph em{
+	font-style: italic;
+	font-weight: 300;
 }
 
 .subpageNav {
