@@ -61,6 +61,7 @@ function subpageIsReadyForNavigation()
     // Same thing if the window resizes
     $(window).resize(function()
     {
+      showSubpageHeader();
       updateSelectedNavItem();
 
       if (!($(".subpageNavTitleTriangle").css("display") === "none"))
