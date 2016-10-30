@@ -179,19 +179,33 @@ function subpageIsReadyForNavigation()
 
   function hideSubpageHeader()
   {
-    $(".subpageBody header").css("visibility", "hidden");
+    $(".subpageBody header").css("-webkit-transform", "translateY(-100%)");
+    $(".subpageBody header").css("-moz-transform", "translateY(-100%)");
+    $(".subpageBody header").css("-ms-transform", "translateY(-100%)");
+    $(".subpageBody header").css("-o-transform", "translateY(-100%)");
+    $(".subpageBody header").css("transform", "translateY(-100%)");
 
-    if (!($(".subpageNav").hasClass("subpageNavWithHiddenHeader")))
-      $(".subpageNav").addClass("subpageNavWithHiddenHeader")
+    $(".subpageNav").css("-webkit-transform", "translateY(-7em)");
+    $(".subpageNav").css("-moz-transform", "translateY(-7em)");
+    $(".subpageNav").css("-ms-transform", "translateY(-7em)");
+    $(".subpageNav").css("-o-transform", "translateY(-7em)");
+    $(".subpageNav").css("transform", "translateY(-7em)");
   }
 
 
   function showSubpageHeader()
   {
-    $(".subpageBody header").css("visibility", "visible");
+    $(".subpageBody header").css("-webkit-transform", "");
+    $(".subpageBody header").css("-moz-transform", "");
+    $(".subpageBody header").css("-ms-transform", "");
+    $(".subpageBody header").css("-o-transform", "");
+    $(".subpageBody header").css("transform", "");
 
-    if ($(".subpageNav").hasClass("subpageNavWithHiddenHeader"))
-      $(".subpageNav").removeClass("subpageNavWithHiddenHeader")
+    $(".subpageNav").css("-webkit-transform", "translateY(0)");
+    $(".subpageNav").css("-moz-transform", "translateY(0)");
+    $(".subpageNav").css("-ms-transform", "translateY(0)");
+    $(".subpageNav").css("-o-transform", "translateY(0)");
+    $(".subpageNav").css("transform", "translateY(0)");
   }
 
 
