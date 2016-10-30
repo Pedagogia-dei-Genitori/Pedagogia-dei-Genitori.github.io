@@ -224,7 +224,7 @@
 
 .subpageNav {
 	position: fixed;
-	z-index: 2;
+	z-index: 200;
 	top: -webkit-calc(50% + 4.5em);
 	top: -moz-calc(50% + 4.5em);
 	top: calc(50% + 4.5em);
@@ -931,20 +931,13 @@
 		border: none;
 	}
 
+	.subpageBody header,
 	.subpageNav {
-		-webkit-transform: translateY(0);
-			 -moz-transform: translateY(0);
-				-ms-transform: translateY(0);
-				 -o-transform: translateY(0);
-						transform: translateY(0);
-	}
-
-	.subpageNav.subpageNavWithHiddenHeader {
-		-webkit-transform: translateY(-7em);
-			 -moz-transform: translateY(-7em);
-				-ms-transform: translateY(-7em);
-				 -o-transform: translateY(-7em);
-						transform: translateY(-7em);
+		-webkit-transition: -webkit-transform 0.2s;
+			 -moz-transition: -moz-transform 0.2s;
+				-ms-transition: -ms-transform 0.2s;
+				 -o-transition: -o-transform 0.2s;
+						transition: transform 0.2s;
 	}
 
 	.subpageBody main {
