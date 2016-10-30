@@ -58,8 +58,13 @@ function subpageIsReadyForNavigation()
     // Same thing if the window resizes
     $(window).resize(function()
     {
-      showOrHideHeaderBasedOnScrollPosition();
       updateSelectedNavItem();
+
+      if (!($(".subpageNavTitleTriangle").css("display") === "none"))
+      {
+        if ($(window).scrollTop() <= $(".subpageBody header").height())
+          showSubpageHeader();
+      }
     });
 
     // Capture clicks of the links in the page-specific nav
