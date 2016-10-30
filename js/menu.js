@@ -96,6 +96,8 @@ function domContentHasLoaded()
   if (!menuButton)
     return;
 
+  var urlBeforeOpeningMenu = "";
+
   // Re-initialise Velocity animations on window resizes
   window.addEventListener("resize", function()
   {
@@ -125,6 +127,16 @@ function domContentHasLoaded()
       if (this.classList.contains("is-active"))
       { // We need to close the main navigation menu
         closeMainNavMenu();
+
+        if ($("body").hasClass("subpageBody"))
+        {
+          if (!(urlBeforeOpeningMenu === ""))
+          {
+            window.history.replaceState({path: urlBeforeOpeningMenu, pushCausedByTransition: true}, "", urlBeforeOpeningMenu);
+            urlBeforeOpeningMenu = "";
+          }
+        }
+
         subpageIsReadyForNavigation();
       }
       else
@@ -150,7 +162,11 @@ function domContentHasLoaded()
 
   function openMainNavMenu()
   {
-    window.scroll(0,0);
+    if ($("body").hasClass("subpageBody"))
+    {
+      urlBeforeOpeningMenu = window.location.href;
+      window.scroll(0,0);
+    }
 
     // We're about to run some animations
     animatingButton = true;
