@@ -142,11 +142,13 @@ function subpageIsReadyForNavigation()
       {
         $(".subpageNav").css("position", "fixed");
         $(".subpageNav").css("top", "0");
+        $(".subpageBody main").css("margin-top", "0");
       }
       else
       {
         $(".subpageNav").css("position", "absolute");
         $(".subpageNav").css("top", "");
+        $(".subpageBody main").css("margin-top", "");
       }
     }
     else
