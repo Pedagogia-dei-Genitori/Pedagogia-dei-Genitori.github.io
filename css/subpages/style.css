@@ -7,7 +7,8 @@
 
 .subpageContentSectionTitle,
 .subpageContentSectionParagraph,
-.subpageContentSectionHeading {
+.subpageContentSectionHeading,
+.subpageContentSectionList {
 	font-family: "Ubuntu", "Avenir Next", Avenir, "Lato", "HelveticaNeue-Light", "Helvetica Neue", "Montserrat", "Segoe UI", Helvetica, Arial, sans-serif;
 }
 
@@ -37,7 +38,8 @@
 .subpageNavTitle,
 .subpageNavTitle::before,
 .subpageNavListItem::before,
-.subpageNavListItem::after {
+.subpageNavListItem::after,
+.subpageContentSectionList li:before {
 	color: #ff3264;
 }
 
@@ -47,6 +49,7 @@
 
 .subpageContentSectionParagraph,
 .subpageContentSectionHeading,
+.subpageContentSectionList,
 .subpageContentLink,
 .subpageContentLink:visited,
 .subpageContentLink:active {
@@ -213,10 +216,14 @@
 	margin-bottom: 0.6em;
 }
 
-.subpageContentSectionParagraph {
+.subpageContentSectionParagraph,
+.subpageContentSectionList {
 	font-size: 1em;
 	font-weight: 300;
 	line-height: 1.8em;
+}
+
+.subpageContentSectionParagraph {
 	margin-bottom: 1.2em;
 }
 
@@ -224,13 +231,43 @@
 	margin-bottom: 2em;
 }
 
+.subpageContentSectionParagraphLessMargin {
+	margin-top: -0.8em;
+}
+
+.subpageContentSectionParagraphOverList {
+	margin-bottom: 0.4em;
+}
+
 .subpageContentSectionHeading {
 	display: inline-block;
 	font-size: 1em;
 	border-bottom: 2px solid #222222;
 	font-weight: 500;
-	margin-top: 0.6em;
-	margin-bottom: 0.2em;
+	margin-bottom: 0.7em;
+}
+
+.subpageContentSectionHeadingWithMargin {
+	margin-top: 1em;
+}
+
+.subpageContentSectionList {
+	margin-top: 0em;
+	margin-bottom: 1.2em;
+}
+
+.subpageContentSectionList li {
+	margin-bottom: 0.4em;
+	list-style-type: none;
+  position:relative;
+	padding-left: 1em;
+}
+
+.subpageContentSectionList li:before {
+	content: '•';
+	display: inline-block;
+	position: absolute;
+	left: 0;
 }
 
 .subpageContentSectionParagraph b {
@@ -676,7 +713,8 @@
 	}
 
 	.subpageContentSectionParagraph,
-	.subpageContentSectionHeading {
+	.subpageContentSectionHeading,
+	.subpageContentSectionList {
 		font-size: 0.9em;
 	}
 
@@ -1016,7 +1054,8 @@
 		font-size: 0.9em;
 	}
 
-	.subpageContentSectionHeading {
+	.subpageContentSectionHeading,
+	.subpageContentSectionList {
 		font-size: 0.9em;
 	}
 }
@@ -1071,7 +1110,8 @@
 	}
 
 	.subpageContentSectionParagraph,
-	.subpageContentSectionHeading {
+	.subpageContentSectionHeading,
+	.subpageContentSectionList {
 		font-size: 0.875em;
 	}
 
@@ -1146,7 +1186,8 @@
 	}
 
 	.subpageContentSectionParagraph,
-	.subpageContentSectionHeading {
+	.subpageContentSectionHeading,
+	.subpageContentSectionList {
 		font-size: 0.865em;
 	}
 
@@ -1221,7 +1262,8 @@
 	}
 
 	.subpageContentSectionParagraph,
-	.subpageContentSectionHeading {
+	.subpageContentSectionHeading,
+	.subpageContentSectionList {
 		font-size: 0.855em;
 	}
 
@@ -1296,7 +1338,8 @@
 	}
 
 	.subpageContentSectionParagraph,
-	.subpageContentSectionHeading {
+	.subpageContentSectionHeading,
+	.subpageContentSectionList {
 		font-size: 0.846em;
 	}
 
@@ -1371,7 +1414,8 @@
 	}
 
 	.subpageContentSectionParagraph,
-	.subpageContentSectionHeading {
+	.subpageContentSectionHeading,
+	.subpageContentSectionList {
 		font-size: 0.836em;
 	}
 
@@ -1446,7 +1490,8 @@
 	}
 
 	.subpageContentSectionParagraph,
-	.subpageContentSectionHeading {
+	.subpageContentSectionHeading,
+	.subpageContentSectionList {
 		font-size: 0.826em;
 	}
 
@@ -1521,7 +1566,8 @@
 	}
 
 	.subpageContentSectionParagraph,
-	.subpageContentSectionHeading {
+	.subpageContentSectionHeading,
+	.subpageContentSectionList {
 		font-size: 0.816em;
 	}
 
