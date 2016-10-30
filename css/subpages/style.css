@@ -947,17 +947,6 @@
 						transform: translateY(-7em);
 	}
 
-	.subpageBody header,
-	.subpageBody header.subpageBodyHiddenHeader,
-	.subpageNav,
-	.subpageNav.subpageNavWithHiddenHeader {
-		-webkit-transition: -webkit-transform 0.2s;
-			 -moz-transition: -moz-transform 0.2s;
-				-ms-transition: -ms-transform 0.2s;
-				 -o-transition: -o-transform 0.2s;
-						transition: transform 0.2s;
-	}
-
 	.subpageBody main {
 		margin-top: 11em;
 	}
