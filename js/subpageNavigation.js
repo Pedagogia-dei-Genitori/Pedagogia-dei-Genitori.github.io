@@ -9,7 +9,7 @@ function subpageIsReadyForNavigation()
     e.stopPropagation();
     e.preventDefault();
 
-    if($(this).css("cursor") === "pointer")
+    if(!($(".subpageNavTitleTriangle").css("display") === "none"))
     {
       if($(".subpageNav").hasClass("narrowWidthSubpageNav"))
       {
@@ -35,22 +35,13 @@ function subpageIsReadyForNavigation()
     updateSelectedNavItem();
     $(window).on("scroll", function()
     {
-      updateSelectedNavItem();
+      windowHasChanged();
+    });
 
-      if ($(".subpageNavTitle").css("cursor") === "pointer")
-      {
-        var spHeader = $(".subpageBody header");
-        if (spHeader.offset().top + spHeader.height() < $(window).scrollTop())
-        {
-          $(".subpageNav").css("position", "fixed");
-          $(".subpageNav").css("top", "0");
-        }
-        else
-        {
-          $(".subpageNav").css("position", "absolute");
-          $(".subpageNav").css("top", "");
-        }
-      }
+    // Same thing if the window resizes
+    $(window).resize(function()
+    {
+      windowHasChanged();
     });
 
     // Capture clicks of the links in the page-specific nav
@@ -65,6 +56,13 @@ function subpageIsReadyForNavigation()
       // Scoll to the corresponding section of the page
       scrollToPageElement(this.hash, true);
     });
+  }
+
+
+  function windowHasChanged()
+  {
+    updateSelectedNavItem();
+    setHeaderProperties();
   }
 
 
@@ -128,6 +126,30 @@ function subpageIsReadyForNavigation()
         }
       });
     }, 300);
+  }
+
+
+  function setHeaderProperties()
+  {
+    if (!($(".subpageNavTitleTriangle").css("display") === "none"))
+    {
+      var spHeader = $(".subpageBody header");
+      if (spHeader.offset().top + spHeader.height() < $(window).scrollTop())
+      {
+        $(".subpageNav").css("position", "fixed");
+        $(".subpageNav").css("top", "0");
+      }
+      else
+      {
+        $(".subpageNav").css("position", "absolute");
+        $(".subpageNav").css("top", "");
+      }
+    }
+    else
+    {
+      $(".subpageNav").css("position", "");
+      $(".subpageNav").css("top", "");
+    }
   }
 
 
