@@ -6,7 +6,8 @@
 /* Fonts */
 
 .subpageContentSectionTitle,
-.subpageContentSectionParagraph {
+.subpageContentSectionParagraph,
+.subpageContentSectionHeading {
 	font-family: "Ubuntu", "Avenir Next", Avenir, "Lato", "HelveticaNeue-Light", "Helvetica Neue", "Montserrat", "Segoe UI", Helvetica, Arial, sans-serif;
 }
 
@@ -45,6 +46,7 @@
 }
 
 .subpageContentSectionParagraph,
+.subpageContentSectionHeading,
 .subpageContentLink,
 .subpageContentLink:visited,
 .subpageContentLink:active {
@@ -220,6 +222,15 @@
 
 .subpageContentSectionParagraph:last-of-type {
 	margin-bottom: 2em;
+}
+
+.subpageContentSectionHeading {
+	display: inline-block;
+	font-size: 1em;
+	border-bottom: 2px solid #222222;
+	font-weight: 500;
+	margin-top: 0.6em;
+	margin-bottom: 0.2em;
 }
 
 .subpageContentSectionParagraph b {
@@ -664,7 +675,8 @@
 		font-size: 2.2em;
 	}
 
-	.subpageContentSectionParagraph {
+	.subpageContentSectionParagraph,
+	.subpageContentSectionHeading {
 		font-size: 0.9em;
 	}
 
@@ -1003,6 +1015,10 @@
 		width: 100%;
 		font-size: 0.9em;
 	}
+
+	.subpageContentSectionHeading {
+		font-size: 0.9em;
+	}
 }
 
 @media screen and (max-width: 44em) {
@@ -1054,7 +1070,8 @@
 		font-size: 2.15em;
 	}
 
-	.subpageContentSectionParagraph {
+	.subpageContentSectionParagraph,
+	.subpageContentSectionHeading {
 		font-size: 0.875em;
 	}
 
@@ -1128,7 +1145,8 @@
 		font-size: 1.375em;
 	}
 
-	.subpageContentSectionParagraph {
+	.subpageContentSectionParagraph,
+	.subpageContentSectionHeading {
 		font-size: 0.865em;
 	}
 
@@ -1202,7 +1220,8 @@
 		font-size: 1.35em;
 	}
 
-	.subpageContentSectionParagraph {
+	.subpageContentSectionParagraph,
+	.subpageContentSectionHeading {
 		font-size: 0.855em;
 	}
 
@@ -1276,7 +1295,8 @@
 		font-size: 1.325em;
 	}
 
-	.subpageContentSectionParagraph {
+	.subpageContentSectionParagraph,
+	.subpageContentSectionHeading {
 		font-size: 0.846em;
 	}
 
@@ -1350,7 +1370,8 @@
 		font-size: 1.3em;
 	}
 
-	.subpageContentSectionParagraph {
+	.subpageContentSectionParagraph,
+	.subpageContentSectionHeading {
 		font-size: 0.836em;
 	}
 
@@ -1424,7 +1445,8 @@
 		font-size: 1.275em;
 	}
 
-	.subpageContentSectionParagraph {
+	.subpageContentSectionParagraph,
+	.subpageContentSectionHeading {
 		font-size: 0.826em;
 	}
 
@@ -1498,7 +1520,8 @@
 		font-size: 1.25em;
 	}
 
-	.subpageContentSectionParagraph {
+	.subpageContentSectionParagraph,
+	.subpageContentSectionHeading {
 		font-size: 0.816em;
 	}
 
