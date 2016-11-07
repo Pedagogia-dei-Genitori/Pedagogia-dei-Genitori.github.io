@@ -409,9 +409,9 @@
 	top: -webkit-calc(100% - 1px);
 	top: -moz-calc(100% - 1px);
 	top: calc(100% - 1px);
-	height: -webkit-calc(1.6em + 6px);
-	height: -moz-calc(1.6em + 6px);
-	height: calc(1.6em + 6px);
+	height: -webkit-calc(1.6em + 7px);
+	height: -moz-calc(1.6em + 7px);
+	height: calc(1.6em + 7px);
 }
 
 .subpageNavListItem::after {
