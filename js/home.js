@@ -33,7 +33,7 @@ var pageLoadIsCompete = setInterval(function()
 
 function animateHomepageRotatingText()
 {
-  var changeInterval = 4000;
+  var changeInterval = 2500;
   var changingWords = document.querySelectorAll(".homepageChangingText");
 
   var arrayOfChangingWords = [];
