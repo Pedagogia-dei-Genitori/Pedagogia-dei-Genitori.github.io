@@ -295,6 +295,11 @@
 	font-weight: 300;
 }
 
+.subpageContentSectionTitle em {
+	font-style: italic;
+	font-weight: 400;
+}
+
 .subpageNav {
 	position: fixed;
 	z-index: 200;
